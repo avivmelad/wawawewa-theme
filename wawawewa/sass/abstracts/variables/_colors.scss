@@ -1,4 +1,15 @@
-$color__background-body: #fff;
+// Brand palette — "Black & Gold" direction, see docs/store-build-plan.md
+$color__brand-gold: #c9a24b;
+$color__brand-gold-hover: #e0bd6e;
+$color__brand-bg: #121110;
+$color__brand-bg-footer: #0a0908;
+$color__brand-text: #f0e9db;
+$color__brand-text-muted: #b7ac97;
+$color__brand-text-muted-footer: #8a8272;
+$color__brand-border: $color__brand-gold;
+$color__brand-border-muted: #3a3327;
+
+$color__background-body: $color__brand-bg;
 $color__background-screen: #f1f1f1;
 $color__background-hr: #ccc;
 $color__background-button: #e6e6e6;
@@ -8,10 +19,10 @@ $color__background-ins: #fff9c0;
 $color__text-screen: #21759b;
 $color__text-input: #666;
 $color__text-input-focus: #111;
-$color__link: #4169e1; //royalblue
-$color__link-visited: #800080; //purple
-$color__link-hover: #191970; //midnightblue
-$color__text-main: #404040;
+$color__link: $color__brand-gold;
+$color__link-visited: $color__brand-gold;
+$color__link-hover: $color__brand-gold-hover;
+$color__text-main: $color__brand-text;
 
 $color__border-button: #ccc #ccc #bbb;
 $color__border-button-hover: #ccc #bbb #aaa;

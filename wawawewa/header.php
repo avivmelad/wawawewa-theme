@@ -25,10 +25,55 @@
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
 	<div id="page" class="site">
-		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'wawawewa'); ?></a>
+		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'wawawewa' ); ?></a>
+
+		<div class="drawer-overlay" data-drawer-overlay></div>
+
+		<nav id="drawer-nav" class="drawer-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'wawawewa' ); ?>" data-drawer>
+			<div class="drawer-nav__top">
+				<button type="button" class="drawer-nav__close" aria-label="<?php esc_attr_e( 'Close menu', 'wawawewa' ); ?>" data-drawer-close>
+					<svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M5 5L19 19M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+					</svg>
+				</button>
+			</div>
+			<?php
+			if ( has_nav_menu( 'menu-1' ) ) {
+				wp_nav_menu(
+					array(
+						'theme_location' => 'menu-1',
+						'container'      => false,
+						'menu_class'     => 'drawer-nav__list',
+						'depth'          => 1,
+					)
+				);
+			}
+			?>
+			<div class="drawer-nav__eyebrow"><?php esc_html_e( 'קולקציית 2026', 'wawawewa' ); ?></div>
+		</nav>
 
 		<header id="masthead" class="site-header">
 			<div class="header-wrapper">
+				<button type="button" class="header-hamburger" aria-label="<?php esc_attr_e( 'Open menu', 'wawawewa' ); ?>" aria-controls="drawer-nav" aria-expanded="false" data-drawer-open>
+					<span></span>
+					<span></span>
+					<span class="header-hamburger__accent"></span>
+				</button>
 
+				<a class="header-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+					<?php get_template_part( 'template-parts/brand/logo-mark', null, array( 'size' => 34 ) ); ?>
+					<span class="header-brand__word"><?php bloginfo( 'name' ); ?></span>
+				</a>
+
+				<?php if ( class_exists( 'WooCommerce' ) ) : ?>
+					<a class="header-cart" href="<?php echo esc_url( wc_get_cart_url() ); ?>" aria-label="<?php esc_attr_e( 'View your shopping cart', 'wawawewa' ); ?>">
+						<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+							<path d="M2 3H4.5L5.6 5M5.6 5H21L18.5 13H7.5L5.6 5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+							<circle cx="9" cy="19" r="1.6" fill="currentColor" />
+							<circle cx="17" cy="19" r="1.6" fill="currentColor" />
+						</svg>
+						<span class="header-cart__count"><?php echo esc_html( WC()->cart ? WC()->cart->get_cart_contents_count() : 0 ); ?></span>
+					</a>
+				<?php endif; ?>
 			</div>
 		</header><!-- #masthead -->

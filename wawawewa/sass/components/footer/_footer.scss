@@ -1,0 +1,105 @@
+.newsletter-band {
+	background: $color__brand-bg-footer;
+	border-top: 1.5px solid $color__brand-gold;
+	padding: 56px 40px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 24px;
+	flex-wrap: wrap;
+
+	@media screen and (max-width: 37.5em) {
+		padding: 40px 20px;
+	}
+
+	&__copy {
+		h2 {
+			font-family: $font__heebo;
+			font-weight: 800;
+			font-size: 24px;
+			line-height: 1.2;
+			margin: 0 0 6px;
+			color: $color__brand-text;
+		}
+
+		p {
+			margin: 0;
+			font-size: 14px;
+			color: $color__brand-text-muted;
+		}
+	}
+
+	&__form {
+		flex: none;
+
+		.gform_wrapper form {
+			display: flex;
+			gap: 10px;
+		}
+	}
+
+	&__placeholder {
+		display: flex;
+		gap: 10px;
+		flex: none;
+
+		input {
+			width: 240px;
+			height: 50px;
+			border-radius: 999px;
+			background: #1c1a16;
+			border: 1px solid $color__brand-border-muted;
+			color: $color__brand-text-muted-footer;
+			padding: 0 20px;
+			font-family: $font__main;
+			font-size: 13px;
+		}
+	}
+
+	&__submit {
+		display: flex;
+		align-items: center;
+		background: $color__brand-gold;
+		color: $color__brand-bg;
+		padding: 15px 28px;
+		border-radius: 999px;
+		font-family: $font__main;
+		font-weight: 800;
+		font-size: 14px;
+		white-space: nowrap;
+	}
+}
+
+.site-footer {
+	background: $color__brand-bg-footer;
+	border-top: 1px solid $color__brand-border-muted;
+
+	&__inner {
+		padding: 28px 40px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 12px;
+		font-size: 13px;
+		color: $color__brand-text-muted-footer;
+
+		@media screen and (max-width: 37.5em) {
+			padding: 20px;
+		}
+	}
+
+	&__links {
+		display: flex;
+		gap: 18px;
+
+		a {
+			color: $color__brand-text-muted-footer;
+			text-decoration: none;
+
+			&:hover {
+				color: $color__brand-gold;
+			}
+		}
+	}
+}
