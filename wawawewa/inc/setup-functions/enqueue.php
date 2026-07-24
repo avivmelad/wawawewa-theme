@@ -12,8 +12,9 @@ function wawawewa_scripts()
 	wp_enqueue_style('wawawewa-fonts', 'https://fonts.googleapis.com/css2?family=Heebo:wght@500;700;800;900&family=Assistant:wght@400;500;600;700&family=Unbounded:wght@700;800;900&display=swap', array(), null);
 
 	//Css
-	wp_enqueue_style('wawawewa-style', get_template_directory_uri() . '/dist/css/style.min.css', array('wawawewa-fonts'), THEME_VERSION);
 	wp_style_add_data('wawawewa-style', 'rtl', 'replace');
+	wp_enqueue_style('wawawewa-style', get_template_directory_uri() . '/dist/css/style.min.css', array('wawawewa-fonts'), THEME_VERSION);
+
 
 	//Js
 	wp_enqueue_script('wawawewa-general-script', get_template_directory_uri() . '/dist/js/general-script.min.js', array('jquery'), THEME_VERSION, true);
