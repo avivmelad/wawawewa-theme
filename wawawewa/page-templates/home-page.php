@@ -13,7 +13,7 @@ $id = get_the_ID();
 $pageTitle = get_field('page_header', $id);
 get_header();
 ?>
-<main>
+<main class="site-main">
     <div class="page-hero">
         <h1><?php echo $pageTitle ?></h1>
     </div>

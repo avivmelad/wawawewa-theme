@@ -1,3 +1,18 @@
 body {
 	background: $color__background-body; // Fallback for when there is no custom background color defined.
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+// Sticky footer: #page (.site) fills the body, .site-main grows to push
+// the footer to the bottom of the viewport on short pages.
+.site {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.site-main {
+	flex: 1;
 }
