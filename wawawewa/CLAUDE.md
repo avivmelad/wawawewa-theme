@@ -8,6 +8,8 @@ The full build plan and roadmap live in [`docs/store-build-plan.md`](docs/store-
 
 Live checkbox status for every phase of the build is tracked in [`docs/checklist.md`](docs/checklist.md) — check items off there as soon as that piece of work lands, in the same commit/session, not as a deferred cleanup step.
 
+**Current mission tracking**: while actively working on a multi-step task (e.g. "the header"), keep a scratch file at `docs/current-mission.md` — a short goal statement plus a step checklist, updated after every step so work can resume mid-task even across a session break. This file is temporary: once the whole mission is finished, delete it (its outcome should already be reflected in `docs/checklist.md` / `docs/store-build-plan.md`, so nothing is lost). If `docs/current-mission.md` exists when a session starts, read it first — it means a mission was left in progress.
+
 ## Current status
 
 Niche and visual identity are now decided: home goods/décor, "Black & Gold" luxury direction, Hebrew (RTL) first. A high-fidelity homepage design has been delivered; header and footer are implemented site-wide, homepage content sections and ACF fields are not yet built. See the "Implementation status" checkpoint under Design direction in [`docs/store-build-plan.md`](docs/store-build-plan.md) for exactly what's done and what's left. Ask to resume "the homepage design implementation" to continue.

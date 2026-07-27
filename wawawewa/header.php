@@ -70,14 +70,20 @@
 				</a>
 
 				<?php if ( class_exists( 'WooCommerce' ) ) : ?>
-					<a class="header-cart" href="<?php echo esc_url( wc_get_cart_url() ); ?>" aria-label="<?php esc_attr_e( 'View your shopping cart', 'wawawewa' ); ?>">
-						<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-							<path d="M2 3H4.5L5.6 5M5.6 5H21L18.5 13H7.5L5.6 5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-							<circle cx="9" cy="19" r="1.6" fill="currentColor" />
-							<circle cx="17" cy="19" r="1.6" fill="currentColor" />
-						</svg>
-						<span class="header-cart__count"><?php echo esc_html( WC()->cart ? WC()->cart->get_cart_contents_count() : 0 ); ?></span>
-					</a>
+					<div class="header-cart" data-mini-cart>
+						<button type="button" class="header-cart__toggle" aria-label="<?php esc_attr_e( 'View your shopping cart', 'wawawewa' ); ?>" aria-haspopup="true" aria-expanded="false" aria-controls="mini-cart-panel" data-mini-cart-toggle>
+							<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+								<path d="M2 3H4.5L5.6 5M5.6 5H21L18.5 13H7.5L5.6 5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+								<circle cx="9" cy="19" r="1.6" fill="currentColor" />
+								<circle cx="17" cy="19" r="1.6" fill="currentColor" />
+							</svg>
+							<span class="header-cart__count"><?php echo esc_html( WC()->cart ? WC()->cart->get_cart_contents_count() : 0 ); ?></span>
+						</button>
+
+						<div id="mini-cart-panel" class="header-cart__panel" data-mini-cart-panel>
+							<?php the_widget( 'WC_Widget_Cart', array( 'title' => '' ) ); ?>
+						</div>
+					</div>
 				<?php endif; ?>
 			</div>
 		</header><!-- #masthead -->
