@@ -12,8 +12,7 @@ Finish the site-wide header: ACF-editable logo, cleaned-up placeholder content, 
 - [x] Fix sticky-footer gap on short pages (unrelated but done in this stretch of work)
 - [x] Make the header sticky (`position: sticky`, solid background, `z-index`)
 - [x] Cart icon opens a mini-cart dropdown (WooCommerce `WC_Widget_Cart` widget, items/empty state, view cart + checkout links) via `js/mini-cart.js`
-- [ ] Upload the real logo in wp-admin (currently still falls back to the placeholder SVG)
 - [ ] Anything else needed on the header before calling this mission done?
 
 ## Notes
-- No other header work requested yet — ask before closing out/deleting this file.
+- Real logo upload is on the user, done directly in wp-admin once the final logo is ready — not tracked here.
