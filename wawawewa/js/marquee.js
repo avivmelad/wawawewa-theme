@@ -22,7 +22,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		slidesPerView: 'auto',
 		spaceBetween: isMobile ? 56 : 96,
 		allowTouchMove: false,
-		speed: isMobile ? 22000 : 30000,
+		speed: isMobile ? 14000 : 18000,
 		// freeMode is required for the continuous-ticker trick: without it,
 		// Swiper tries to snap autoplay transitions to discrete slide
 		// positions, which don't line up cleanly with slidesPerView: 'auto'
@@ -33,9 +33,11 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		},
 		// delay must be > 0 — Swiper's autoplay module treats a falsy delay
 		// (including 0) as "not configured" and silently never starts.
+		// disableOnInteraction must be false — otherwise autoplay permanently
+		// stops the first time the user clicks/taps anywhere on the page.
 		autoplay: reduceMotion ? false : {
 			delay: 1,
-			disableOnInteraction: true,
+			disableOnInteraction: false,
 			pauseOnMouseEnter: false,
 		},
 	} );
