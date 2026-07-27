@@ -41,6 +41,74 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium"
+        },
+        {
+            "key": "field_wawawewa_header_wordmark_type",
+            "label": "שם החנות בהדר",
+            "name": "header_wordmark_type",
+            "type": "radio",
+            "instructions": "מה יוצג ליד הלוגו במקום השם \"wawawewa\" הכתוב.",
+            "required": 0,
+            "conditional_logic": 0,
+            "choices": {
+                "text": "טקסט",
+                "image": "תמונה"
+            },
+            "default_value": "text",
+            "layout": "horizontal",
+            "return_format": "value",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_wawawewa_header_wordmark_text",
+            "label": "טקסט",
+            "name": "header_wordmark_text",
+            "type": "text",
+            "instructions": "אופציונלי — אם ריק, יוצג שם האתר (Settings → General).",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_wawawewa_header_wordmark_type",
+                        "operator": "==",
+                        "value": "text"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_wawawewa_header_wordmark_image",
+            "label": "תמונה",
+            "name": "header_wordmark_image",
+            "type": "image",
+            "instructions": "תמונה שמוצגת במקום הטקסט (למשל וורדמארק מעוצב).",
+            "required": 0,
+            "return_format": "array",
+            "library": "all",
+            "preview_size": "medium",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_wawawewa_header_wordmark_type",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
         }
     ],
     "location": [

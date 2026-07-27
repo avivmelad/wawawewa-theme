@@ -83,6 +83,17 @@
 			filter: drop-shadow(0 0 10px rgba(201, 162, 75, 0.45));
 		}
 	}
+
+	&__wordmark-image {
+		display: block;
+		height: 21px;
+		width: auto;
+		object-fit: contain;
+
+		@include mq(mobile) {
+			height: 17px;
+		}
+	}
 }
 
 .header-cart {

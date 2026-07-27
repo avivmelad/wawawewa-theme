@@ -60,14 +60,24 @@
 					<span class="header-hamburger__accent"></span>
 				</button>
 
-				<?php $header_logo = get_field( 'header_logo', 'option' ); ?>
+				<?php
+				$header_logo         = get_field( 'header_logo', 'option' );
+				$wordmark_type        = get_field( 'header_wordmark_type', 'option' );
+				$wordmark_text        = get_field( 'header_wordmark_text', 'option' );
+				$wordmark_image       = get_field( 'header_wordmark_image', 'option' );
+				?>
 				<a class="header-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<?php if ( $header_logo ) : ?>
 						<img class="header-brand__logo" src="<?php echo esc_url( $header_logo['url'] ); ?>" alt="<?php echo esc_attr( $header_logo['alt'] ? $header_logo['alt'] : get_bloginfo( 'name' ) ); ?>" width="34" height="34" />
 					<?php else : ?>
 						<?php get_template_part( 'template-parts/brand/logo-mark', null, array( 'size' => 34 ) ); ?>
 					<?php endif; ?>
-					<span class="header-brand__word header-brand__word--gradient"><?php bloginfo( 'name' ); ?></span>
+
+					<?php if ( 'image' === $wordmark_type && $wordmark_image ) : ?>
+						<img class="header-brand__wordmark-image" src="<?php echo esc_url( $wordmark_image['url'] ); ?>" alt="<?php echo esc_attr( $wordmark_image['alt'] ? $wordmark_image['alt'] : get_bloginfo( 'name' ) ); ?>" />
+					<?php else : ?>
+						<span class="header-brand__word header-brand__word--gradient"><?php echo esc_html( $wordmark_text ? $wordmark_text : get_bloginfo( 'name' ) ); ?></span>
+					<?php endif; ?>
 				</a>
 
 				<?php if ( class_exists( 'WooCommerce' ) ) : ?>
