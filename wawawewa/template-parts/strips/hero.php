@@ -9,6 +9,7 @@
  * @package wawawewa
  */
 
+$logo         = get_sub_field('hero_logo');
 $eyebrow      = get_sub_field('hero_eyebrow');
 $heading      = get_sub_field('hero_heading');
 $subcopy      = get_sub_field('hero_subcopy');
@@ -18,6 +19,10 @@ $image        = get_sub_field('hero_image');
 ?>
 <section class="strip-hero">
 	<div class="strip-hero__inner">
+		<?php if ($logo) : ?>
+			<img class="strip-hero__logo" src="<?php echo esc_url($logo['url']); ?>" alt="<?php echo esc_attr($logo['alt']); ?>" />
+		<?php endif; ?>
+
 		<?php if ($eyebrow) : ?>
 			<span class="strip-hero__eyebrow"><?php echo esc_html($eyebrow); ?></span>
 		<?php endif; ?>

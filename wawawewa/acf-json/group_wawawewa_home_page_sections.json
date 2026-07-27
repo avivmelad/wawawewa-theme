@@ -23,6 +23,22 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_wawawewa_hero_logo",
+                            "label": "לוגו מעל הכותרת",
+                            "name": "hero_logo",
+                            "type": "image",
+                            "instructions": "אופציונלי — סמל/לוגו קטן שמוצג מעל הכותרת הראשית, לפי העיצוב.",
+                            "required": 0,
+                            "return_format": "array",
+                            "library": "all",
+                            "preview_size": "medium",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
                             "key": "field_wawawewa_hero_eyebrow",
                             "label": "כותרת עילית",
                             "name": "hero_eyebrow",

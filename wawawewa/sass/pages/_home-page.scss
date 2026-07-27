@@ -17,6 +17,14 @@
 			margin-inline: auto;
 		}
 
+		&__logo {
+			display: block;
+			width: 56px;
+			height: 56px;
+			margin: 0 auto 18px;
+			object-fit: contain;
+		}
+
 		&__eyebrow {
 			display: inline-flex;
 			padding: 6px 18px;
