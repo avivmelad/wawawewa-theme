@@ -23,7 +23,9 @@ Rework the homepage (and site-wide header) from the plain Black & Gold layout in
 - [ ] Fill in real Hero content (including highlight markup) in wp-admin and verify on staging — RTL first, then desktop, then mobile
 - [ ] Next section to redesign in this direction (marquee is next in the design's top-to-bottom order)
 
+- [x] Explicitly disabled hero parallax, magnetic-button drag, and button tap-scale below the `mobile` breakpoint (480px) — user found the movement effects unwanted on mobile even though they were expected to no-op there; `js/hero-interactions.js` now bails out entirely under `(max-width: 480px)`, and `.button:active` scale in `sass/components/buttons/_buttons.scss` is wrapped in `@include mq(mobile, min)`
+
 ## Notes
 - Old single `page_header` ACF field on the homepage is superseded by the `page_sections` flexible content field — no longer read anywhere.
-- Particle count (46) and magnetic/parallax effects are unchanged for mobile — magnetic/parallax naturally no-op on touch (no `mousemove`), so no extra code needed there.
+- Particle count (46) is unchanged for mobile (still ambient background, not a "moving button/screen" effect — left alone).
 - Both desktop (`Homepage Futuristic.dc.html`) and mobile (`Homepage Futuristic Mobile.dc.html`) mockups in the Claude Design project (`עיצוב חנות אינטרנטית`, id `6e15106a-a49d-45e9-85cb-b7e220f17f7e`) cover every remaining section — marquee, best sellers, categories, testimonials, about, FAQ, newsletter/footer — not just Hero. When starting each of those as its own future mission, pull both files for that section (desktop + mobile) rather than desktop-only, so the mobile pass happens in the same mission instead of a separate follow-up.

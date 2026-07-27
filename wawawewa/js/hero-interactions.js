@@ -3,10 +3,15 @@
  *
  * Small decorative interactions for the homepage Hero strip: magnetic
  * buttons (`[data-magnet]`) and a subtle mouse-parallax on the hero
- * section itself (`[data-parallax]`). Skipped under prefers-reduced-motion.
+ * section itself (`[data-parallax]`). Skipped under prefers-reduced-motion
+ * and below the `mobile` breakpoint (480px, see sass/abstracts/variables/_breakpoints.scss)
+ * — these are mouse-hover effects that don't belong on touch/mobile.
  */
 ( function() {
-	if ( window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) {
+	if (
+		window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ||
+		window.matchMedia( '(max-width: 480px)' ).matches
+	) {
 		return;
 	}
 
