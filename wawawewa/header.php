@@ -60,8 +60,13 @@
 					<span class="header-hamburger__accent"></span>
 				</button>
 
+				<?php $header_logo = get_field( 'header_logo', 'option' ); ?>
 				<a class="header-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<?php get_template_part( 'template-parts/brand/logo-mark', null, array( 'size' => 34 ) ); ?>
+					<?php if ( $header_logo ) : ?>
+						<img class="header-brand__logo" src="<?php echo esc_url( $header_logo['url'] ); ?>" alt="<?php echo esc_attr( $header_logo['alt'] ? $header_logo['alt'] : get_bloginfo( 'name' ) ); ?>" width="34" height="34" />
+					<?php else : ?>
+						<?php get_template_part( 'template-parts/brand/logo-mark', null, array( 'size' => 34 ) ); ?>
+					<?php endif; ?>
 					<span class="header-brand__word"><?php bloginfo( 'name' ); ?></span>
 				</a>
 

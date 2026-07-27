@@ -19,6 +19,10 @@ Living status tracker for the store build. Detail/rationale for each item lives 
 - [x] Brand palette (`sass/abstracts/variables/_colors.scss`)
 - [x] Typography variables + headings (`sass/abstracts/variables/_typography.scss`, `sass/base/typography/_headings.scss`)
 - [x] Breakpoints system (`sass/abstracts/variables/_breakpoints.scss`, `mq()` mixin)
+- [x] ACF options page registered ("הגדרות האתר", `inc/setup-functions/options-page.php`) + `acf-json/` folder created
+- [x] "הדר" (header) tab + `header_logo` image field added to site settings (`acf-json/group_wawawewa_site_settings.json`); `header.php` reads it via `get_field('header_logo', 'option')` with SVG fallback
+- [ ] Real logo image uploaded in wp-admin (currently falls back to the placeholder WA monogram SVG)
+- [ ] Remaining global site-settings fields for other areas (footer contact/social, global banners, etc.) as they come up
 
 ## 4. Site-wide chrome
 - [x] Header: drawer nav, logo, cart badge (`header.php`, `js/navigation.js`, `sass/components/header/_header.scss`)

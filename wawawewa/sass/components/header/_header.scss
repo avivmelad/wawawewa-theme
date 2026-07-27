@@ -42,6 +42,12 @@
 	text-decoration: none;
 	color: $color__brand-text;
 
+	&__logo {
+		width: 34px;
+		height: 34px;
+		object-fit: contain;
+	}
+
 	&__word {
 		font-family: $font__unbounded;
 		font-weight: 800;

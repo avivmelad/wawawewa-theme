@@ -126,8 +126,19 @@ No automated tests exist in this project (no `/tests` directory, no PHPUnit or J
 
 Field groups must be exported to `acf-json/` (create at the theme root if it doesn't exist yet) and committed to git. This is what keeps fields in sync between your machine and staging instead of them existing only in one wp-admin database and silently "disappearing" on the other environment.
 
+- **Always use `get_field()`, never `the_field()`.** `get_field()` returns the value so it can be escaped properly (`esc_html()`, `esc_url()`, etc.) before output; `the_field()` echoes raw, unescaped output directly and bypasses the theme's escaping convention (see Security in Conventions above). This applies everywhere a field is read, including the options page below.
+
 - After adding or editing a field group in wp-admin, let ACF re-sync/export the JSON before considering the change done.
 - Commit the resulting `acf-json/*.json` file alongside whatever PHP/template code uses the field — they're one logical change.
+
+### Global site settings (ACF options page)
+
+Global/site-wide fields (things that aren't tied to a specific post/page — e.g. footer contact details, social links, global banners) belong on the ACF **options page**, registered in `inc/setup-functions/options-page.php` (`wawawewa_acf_options_page()`, hooked on `acf/init`, required from `functions.php`) via `acf_add_options_page()`. This requires **ACF Pro** (already assumed by this project for flexible content/repeaters — see the build plan).
+
+- Admin menu label / page title: **הגדרות האתר** (Hebrew, matches the site's RTL-first convention) — `menu_slug` is `wawawewa-site-settings`.
+- Any field group attached to this options page reads anywhere in templates via `get_field( $selector, 'option' )` — no post ID needed.
+- Field groups for this page are exported to `acf-json/` exactly like any other field group (see above).
+- Fields are organized into ACF **Tab** fields per site area — e.g. the `הדר` (header) tab currently holds `header_logo` (image field, read in `header.php` via `get_field( 'header_logo', 'option' )`, falling back to the default WA monogram SVG in `template-parts/brand/logo-mark.php` when no image is set). Add new tabs the same way as new global-settings areas come up (footer, contact info, etc.) rather than one flat field list.
 
 ### Flexible content page sections ("strips")
 
