@@ -14,8 +14,11 @@ $eyebrow      = get_sub_field('hero_eyebrow');
 $heading      = get_sub_field('hero_heading');
 $subcopy      = get_sub_field('hero_subcopy');
 $cta_primary  = get_sub_field('hero_cta_primary');
-$cta_secondary = get_sub_field('hero_cta_secondary');
-$image        = get_sub_field('hero_image');
+$cta_secondary  = get_sub_field('hero_cta_secondary');
+$media_type     = get_sub_field('hero_media_type');
+$image          = get_sub_field('hero_image');
+$video_file     = get_sub_field('hero_video_file');
+$video_youtube  = get_sub_field('hero_video_youtube');
 ?>
 <section class="strip-hero">
 	<div class="strip-hero__inner">
@@ -52,8 +55,22 @@ $image        = get_sub_field('hero_image');
 		<?php endif; ?>
 	</div>
 
-	<?php if ($image) : ?>
-		<div class="strip-hero__image">
+	<?php if ('upload' === $media_type && $video_file) : ?>
+		<div class="strip-hero__media">
+			<video controls playsinline>
+				<source src="<?php echo esc_url($video_file['url']); ?>" type="<?php echo esc_attr($video_file['mime_type']); ?>" />
+			</video>
+		</div>
+	<?php elseif ('youtube' === $media_type && $video_youtube) : ?>
+		<div class="strip-hero__media strip-hero__media--embed">
+			<?php
+			// $video_youtube is the embed HTML WordPress already fetched/sanitized
+			// via its own oEmbed handling (ACF "oembed" field) — not raw user input.
+			echo $video_youtube;
+			?>
+		</div>
+	<?php elseif ($image) : ?>
+		<div class="strip-hero__media">
 			<img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
 		</div>
 	<?php endif; ?>

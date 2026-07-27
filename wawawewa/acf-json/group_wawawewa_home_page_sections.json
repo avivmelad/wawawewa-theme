@@ -102,6 +102,27 @@
                             }
                         },
                         {
+                            "key": "field_wawawewa_hero_media_type",
+                            "label": "סוג מדיה",
+                            "name": "hero_media_type",
+                            "type": "radio",
+                            "instructions": "מה יוצג ברוחב מלא מתחת לטקסט ההירו.",
+                            "required": 0,
+                            "choices": {
+                                "photo": "תמונה",
+                                "upload": "וידאו מועלה",
+                                "youtube": "וידאו יוטיוב"
+                            },
+                            "default_value": "photo",
+                            "layout": "horizontal",
+                            "return_format": "value",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
                             "key": "field_wawawewa_hero_image",
                             "label": "תמונת הירו (רוחב מלא)",
                             "name": "hero_image",
@@ -111,6 +132,64 @@
                             "return_format": "array",
                             "library": "all",
                             "preview_size": "large",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_wawawewa_hero_media_type",
+                                        "operator": "==",
+                                        "value": "photo"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_hero_video_file",
+                            "label": "קובץ וידאו",
+                            "name": "hero_video_file",
+                            "type": "file",
+                            "instructions": "קובץ וידאו ברוחב מלא (mp4/webm/mov).",
+                            "required": 0,
+                            "return_format": "array",
+                            "library": "all",
+                            "mime_types": "mp4,mov,webm",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_wawawewa_hero_media_type",
+                                        "operator": "==",
+                                        "value": "upload"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_hero_video_youtube",
+                            "label": "קישור לסרטון יוטיוב",
+                            "name": "hero_video_youtube",
+                            "type": "oembed",
+                            "instructions": "הדביקו קישור לסרטון יוטיוב.",
+                            "required": 0,
+                            "width": "",
+                            "height": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_wawawewa_hero_media_type",
+                                        "operator": "==",
+                                        "value": "youtube"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "",
                                 "class": "",

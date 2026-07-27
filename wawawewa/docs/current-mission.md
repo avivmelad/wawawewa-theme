@@ -6,7 +6,8 @@ Temporary scratch file — delete once the homepage-sections mission is fully do
 Build the homepage using the ACF Flexible Content "strips" architecture (see CLAUDE.md), starting with the Hero section.
 
 ## Steps
-- [x] `page_sections` flexible content field group + `hero` layout (optional logo image, eyebrow, heading, subcopy, 2 CTAs as ACF Link fields, full-width image) — `acf-json/group_wawawewa_home_page_sections.json`
+- [x] `page_sections` flexible content field group + `hero` layout (optional logo image, eyebrow, heading, subcopy, 2 CTAs as ACF Link fields) — `acf-json/group_wawawewa_home_page_sections.json`
+- [x] Hero media radio choice (photo / uploaded video / YouTube), each with its own conditionally-shown ACF field (`hero_image`, `hero_video_file`, `hero_video_youtube`)
 - [x] `inc/flexible-strips.php` dispatcher (`wawawewa_render_strips()`) + required from `functions.php`
 - [x] `template-parts/strips/hero.php` partial
 - [x] Reusable pill `.button`/`.button--primary`/`.button--secondary` component (`sass/components/buttons/_buttons.scss`)
