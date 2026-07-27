@@ -1,0 +1,32 @@
+// Screen size breakpoints, from smallest to largest.
+// Use these everywhere instead of hardcoding pixel values in media queries.
+$breakpoints: (
+	mobile-max: 360px,
+	mobile: 480px,
+	tablet-small: 600px,
+	tablet: 768px,
+	tablet-max: 1024px,
+	laptop: 1280px,
+	laptop-max: 1440px,
+	desktop-max: 1920px
+);
+
+// Media query helper, e.g. @include mq(tablet) { ... } for max-width: 768px
+// or @include mq(tablet, min) { ... } for min-width: 768px.
+@mixin mq($name, $type: max) {
+	@if not map-has-key($breakpoints, $name) {
+		@error "Unknown breakpoint `#{$name}`. Available breakpoints: #{map-keys($breakpoints)}";
+	}
+
+	$size: map-get($breakpoints, $name);
+
+	@if $type == min {
+		@media (min-width: $size) {
+			@content;
+		}
+	} @else {
+		@media (max-width: $size) {
+			@content;
+		}
+	}
+}
