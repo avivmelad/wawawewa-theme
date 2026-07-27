@@ -11,6 +11,7 @@
 get_header();
 ?>
 <main class="site-main">
+	<canvas class="homepage-particles" data-particles aria-hidden="true"></canvas>
 	<?php wawawewa_render_strips('page_sections'); ?>
 </main>
 

@@ -26,19 +26,22 @@ Living status tracker for the store build. Detail/rationale for each item lives 
 
 ## 4. Site-wide chrome
 - [x] Header: drawer nav, ACF-editable logo, sticky positioning, cart icon + mini-cart dropdown (`header.php`, `js/navigation.js`, `js/mini-cart.js`, `sass/components/header/_header.scss`)
-- [x] Footer: newsletter band + footer bar (`footer.php`, `sass/components/footer/_footer.scss`)
+- [x] Header "Futuristic" restyle: gradient wordmark, translucent background, JetBrains Mono drawer label (see build plan "Design evolution")
+- [x] Footer: newsletter band + footer bar (`footer.php`, `sass/components/footer/_footer.scss`) — still in the original plain layout, not yet redone in the Futuristic direction
 
 ## 5. Homepage content build (ACF Flexible Content "strips" — see CLAUDE.md)
 - [x] `page_sections` flexible content field group created, exported to `acf-json/group_wawawewa_home_page_sections.json`
 - [x] `inc/flexible-strips.php` created + required from `functions.php` (`wawawewa_render_strips()` dispatcher)
 - [x] `template-parts/strips/` partials directory started
-- [x] Hero strip (fields: eyebrow, heading, subcopy, 2 CTAs, full-width image — `template-parts/strips/hero.php`, styled in `sass/pages/_home-page.scss`)
-- [ ] Gold marquee strip
-- [ ] Best sellers product grid strip
-- [ ] Lookbook grid strip
-- [ ] Testimonials strip
-- [ ] About/brand strip
-- [ ] FAQ accordion strip (+ JS module)
+- [x] Hero strip, rebuilt in the "Futuristic" direction: corner brackets, pulsing badge, gradient-highlight heading, magnetic CTAs, parallax, photo/video/YouTube media choice with gradient-fade + tag badge (`template-parts/strips/hero.php`, `sass/pages/_home-page.scss`)
+- [x] Reusable scroll-reveal utility (`[data-reveal]`, `js/reveal.js`, `sass/utilities/_reveal.scss`) and particle-network canvas (`js/particles.js`) — infrastructure for future sections too
+- [ ] Gold marquee strip (Futuristic direction)
+- [ ] Best sellers product grid strip (Futuristic direction)
+- [ ] Lookbook/categories grid strip (Futuristic direction)
+- [ ] Testimonials strip (Futuristic direction)
+- [ ] About/brand strip (Futuristic direction)
+- [ ] FAQ accordion strip (+ JS module, Futuristic direction)
+- [ ] Mobile pass for the Futuristic Hero (previous mobile work was against the earlier plain layout)
 - [x] `page-templates/home-page.php` rebuilt as the flexible-content dispatcher
 - [x] Fix stray `@package RAD` comment in `page-templates/home-page.php`
 

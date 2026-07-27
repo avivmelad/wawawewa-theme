@@ -16,3 +16,8 @@ body {
 .site-main {
 	flex: 1;
 }
+
+::selection {
+	background: $color__brand-gold;
+	color: $color__brand-bg;
+}

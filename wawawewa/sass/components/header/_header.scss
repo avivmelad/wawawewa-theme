@@ -2,7 +2,7 @@
 	position: sticky;
 	top: 0;
 	z-index: 30;
-	background: $color__brand-bg;
+	background: rgba(10, 9, 8, 0.85);
 	border-bottom: 1.5px solid $color__brand-border;
 }
 
@@ -57,6 +57,16 @@
 		font-weight: 800;
 		font-size: 21px;
 		letter-spacing: -0.03em;
+
+		&--gradient {
+			text-transform: uppercase;
+			letter-spacing: 0.06em;
+			background: linear-gradient(135deg, $color__brand-gold-light, $color__brand-gold 55%, $color__brand-gold-dark);
+			background-clip: text;
+			-webkit-background-clip: text;
+			color: transparent;
+			filter: drop-shadow(0 0 10px rgba(201, 162, 75, 0.45));
+		}
 	}
 }
 
@@ -293,5 +303,14 @@
 				color: $color__brand-gold;
 			}
 		}
+	}
+
+	&__eyebrow {
+		margin-top: auto;
+		font-family: $font__mono;
+		font-weight: 700;
+		font-size: 11px;
+		letter-spacing: 0.08em;
+		color: $color__brand-gold;
 	}
 }

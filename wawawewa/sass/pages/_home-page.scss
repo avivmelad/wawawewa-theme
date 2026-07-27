@@ -1,50 +1,108 @@
 .page-template-home-page {
 
+	// Particle-network canvas background (js/particles.js). Fixed behind
+	// everything; sections below opt into stacking above it via z-index.
+	.homepage-particles {
+		position: fixed;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+		pointer-events: none;
+		opacity: 0.55;
+	}
+
 	.strip-hero {
-		padding: 96px 48px;
+		position: relative;
+		z-index: 1;
+		padding: 90px 40px 0;
 		text-align: center;
 
 		@include mq(tablet) {
-			padding: 56px 20px;
+			padding: 56px 20px 0;
 		}
 
 		@include mq(mobile) {
 			padding: 40px 24px 0;
 		}
 
+		&__corner {
+			position: absolute;
+			top: 24px;
+			width: 26px;
+			height: 26px;
+			border-top: 1.5px solid $color__brand-gold;
+
+			&--start {
+				inset-inline-start: 24px;
+				border-inline-start: 1.5px solid $color__brand-gold;
+			}
+
+			&--end {
+				inset-inline-end: 24px;
+				border-inline-end: 1.5px solid $color__brand-gold;
+			}
+		}
+
 		&__inner {
-			max-width: 720px;
+			max-width: 780px;
 			margin-inline: auto;
+		}
+
+		&__badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 7px 16px;
+			margin-bottom: 26px;
+			border: 1px solid $color__brand-border-muted;
+			border-radius: 999px;
+		}
+
+		&__badge-dot {
+			width: 7px;
+			height: 7px;
+			border-radius: 50%;
+			background: $color__brand-gold;
+			animation: hf-pulse 1.6s ease-in-out infinite;
+		}
+
+		&__badge-text {
+			font-family: $font__mono;
+			font-weight: 700;
+			font-size: 11px;
+			letter-spacing: 0.1em;
+			color: $color__brand-gold;
 		}
 
 		&__logo {
 			display: block;
-			width: 56px;
-			height: 56px;
-			margin: 0 auto 18px;
+			width: 72px;
+			height: 72px;
+			margin: 0 auto 22px;
 			object-fit: contain;
 		}
 
-		&__eyebrow {
-			display: inline-flex;
-			padding: 6px 18px;
-			margin-bottom: 24px;
-			border: 1.5px solid $color__brand-gold;
-			border-radius: 999px;
-			color: $color__brand-gold;
-			font-family: $font__heebo;
-			font-weight: 700;
-			font-size: 13px;
-		}
-
 		&__heading {
-			margin: 0 0 20px;
+			margin: 0 auto 20px;
 			font-family: $font__heebo;
-			font-weight: 800;
+			font-weight: 900;
+			font-size: 60px;
+			line-height: 1.1;
+			letter-spacing: -0.01em;
+
+			@include mq(tablet) {
+				font-size: 40px;
+			}
+
+			.hl {
+				color: $color__brand-gold;
+			}
 		}
 
 		&__subcopy {
-			margin: 0 0 36px;
+			max-width: 460px;
+			margin: 0 auto 32px;
 			color: $color__brand-text-muted;
 			font-size: 17px;
 		}
@@ -54,38 +112,27 @@
 			justify-content: center;
 			gap: 16px;
 			flex-wrap: wrap;
+			margin-bottom: 56px;
 
 			@include mq(mobile) {
 				flex-direction: column;
-				margin-bottom: 36px;
 
 				.button {
 					width: 100%;
 				}
 			}
+
+			.button {
+				transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease-out;
+			}
 		}
 
-		// Full-width media (photo, uploaded video, or YouTube embed): break
-		// out of the section's own horizontal padding. On mobile the design
-		// insets it again with rounded corners instead of staying edge-to-edge.
+		// Full-width media (photo, uploaded video, or YouTube embed).
 		&__media {
-			margin-top: 48px;
-			margin-inline: -48px;
-
-			@include mq(tablet) {
-				margin-inline: -20px;
-			}
-
-			@include mq(mobile) {
-				margin-inline: 0;
-				margin-top: 28px;
-				padding-bottom: 28px;
-
-				img,
-				video {
-					border-radius: 16px;
-				}
-			}
+			position: relative;
+			margin-bottom: 40px;
+			border-radius: 20px;
+			overflow: hidden;
 
 			img,
 			video {
@@ -95,7 +142,6 @@
 			}
 
 			&--embed {
-				position: relative;
 				padding-top: 56.25%; // 16:9
 
 				iframe {
@@ -107,5 +153,38 @@
 				}
 			}
 		}
+
+		&__media-fade {
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(0deg, rgba(10, 9, 8, 0.75), transparent 45%);
+			pointer-events: none;
+		}
+
+		&__media-badge {
+			position: absolute;
+			bottom: 24px;
+			inset-inline-start: 24px;
+			padding: 8px 16px;
+			border: 1px solid $color__brand-gold;
+			border-radius: 999px;
+			background: rgba(10, 9, 8, 0.6);
+			font-family: $font__mono;
+			font-weight: 700;
+			font-size: 11px;
+			letter-spacing: 0.08em;
+			color: $color__brand-gold;
+		}
+	}
+}
+
+@keyframes hf-pulse {
+	0%,
+	100% {
+		opacity: 0.5;
+	}
+
+	50% {
+		opacity: 1;
 	}
 }

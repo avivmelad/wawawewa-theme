@@ -26,6 +26,15 @@ The goal: turn this scaffold into a working WooCommerce store. Niche/product cat
 
 **Scope decision**: header/footer are site-wide (not homepage-only) — they're shared templates, so every page gets the dark/gold chrome.
 
+**Design evolution — "Futuristic" homepage direction (desktop, in progress)**: the homepage (and header, site-wide) is being reworked from the plain Black & Gold layout above into a more elaborate "futuristic tech" visual language, from the same Claude Design project, file `Homepage Futuristic.dc.html`. Same color palette — this is an interaction/layout evolution, not a rebrand. Adds:
+- **JetBrains Mono** (500/700) for monospace accents (badges, drawer footer label), alongside the existing Heebo/Assistant/Unbounded.
+- Gradient-text wordmark (gold gradient + glow) in the header, applied site-wide.
+- A fixed, ambient particle-network canvas background on the homepage (`js/particles.js`), decorative and skipped under `prefers-reduced-motion`.
+- A generic scroll-reveal utility (`[data-reveal]` + `js/reveal.js`, `sass/utilities/_reveal.scss`) — reusable for every future homepage section, not just Hero.
+- Hero-specific touches: corner-bracket decoration, a pulsing-dot badge (reusing the existing eyebrow field), magnetic-hover CTA buttons, a subtle mouse-parallax on the hero section, and a gradient-fade + tag badge over the hero image.
+- **Explicitly decided against**: the mockup's custom cursor (`cursor:none` + a ring/dot follower) was deliberately skipped as a UX/accessibility tradeoff — native cursor stays.
+- **Scope so far**: only the site-wide header restyle and the Hero strip have been rebuilt in this direction. Marquee, best sellers, categories/lookbook, testimonials, about, and FAQ are still in the original plain layout below and need their own pass in this same visual language.
+
 ### Implementation status (as of this checkpoint)
 
 Implementation was started and paused mid-way (header + footer done) to be resumed as a dedicated task. The SCSS build is currently in a working state — no known gaps.

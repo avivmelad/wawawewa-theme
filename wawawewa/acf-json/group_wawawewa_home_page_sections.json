@@ -54,8 +54,11 @@
                             "key": "field_wawawewa_hero_heading",
                             "label": "כותרת ראשית",
                             "name": "hero_heading",
-                            "type": "text",
+                            "type": "textarea",
+                            "instructions": "ניתן להשתמש ב-<br> לשבירת שורה וב-<span class=\"hl\">מילה</span> כדי להדגיש מילה בזהב, לפי העיצוב.",
                             "required": 1,
+                            "rows": 2,
+                            "new_lines": "",
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -132,6 +135,28 @@
                             "return_format": "array",
                             "library": "all",
                             "preview_size": "large",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_wawawewa_hero_media_type",
+                                        "operator": "==",
+                                        "value": "photo"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_hero_image_badge",
+                            "label": "תגית מעל התמונה",
+                            "name": "hero_image_badge",
+                            "type": "text",
+                            "instructions": "אופציונלי — תגית קטנה שמוצגת מעל התמונה, לדוגמה \"◆ LIVE COLLECTION\".",
+                            "required": 0,
                             "conditional_logic": [
                                 [
                                     {
