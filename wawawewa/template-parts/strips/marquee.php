@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Strip: Marquee — infinite scrolling text strip.
+ * Strip: Marquee — infinite scrolling text strip (Swiper loop mode).
  *
  * Reads the `marquee_items` repeater from the current `page_sections`
  * flexible content row — see acf-json/group_wawawewa_home_page_sections.json.
@@ -26,13 +26,6 @@ if (have_rows('marquee_items')) {
 if (! $items) {
 	return;
 }
-
-// The CSS loop (translateX 0 -> -50%) only works seamlessly if each half of
-// the track is at least as wide as the viewport. A handful of short phrases
-// wouldn't fill the screen on their own, so each half repeats the list
-// several times — harmless when there are already enough items, and what
-// keeps the animation from visibly "jumping" when there are only a few.
-$repeats = 4;
 ?>
 <div class="strip-marquee">
 	<ul class="screen-reader-text">
@@ -41,15 +34,11 @@ $repeats = 4;
 		<?php endforeach; ?>
 	</ul>
 
-	<div class="strip-marquee__track" aria-hidden="true">
-		<?php for ($half = 0; $half < 2; $half++) : ?>
-			<div class="strip-marquee__set">
-				<?php for ($repeat = 0; $repeat < $repeats; $repeat++) : ?>
-					<?php foreach ($items as $item) : ?>
-						<span class="strip-marquee__item"><?php echo esc_html($item); ?></span>
-					<?php endforeach; ?>
-				<?php endfor; ?>
-			</div>
-		<?php endfor; ?>
+	<div class="swiper marquee-swiper" aria-hidden="true">
+		<div class="swiper-wrapper">
+			<?php foreach ($items as $item) : ?>
+				<div class="swiper-slide strip-marquee__item"><?php echo esc_html($item); ?></div>
+			<?php endforeach; ?>
+		</div>
 	</div>
 </div>

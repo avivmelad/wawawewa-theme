@@ -69,6 +69,8 @@ docs/                       project docs (build plan, design notes)
 
 Compiled `style.css` / `woocommerce.css` / `style-rtl.css` sit at the theme root because `node-sass` outputs there — this is intentional, not a mistake.
 
+**Vendored third-party libraries** (e.g. `dist/js/swiper-bundle.min.js`, `dist/css/swiper-bundle.min.css`) are the exception to "never edit `dist/` directly" — there's no local source to compile them from; they're downloaded pre-built and committed as-is. To update one, re-download the same file from its CDN (e.g. `https://cdn.jsdelivr.net/npm/<package>@<version>/...`) and overwrite it — don't hand-edit it, and don't confuse it with theme build output.
+
 ## Conventions
 
 - **Function/hook prefix**: `wawawewa_` for all custom functions (matches the theme's text domain). Follow this for any new function.

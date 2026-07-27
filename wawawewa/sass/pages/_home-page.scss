@@ -230,51 +230,32 @@
 	.strip-marquee {
 		position: relative;
 		z-index: 1;
-		overflow: hidden; // clips the seamless-loop track
 		background: $color__brand-gold;
 		border-top: 1.5px solid $color__brand-gold;
 		border-bottom: 1.5px solid $color__brand-gold;
 
-		// The duplicate + translateX(-50%) loop technique assumes the track
-		// starts flush against the left edge, as in LTR. Left as `dir: rtl`
-		// (the site default), the track right-aligns instead and the two
-		// halves never actually line up mid-animation — text visibly drops
-		// out. Forcing LTR here only affects the ticker's own box layout;
-		// each Hebrew phrase still renders correctly right-to-left internally.
-		direction: ltr;
-
-		&__track {
-			display: flex;
-			width: max-content;
-			animation: hp-marquee 40s linear infinite;
+		.marquee-swiper {
+			padding: 16px 0;
 
 			@include mq(mobile) {
-				animation-duration: 30s;
+				padding: 12px 0;
 			}
 
-			@media (prefers-reduced-motion: reduce) {
-				animation-play-state: paused;
-			}
-		}
-
-		&__set {
-			display: flex;
-			flex-shrink: 0;
-			gap: 96px;
-			padding: 16px 48px;
-			white-space: nowrap;
-
-			@include mq(mobile) {
-				gap: 56px;
-				padding: 12px 28px;
+			.swiper-wrapper {
+				// Swiper's autoplay-as-continuous-scroll recipe (speed set,
+				// delay: 0) needs a linear, non-eased transition to look smooth.
+				transition-timing-function: linear !important;
 			}
 		}
 
 		&__item {
+			width: auto;
+			flex-shrink: 0;
 			font-family: $font__heebo;
 			font-weight: 800;
 			font-size: 22px;
 			color: $color__brand-bg;
+			white-space: nowrap;
 
 			@include mq(mobile) {
 				font-size: 16px;
@@ -284,16 +265,6 @@
 				content: "✦ ";
 			}
 		}
-	}
-}
-
-@keyframes hp-marquee {
-	from {
-		transform: translateX(0);
-	}
-
-	to {
-		transform: translateX(-50%);
 	}
 }
 
