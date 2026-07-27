@@ -117,6 +117,7 @@ There is no local WordPress install (no Local/Docker/MAMP config in this repo). 
 - Work on `aviv-dev`, merge to `main` when stable. No PR/review process currently — this is a solo-dev project.
 - Commit messages: short and imperative, describing the actual change (e.g. "Add cart mini-widget", "Fix product grid spacing on mobile") — not placeholder messages like "Molcho" or "First push".
 - No CI runs automatically on push. The lint commands above are the manual gate — run them before committing.
+- **After finishing a task, stage the changed files (`git add`) and draft a commit message here in chat — do not run `git commit`.** The user reviews the staged changes and message and commits it themselves (via their own git client/IDE). This applies to every task unless the user explicitly asks for the commit to be made directly.
 
 ## Testing
 
