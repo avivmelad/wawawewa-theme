@@ -5,19 +5,13 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package RAD
+ * @package wawawewa
  */
 
-
-$id = get_the_ID();
-$pageTitle = get_field('page_header', $id);
 get_header();
 ?>
 <main class="site-main">
-    <div class="page-hero">
-        <h1><?php echo $pageTitle ?></h1>
-    </div>
-
+	<?php wawawewa_render_strips('page_sections'); ?>
 </main>
 <?php
 get_footer();

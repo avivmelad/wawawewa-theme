@@ -25,14 +25,14 @@ Living status tracker for the store build. Detail/rationale for each item lives 
 - [ ] Remaining global site-settings fields for other areas (footer contact/social, global banners, etc.) as they come up
 
 ## 4. Site-wide chrome
-- [x] Header: drawer nav, logo, cart badge (`header.php`, `js/navigation.js`, `sass/components/header/_header.scss`)
+- [x] Header: drawer nav, ACF-editable logo, sticky positioning, cart icon + mini-cart dropdown (`header.php`, `js/navigation.js`, `js/mini-cart.js`, `sass/components/header/_header.scss`)
 - [x] Footer: newsletter band + footer bar (`footer.php`, `sass/components/footer/_footer.scss`)
 
 ## 5. Homepage content build (ACF Flexible Content "strips" — see CLAUDE.md)
-- [ ] `page_sections` flexible content field group created, one layout per section, exported as a single file to `acf-json/`
-- [ ] `inc/flexible-strips.php` created + required from `functions.php`, one render function per layout
-- [ ] `template-parts/strips/` partials, one per layout
-- [ ] Hero strip
+- [x] `page_sections` flexible content field group created, exported to `acf-json/group_wawawewa_home_page_sections.json`
+- [x] `inc/flexible-strips.php` created + required from `functions.php` (`wawawewa_render_strips()` dispatcher)
+- [x] `template-parts/strips/` partials directory started
+- [x] Hero strip (fields: eyebrow, heading, subcopy, 2 CTAs — `template-parts/strips/hero.php`, styled in `sass/pages/_home-page.scss`)
 - [ ] Hero image strip
 - [ ] Gold marquee strip
 - [ ] Best sellers product grid strip
@@ -40,8 +40,8 @@ Living status tracker for the store build. Detail/rationale for each item lives 
 - [ ] Testimonials strip
 - [ ] About/brand strip
 - [ ] FAQ accordion strip (+ JS module)
-- [ ] `page-templates/home-page.php` rebuilt as the flexible-content dispatcher + `sass/pages/_home-page.scss` rewrite
-- [ ] Fix stray `@package RAD` comment in `page-templates/home-page.php`
+- [x] `page-templates/home-page.php` rebuilt as the flexible-content dispatcher
+- [x] Fix stray `@package RAD` comment in `page-templates/home-page.php`
 
 ## 6. WooCommerce store pages
 - [ ] `woocommerce/` template overrides added where needed

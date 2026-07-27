@@ -1,5 +1,47 @@
-.page-template-home-page{
-    h1{
-        // color: red;
-    }
+.page-template-home-page {
+
+	.strip-hero {
+		padding: 96px 48px;
+		text-align: center;
+
+		@include mq(tablet) {
+			padding: 56px 20px;
+		}
+
+		&__inner {
+			max-width: 720px;
+			margin-inline: auto;
+		}
+
+		&__eyebrow {
+			display: inline-flex;
+			padding: 6px 18px;
+			margin-bottom: 24px;
+			border: 1.5px solid $color__brand-gold;
+			border-radius: 999px;
+			color: $color__brand-gold;
+			font-family: $font__heebo;
+			font-weight: 700;
+			font-size: 13px;
+		}
+
+		&__heading {
+			margin: 0 0 20px;
+			font-family: $font__heebo;
+			font-weight: 800;
+		}
+
+		&__subcopy {
+			margin: 0 0 36px;
+			color: $color__brand-text-muted;
+			font-size: 17px;
+		}
+
+		&__ctas {
+			display: flex;
+			justify-content: center;
+			gap: 16px;
+			flex-wrap: wrap;
+		}
+	}
 }

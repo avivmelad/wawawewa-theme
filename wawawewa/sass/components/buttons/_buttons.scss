@@ -1,0 +1,34 @@
+// Pill CTA buttons — Black & Gold design tokens (border-radius: 999px).
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 14px 32px;
+	border-radius: 999px;
+	border: 1.5px solid $color__brand-gold;
+	font-family: $font__heebo;
+	font-weight: 700;
+	font-size: 15px;
+	text-decoration: none;
+	transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+	&--primary {
+		background: $color__brand-gold;
+		color: $color__brand-bg;
+
+		&:hover {
+			background: $color__brand-gold-hover;
+			border-color: $color__brand-gold-hover;
+		}
+	}
+
+	&--secondary {
+		background: transparent;
+		color: $color__brand-text;
+
+		&:hover {
+			border-color: $color__brand-gold-hover;
+			color: $color__brand-gold-hover;
+		}
+	}
+}

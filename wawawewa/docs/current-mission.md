@@ -1,18 +1,19 @@
-# Current mission: Header
+# Current mission: Homepage — first section (Hero)
 
-Temporary scratch file — delete once the header mission is fully done (see CLAUDE.md "Current mission tracking").
+Temporary scratch file — delete once the homepage-sections mission is fully done (see CLAUDE.md "Current mission tracking").
 
 ## Goal
-Finish the site-wide header: ACF-editable logo, cleaned-up placeholder content, sticky behavior.
+Build the homepage using the ACF Flexible Content "strips" architecture (see CLAUDE.md), starting with the Hero section.
 
 ## Steps
-- [x] Add ACF options page ("הגדרות האתר") with a "הדר" tab + `header_logo` image field
-- [x] Wire `header.php` to read `header_logo` via `get_field(..., 'option')`, falling back to the WA monogram SVG
-- [x] Remove "קולקציית 2026" placeholder text from the drawer nav
-- [x] Fix sticky-footer gap on short pages (unrelated but done in this stretch of work)
-- [x] Make the header sticky (`position: sticky`, solid background, `z-index`)
-- [x] Cart icon opens a mini-cart dropdown (WooCommerce `WC_Widget_Cart` widget, items/empty state, view cart + checkout links) via `js/mini-cart.js`
-- [ ] Anything else needed on the header before calling this mission done?
+- [x] `page_sections` flexible content field group + `hero` layout (eyebrow, heading, subcopy, 2 CTAs) — `acf-json/group_wawawewa_home_page_sections.json`
+- [x] `inc/flexible-strips.php` dispatcher (`wawawewa_render_strips()`) + required from `functions.php`
+- [x] `template-parts/strips/hero.php` partial
+- [x] Reusable pill `.button`/`.button--primary`/`.button--secondary` component (`sass/components/buttons/_buttons.scss`)
+- [x] Hero styling (`sass/pages/_home-page.scss`)
+- [x] `page-templates/home-page.php` rebuilt to call the dispatcher; fixed stray `@package RAD` comment
+- [ ] Fill in real hero content in wp-admin and verify on staging (RTL check first)
+- [ ] Next section to build after this one?
 
 ## Notes
-- Real logo upload is on the user, done directly in wp-admin once the final logo is ready — not tracked here.
+- Old single `page_header` ACF field on the homepage is superseded by the `page_sections` flexible content field — no longer read anywhere.
