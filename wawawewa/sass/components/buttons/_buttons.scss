@@ -12,21 +12,31 @@
 	text-decoration: none;
 	transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 
-	&--primary {
+	// :visited has higher specificity than a single class (see
+	// sass/base/elements/_links.scss), so it must be reset explicitly here
+	// or a visited button link silently inherits the global visited-link color.
+	&--primary,
+	&--primary:visited {
 		background: $color__brand-gold;
 		color: $color__brand-bg;
 
-		&:hover {
+		&:hover,
+		&:focus,
+		&:active {
 			background: $color__brand-gold-hover;
 			border-color: $color__brand-gold-hover;
+			color: $color__brand-bg;
 		}
 	}
 
-	&--secondary {
+	&--secondary,
+	&--secondary:visited {
 		background: transparent;
 		color: $color__brand-text;
 
-		&:hover {
+		&:hover,
+		&:focus,
+		&:active {
 			border-color: $color__brand-gold-hover;
 			color: $color__brand-gold-hover;
 		}
