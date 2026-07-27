@@ -45,11 +45,22 @@
 	gap: 12px;
 	text-decoration: none;
 	color: $color__brand-text;
+	white-space: nowrap;
+
+	@include mq(mobile) {
+		gap: 8px;
+	}
 
 	&__logo {
 		width: 34px;
 		height: 34px;
 		object-fit: contain;
+		flex-shrink: 0;
+
+		@include mq(mobile) {
+			width: 26px;
+			height: 26px;
+		}
 	}
 
 	&__word {
@@ -57,6 +68,10 @@
 		font-weight: 800;
 		font-size: 21px;
 		letter-spacing: -0.03em;
+
+		@include mq(mobile) {
+			font-size: 17px;
+		}
 
 		&--gradient {
 			text-transform: uppercase;
