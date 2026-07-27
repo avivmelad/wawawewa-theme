@@ -26,6 +26,12 @@ if (have_rows('marquee_items')) {
 if (! $items) {
 	return;
 }
+
+// Swiper's loop mode needs a comfortable number of real slides to work with —
+// too few (e.g. 2-3 short phrases) and it can disable looping or leave
+// autoplay with nowhere to advance to. Repeating the list a few times here
+// guarantees a solid slide count regardless of how much content was entered.
+$slides = array_merge($items, $items, $items);
 ?>
 <div class="strip-marquee">
 	<ul class="screen-reader-text">
@@ -36,7 +42,7 @@ if (! $items) {
 
 	<div class="swiper marquee-swiper" aria-hidden="true">
 		<div class="swiper-wrapper">
-			<?php foreach ($items as $item) : ?>
+			<?php foreach ($slides as $item) : ?>
 				<div class="swiper-slide strip-marquee__item"><?php echo esc_html($item); ?></div>
 			<?php endforeach; ?>
 		</div>
