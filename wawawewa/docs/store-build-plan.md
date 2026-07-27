@@ -44,8 +44,8 @@ Implementation was started and paused mid-way (header + footer done) to be resum
 - `sass/components/_components.scss` — imports `header/header` and `footer/footer`; build is not currently broken.
 
 **Not started yet:**
-1. `page-templates/home-page.php` rebuild (all homepage content sections: hero, hero image, marquee, best sellers, lookbook, testimonials, about/brand strip, FAQ) + rewrite `sass/pages/_home-page.scss` + new FAQ accordion JS module. Also fix the stray `@package RAD` doc comment in that file (copy-paste leftover, should be `@package wawawewa`).
-2. Hand-authored ACF field-group JSON files under a new `acf-json/` folder (Home Hero, Home Lookbook, Home Testimonials repeater, Home About, Home FAQ repeater) + `acf/settings/save_json`/`load_json` hooks.
+1. `page-templates/home-page.php` rebuild as an ACF **Flexible Content** dispatcher — one `page_sections` flexible content field, one layout per homepage section (hero, hero image, marquee, best sellers, lookbook, testimonials, about/brand strip, FAQ), each rendered via a function in the new `inc/flexible-strips.php` calling a `template-parts/strips/{layout-name}.php` partial. See the "Flexible content page sections" convention in `CLAUDE.md` for the exact pattern. Also rewrite `sass/pages/_home-page.scss` + new FAQ accordion JS module, and fix the stray `@package RAD` doc comment in the page template (copy-paste leftover, should be `@package wawawewa`).
+2. Single flexible content field group (covering all strip layouts above) exported as one file under a new `acf-json/` folder + `acf/settings/save_json`/`load_json` hooks — not one field group per section.
 3. `style.css` / `readme.txt` branding description cleanup (fix the "stroe" typo, reflect the real home-goods/décor niche).
 4. Update `CLAUDE.md`'s "Current status" section once the above lands.
 5. Run `npm run lint:scss` / `npm run lint:js` and do a final read-through.

@@ -6,6 +6,8 @@ A WordPress theme for the `wawawewa` online store, built on the `_s` ("underscor
 
 The full build plan and roadmap live in [`docs/store-build-plan.md`](docs/store-build-plan.md) — read it before starting new work to see what stage the project is at and what's next. Keep it updated as milestones are completed or the plan changes.
 
+Live checkbox status for every phase of the build is tracked in [`docs/checklist.md`](docs/checklist.md) — check items off there as soon as that piece of work lands, in the same commit/session, not as a deferred cleanup step.
+
 ## Current status
 
 Niche and visual identity are now decided: home goods/décor, "Black & Gold" luxury direction, Hebrew (RTL) first. A high-fidelity homepage design has been delivered; header and footer are implemented site-wide, homepage content sections and ACF fields are not yet built. See the "Implementation status" checkpoint under Design direction in [`docs/store-build-plan.md`](docs/store-build-plan.md) for exactly what's done and what's left. Ask to resume "the homepage design implementation" to continue.
@@ -74,6 +76,18 @@ Compiled `style.css` / `woocommerce.css` / `style-rtl.css` sit at the theme root
 - **Security**: always escape output (`esc_html`, `esc_attr`, `esc_url`, `wp_kses_*`) and use WordPress's built-in sanitization/nonce APIs for any form handling outside Gravity Forms.
 - Reuse existing theme support / hooks already declared in `functions.php` and `inc/woocommerce.php` (custom-logo, product gallery, related products args, cart fragments, etc.) rather than re-implementing them.
 
+## Responsive breakpoints
+
+All screen-size breakpoints for the theme are centralized in [`sass/abstracts/variables/_breakpoints.scss`](sass/abstracts/variables/_breakpoints.scss) as a `$breakpoints` map, from `mobile-max` (360px, smallest supported width) up to `desktop-max` (1920px, largest supported width). It's imported globally via `sass/abstracts/_abstracts.scss`, so it's available in every SCSS partial without an extra `@import`.
+
+- **Never hardcode a pixel value in a media query.** Always go through the `mq($name, $type: max)` mixin defined in that same file, e.g.:
+  ```scss
+  @include mq(tablet) { ... }        // max-width: 768px
+  @include mq(tablet, min) { ... }   // min-width: 768px
+  ```
+- If a new breakpoint name is genuinely needed, add it to the `$breakpoints` map in `_breakpoints.scss` rather than writing a one-off `@media` query inline — keep this file as the single source of truth so every page/component stays consistent.
+- Run `npm run lint:scss` after adding/editing breakpoints or any SCSS that consumes them.
+
 ## Commands
 
 Run from this directory (`wawawewa/`).
@@ -114,6 +128,16 @@ Field groups must be exported to `acf-json/` (create at the theme root if it doe
 
 - After adding or editing a field group in wp-admin, let ACF re-sync/export the JSON before considering the change done.
 - Commit the resulting `acf-json/*.json` file alongside whatever PHP/template code uses the field — they're one logical change.
+
+### Flexible content page sections ("strips")
+
+ACF-driven page templates (starting with the homepage, `page-templates/home-page.php`) build their body content from a **single ACF Flexible Content field** (e.g. `page_sections`), not one field group per section. Each layout in that field is one design section — a "strip" (Hero, Hero Image, Marquee, Best Sellers, Lookbook, Testimonials, About/Brand, FAQ, etc.).
+
+- **`inc/flexible-strips.php`** holds every strip's render function, one per layout, using the `wawawewa_` prefix, e.g. `wawawewa_strip_hero( $layout )`, `wawawewa_strip_faq( $layout )`. Require this file from `functions.php` alongside the other `inc/` includes (`template-tags.php`, `template-functions.php`, etc.).
+- The page template loops the flexible content field (`have_rows('page_sections')` / `get_field('page_sections')`) and dispatches each row's `acf_fc_layout` to the matching function in `flexible-strips.php` — don't hardcode section markup directly in the page template.
+- Each strip's actual HTML lives in its own `template-parts/strips/{layout-name}.php` partial, called from the matching function in `flexible-strips.php` — keeps markup out of the dispatch file, consistent with the existing `template-parts/` convention (see `template-parts/brand/logo-mark.php`).
+- The flexible content field group (covering all layouts) is exported as a single file under `acf-json/`, per the ACF fields convention above — not one field group per strip.
+- **Adding a new strip** is always the same three-step pattern: add a layout to the flexible content field (re-synced to `acf-json/`), add a render function to `flexible-strips.php`, add a partial under `template-parts/strips/`.
 
 ## Plugins
 
