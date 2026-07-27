@@ -43,5 +43,21 @@
 			gap: 16px;
 			flex-wrap: wrap;
 		}
+
+		// Full-width image: break out of the section's own horizontal padding.
+		&__image {
+			margin-top: 48px;
+			margin-inline: -48px;
+
+			@include mq(tablet) {
+				margin-inline: -20px;
+			}
+
+			img {
+				display: block;
+				width: 100%;
+				height: auto;
+			}
+		}
 	}
 }

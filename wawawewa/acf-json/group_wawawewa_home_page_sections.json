@@ -106,6 +106,22 @@
                                 "class": "",
                                 "id": ""
                             }
+                        },
+                        {
+                            "key": "field_wawawewa_hero_image",
+                            "label": "תמונת הירו (רוחב מלא)",
+                            "name": "hero_image",
+                            "type": "image",
+                            "instructions": "תמונה ברוחב מלא שמוצגת מתחת לטקסט ההירו.",
+                            "required": 0,
+                            "return_format": "array",
+                            "library": "all",
+                            "preview_size": "large",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
                         }
                     ]
                 }

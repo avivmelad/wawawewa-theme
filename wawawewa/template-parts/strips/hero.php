@@ -16,6 +16,7 @@ $cta_primary_label   = get_sub_field('hero_cta_primary_label');
 $cta_primary_url     = get_sub_field('hero_cta_primary_url');
 $cta_secondary_label = get_sub_field('hero_cta_secondary_label');
 $cta_secondary_url   = get_sub_field('hero_cta_secondary_url');
+$image               = get_sub_field('hero_image');
 ?>
 <section class="strip-hero">
 	<div class="strip-hero__inner">
@@ -47,4 +48,10 @@ $cta_secondary_url   = get_sub_field('hero_cta_secondary_url');
 			</div>
 		<?php endif; ?>
 	</div>
+
+	<?php if ($image) : ?>
+		<div class="strip-hero__image">
+			<img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+		</div>
+	<?php endif; ?>
 </section>

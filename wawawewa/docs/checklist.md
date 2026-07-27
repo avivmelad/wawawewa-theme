@@ -32,8 +32,7 @@ Living status tracker for the store build. Detail/rationale for each item lives 
 - [x] `page_sections` flexible content field group created, exported to `acf-json/group_wawawewa_home_page_sections.json`
 - [x] `inc/flexible-strips.php` created + required from `functions.php` (`wawawewa_render_strips()` dispatcher)
 - [x] `template-parts/strips/` partials directory started
-- [x] Hero strip (fields: eyebrow, heading, subcopy, 2 CTAs — `template-parts/strips/hero.php`, styled in `sass/pages/_home-page.scss`)
-- [ ] Hero image strip
+- [x] Hero strip (fields: eyebrow, heading, subcopy, 2 CTAs, full-width image — `template-parts/strips/hero.php`, styled in `sass/pages/_home-page.scss`)
 - [ ] Gold marquee strip
 - [ ] Best sellers product grid strip
 - [ ] Lookbook grid strip
