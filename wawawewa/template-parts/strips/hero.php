@@ -9,14 +9,12 @@
  * @package wawawewa
  */
 
-$eyebrow             = get_sub_field('hero_eyebrow');
-$heading             = get_sub_field('hero_heading');
-$subcopy             = get_sub_field('hero_subcopy');
-$cta_primary_label   = get_sub_field('hero_cta_primary_label');
-$cta_primary_url     = get_sub_field('hero_cta_primary_url');
-$cta_secondary_label = get_sub_field('hero_cta_secondary_label');
-$cta_secondary_url   = get_sub_field('hero_cta_secondary_url');
-$image               = get_sub_field('hero_image');
+$eyebrow      = get_sub_field('hero_eyebrow');
+$heading      = get_sub_field('hero_heading');
+$subcopy      = get_sub_field('hero_subcopy');
+$cta_primary  = get_sub_field('hero_cta_primary');
+$cta_secondary = get_sub_field('hero_cta_secondary');
+$image        = get_sub_field('hero_image');
 ?>
 <section class="strip-hero">
 	<div class="strip-hero__inner">
@@ -32,17 +30,17 @@ $image               = get_sub_field('hero_image');
 			<p class="strip-hero__subcopy"><?php echo esc_html($subcopy); ?></p>
 		<?php endif; ?>
 
-		<?php if ($cta_primary_label || $cta_secondary_label) : ?>
+		<?php if ($cta_primary || $cta_secondary) : ?>
 			<div class="strip-hero__ctas">
-				<?php if ($cta_primary_label) : ?>
-					<a class="button button--primary" href="<?php echo esc_url($cta_primary_url ? $cta_primary_url : '#'); ?>">
-						<?php echo esc_html($cta_primary_label); ?>
+				<?php if ($cta_primary) : ?>
+					<a class="button button--primary" href="<?php echo esc_url($cta_primary['url']); ?>" target="<?php echo esc_attr($cta_primary['target'] ? $cta_primary['target'] : '_self'); ?>">
+						<?php echo esc_html($cta_primary['title']); ?>
 					</a>
 				<?php endif; ?>
 
-				<?php if ($cta_secondary_label) : ?>
-					<a class="button button--secondary" href="<?php echo esc_url($cta_secondary_url ? $cta_secondary_url : '#'); ?>">
-						<?php echo esc_html($cta_secondary_label); ?>
+				<?php if ($cta_secondary) : ?>
+					<a class="button button--secondary" href="<?php echo esc_url($cta_secondary['url']); ?>" target="<?php echo esc_attr($cta_secondary['target'] ? $cta_secondary['target'] : '_self'); ?>">
+						<?php echo esc_html($cta_secondary['title']); ?>
 					</a>
 				<?php endif; ?>
 			</div>

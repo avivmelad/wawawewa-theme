@@ -60,11 +60,12 @@
                             }
                         },
                         {
-                            "key": "field_wawawewa_hero_cta_primary_label",
-                            "label": "כפתור ראשי - טקסט",
-                            "name": "hero_cta_primary_label",
-                            "type": "text",
+                            "key": "field_wawawewa_hero_cta_primary",
+                            "label": "כפתור ראשי",
+                            "name": "hero_cta_primary",
+                            "type": "link",
                             "required": 0,
+                            "return_format": "array",
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
@@ -72,35 +73,12 @@
                             }
                         },
                         {
-                            "key": "field_wawawewa_hero_cta_primary_url",
-                            "label": "כפתור ראשי - קישור",
-                            "name": "hero_cta_primary_url",
-                            "type": "url",
+                            "key": "field_wawawewa_hero_cta_secondary",
+                            "label": "כפתור משני",
+                            "name": "hero_cta_secondary",
+                            "type": "link",
                             "required": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            }
-                        },
-                        {
-                            "key": "field_wawawewa_hero_cta_secondary_label",
-                            "label": "כפתור משני - טקסט",
-                            "name": "hero_cta_secondary_label",
-                            "type": "text",
-                            "required": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            }
-                        },
-                        {
-                            "key": "field_wawawewa_hero_cta_secondary_url",
-                            "label": "כפתור משני - קישור",
-                            "name": "hero_cta_secondary_url",
-                            "type": "url",
-                            "required": 0,
+                            "return_format": "array",
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
