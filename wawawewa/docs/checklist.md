@@ -41,7 +41,7 @@ Living status tracker for the store build. Detail/rationale for each item lives 
 - [ ] Testimonials strip (Futuristic direction)
 - [ ] About/brand strip (Futuristic direction)
 - [ ] FAQ accordion strip (+ JS module, Futuristic direction)
-- [ ] Mobile pass for the Futuristic Hero (previous mobile work was against the earlier plain layout)
+- [x] Mobile pass for the Futuristic Hero + header (full-width drawer, scaled corner/badge/logo/heading/image-badge sizes, universal `.button:active` tap feedback)
 - [x] `page-templates/home-page.php` rebuilt as the flexible-content dispatcher
 - [x] Fix stray `@package RAD` comment in `page-templates/home-page.php`
 

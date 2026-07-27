@@ -12,7 +12,7 @@
 	justify-content: space-between;
 	padding: 20px 48px;
 
-	@media screen and (max-width: 37.5em) {
+	@include mq(tablet-small) {
 		padding: 16px 20px;
 	}
 }
@@ -255,6 +255,13 @@
 	// hides off-canvas to the right; LTR mirrors to the left.
 	&:dir(ltr) {
 		transform: translateX(-105%);
+	}
+
+	@include mq(mobile) {
+		width: 100%;
+		max-width: 100%;
+		border-inline-end: 0;
+		padding: 28px 24px;
 	}
 
 	&.is-open {
