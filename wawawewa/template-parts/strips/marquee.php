@@ -26,18 +26,30 @@ if (have_rows('marquee_items')) {
 if (! $items) {
 	return;
 }
+
+// The CSS loop (translateX 0 -> -50%) only works seamlessly if each half of
+// the track is at least as wide as the viewport. A handful of short phrases
+// wouldn't fill the screen on their own, so each half repeats the list
+// several times — harmless when there are already enough items, and what
+// keeps the animation from visibly "jumping" when there are only a few.
+$repeats = 4;
 ?>
 <div class="strip-marquee">
-	<div class="strip-marquee__track">
-		<div class="strip-marquee__set">
-			<?php foreach ($items as $item) : ?>
-				<span class="strip-marquee__item"><?php echo esc_html($item); ?></span>
-			<?php endforeach; ?>
-		</div>
-		<div class="strip-marquee__set" aria-hidden="true">
-			<?php foreach ($items as $item) : ?>
-				<span class="strip-marquee__item"><?php echo esc_html($item); ?></span>
-			<?php endforeach; ?>
-		</div>
+	<ul class="screen-reader-text">
+		<?php foreach ($items as $item) : ?>
+			<li><?php echo esc_html($item); ?></li>
+		<?php endforeach; ?>
+	</ul>
+
+	<div class="strip-marquee__track" aria-hidden="true">
+		<?php for ($half = 0; $half < 2; $half++) : ?>
+			<div class="strip-marquee__set">
+				<?php for ($repeat = 0; $repeat < $repeats; $repeat++) : ?>
+					<?php foreach ($items as $item) : ?>
+						<span class="strip-marquee__item"><?php echo esc_html($item); ?></span>
+					<?php endforeach; ?>
+				<?php endfor; ?>
+			</div>
+		<?php endfor; ?>
 	</div>
 </div>
