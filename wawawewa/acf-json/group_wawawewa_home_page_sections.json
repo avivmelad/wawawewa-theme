@@ -222,6 +222,45 @@
                             }
                         }
                     ]
+                },
+                "layout_wawawewa_marquee": {
+                    "key": "layout_wawawewa_marquee",
+                    "name": "marquee",
+                    "label": "רצועת טקסט נע (Marquee)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_wawawewa_marquee_items",
+                            "label": "טקסטים",
+                            "name": "marquee_items",
+                            "type": "repeater",
+                            "instructions": "כל שורה היא ביטוי אחד ברצועה, למשל \"משלוח חינם מעל 250 ₪\". התו ✦ מתווסף אוטומטית לפני כל ביטוי.",
+                            "required": 0,
+                            "layout": "table",
+                            "button_label": "הוספת טקסט",
+                            "min": 0,
+                            "max": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_wawawewa_marquee_item_text",
+                                    "label": "טקסט",
+                                    "name": "text",
+                                    "type": "text",
+                                    "required": 1,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                }
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ]
                 }
             },
             "button_label": "הוספת סקשן",

@@ -226,6 +226,67 @@
 			}
 		}
 	}
+
+	.strip-marquee {
+		position: relative;
+		z-index: 1;
+		overflow: hidden; // clips the seamless-loop track
+		background: $color__brand-gold;
+		border-top: 1.5px solid $color__brand-gold;
+		border-bottom: 1.5px solid $color__brand-gold;
+
+		&__track {
+			display: flex;
+			width: max-content;
+			animation: hp-marquee 22s linear infinite;
+
+			@include mq(mobile) {
+				animation-duration: 18s;
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				animation-play-state: paused;
+			}
+		}
+
+		&__set {
+			display: flex;
+			flex-shrink: 0;
+			gap: 48px;
+			padding: 16px 24px;
+			white-space: nowrap;
+
+			@include mq(mobile) {
+				gap: 32px;
+				padding: 12px 16px;
+			}
+		}
+
+		&__item {
+			font-family: $font__heebo;
+			font-weight: 800;
+			font-size: 22px;
+			color: $color__brand-bg;
+
+			@include mq(mobile) {
+				font-size: 16px;
+			}
+
+			&::before {
+				content: "✦ ";
+			}
+		}
+	}
+}
+
+@keyframes hp-marquee {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(-50%);
+	}
 }
 
 @keyframes hf-pulse {

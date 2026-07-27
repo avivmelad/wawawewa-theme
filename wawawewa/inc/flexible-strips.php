@@ -38,3 +38,11 @@ function wawawewa_strip_hero()
 {
 	get_template_part('template-parts/strips/hero');
 }
+
+/**
+ * Strip: Marquee.
+ */
+function wawawewa_strip_marquee()
+{
+	get_template_part('template-parts/strips/marquee');
+}
