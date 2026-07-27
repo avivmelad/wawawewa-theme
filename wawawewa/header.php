@@ -49,7 +49,6 @@
 				);
 			}
 			?>
-			<div class="drawer-nav__eyebrow"><?php esc_html_e( 'קולקציית 2026', 'wawawewa' ); ?></div>
 		</nav>
 
 		<header id="masthead" class="site-header">
