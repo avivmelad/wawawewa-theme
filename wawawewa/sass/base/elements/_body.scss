@@ -3,6 +3,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+	overflow-x: hidden; // Clips decorative transforms (e.g. the hero parallax) from creating a horizontal scrollbar.
 }
 
 // Sticky footer: #page (.site) fills the body, .site-main grows to push
