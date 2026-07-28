@@ -238,6 +238,81 @@
                         }
                     ]
                 },
+                "layout_wawawewa_best_sellers": {
+                    "key": "layout_wawawewa_best_sellers",
+                    "name": "best_sellers",
+                    "label": "מוצרים מובילים (Best Sellers)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_wawawewa_best_sellers_hidden",
+                            "label": "הסתר סקשן זה",
+                            "name": "strip_hidden",
+                            "type": "true_false",
+                            "instructions": "אם מסומן, הסקשן לא יוצג באתר (בלי למחוק את התוכן).",
+                            "required": 0,
+                            "default_value": 0,
+                            "ui": 1,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_best_sellers_eyebrow",
+                            "label": "כותרת עילית",
+                            "name": "best_sellers_eyebrow",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": "◆ BEST_SELLERS.LOG",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_best_sellers_heading",
+                            "label": "כותרת ראשית",
+                            "name": "best_sellers_heading",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": "המוצרים המובילים",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_best_sellers_products",
+                            "label": "מוצרים",
+                            "name": "best_sellers_products",
+                            "type": "relationship",
+                            "instructions": "בחרו את המוצרים שיוצגו, לפי סדר התצוגה הרצוי.",
+                            "required": 0,
+                            "post_type": [
+                                "product"
+                            ],
+                            "taxonomy": "",
+                            "filters": [
+                                "search"
+                            ],
+                            "elements": [
+                                "featured_image"
+                            ],
+                            "min": 0,
+                            "max": 8,
+                            "return_format": "id",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ]
+                },
                 "layout_wawawewa_marquee": {
                     "key": "layout_wawawewa_marquee",
                     "name": "marquee",
@@ -316,5 +391,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1785234470
+    "modified": 1785235285
 }

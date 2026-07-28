@@ -50,3 +50,11 @@ function wawawewa_strip_marquee()
 {
 	get_template_part('template-parts/strips/marquee');
 }
+
+/**
+ * Strip: Best sellers.
+ */
+function wawawewa_strip_best_sellers()
+{
+	get_template_part('template-parts/strips/best-sellers');
+}
