@@ -135,6 +135,8 @@ Field groups must be exported to `acf-json/` (create at the theme root if it doe
 
 - After adding or editing a field group in wp-admin, let ACF re-sync/export the JSON before considering the change done.
 - Commit the resulting `acf-json/*.json` file alongside whatever PHP/template code uses the field — they're one logical change.
+- **Hand-editing a field group JSON directly (no local WP install, so this is the normal workflow here) requires bumping its top-level `"modified"` key to a newer Unix timestamp** every time you change it. ACF's "Sync available" detection on the Field Groups list compares this value against the database record's last-modified time — without it (or with a stale value), ACF has nothing to compare and silently never offers a sync, even though the fields have genuinely changed. Get a fresh value with `date +%s` (Bash) and set it as the last key before the closing `}`. This bit us once already — don't skip it.
+- **Editing a field group already in wp-admin's database**: after bumping `modified` and re-uploading, go to **ACF → Field Groups** (the list screen, not the individual editor) and use the **Sync** action to pull the JSON into the database. Do not open the field group and click **Save Changes** first — that pushes the (older) database version back out and can overwrite the JSON changes you just made.
 
 ### Global site settings (ACF options page)
 
