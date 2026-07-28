@@ -154,6 +154,7 @@ ACF-driven page templates (starting with the homepage, `page-templates/home-page
 - Each strip's actual HTML lives in its own `template-parts/strips/{layout-name}.php` partial, called from the matching function in `flexible-strips.php` — keeps markup out of the dispatch file, consistent with the existing `template-parts/` convention (see `template-parts/brand/logo-mark.php`).
 - The flexible content field group (covering all layouts) is exported as a single file under `acf-json/`, per the ACF fields convention above — not one field group per strip.
 - **Adding a new strip** is always the same three-step pattern: add a layout to the flexible content field (re-synced to `acf-json/`), add a render function to `flexible-strips.php`, add a partial under `template-parts/strips/`.
+- **Every layout must include a `strip_hidden` true/false field** (labelled "הסתר סקשן זה" — see the `hero`/`marquee` layouts for the exact field definition to copy). `wawawewa_render_strips()` in `flexible-strips.php` checks this centrally and skips rendering the row entirely when true — individual strip partials never need to check it themselves. This lets editors hide a section without deleting its content.
 
 ## Plugins
 

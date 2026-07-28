@@ -23,6 +23,10 @@ function wawawewa_render_strips($selector = 'page_sections')
 	while (have_rows($selector)) {
 		the_row();
 
+		if (get_sub_field('strip_hidden')) {
+			continue;
+		}
+
 		$function = 'wawawewa_strip_' . get_row_layout();
 
 		if (function_exists($function)) {

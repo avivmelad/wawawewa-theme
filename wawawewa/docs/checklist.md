@@ -36,7 +36,7 @@ Living status tracker for the store build. Detail/rationale for each item lives 
 - [x] `template-parts/strips/` partials directory started
 - [x] Hero strip, rebuilt in the "Futuristic" direction: corner brackets, pulsing badge, gradient-highlight heading, magnetic CTAs, parallax, photo/video/YouTube media choice with gradient-fade + tag badge (`template-parts/strips/hero.php`, `sass/pages/_home-page.scss`)
 - [x] Reusable scroll-reveal utility (`[data-reveal]`, `js/reveal.js`, `sass/utilities/_reveal.scss`) and particle-network canvas (`js/particles.js`) — infrastructure for future sections too
-- [x] Gold marquee strip (Futuristic direction) — `marquee_items` repeater field, one text per row, rendered via Swiper in continuous-loop mode (`template-parts/strips/marquee.php`, `js/marquee.js`, vendored `dist/js/swiper-bundle.min.js`) after a hand-rolled CSS keyframe version proved unreliable on RTL
+- [x] Gold marquee strip (Futuristic direction), desktop + mobile — `marquee_items` repeater field, one text per row, rendered via Swiper in continuous-loop mode (`template-parts/strips/marquee.php`, `js/marquee.js`, vendored `dist/js/swiper-bundle.min.js`) after a hand-rolled CSS keyframe version proved unreliable on RTL; mobile font/padding scaled to match the mobile mockup, spacing/speed tuned wider/faster than the mockup per request at both breakpoints
 - [ ] Best sellers product grid strip (Futuristic direction)
 - [ ] Lookbook/categories grid strip (Futuristic direction)
 - [ ] Testimonials strip (Futuristic direction)

@@ -23,6 +23,21 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_wawawewa_hero_hidden",
+                            "label": "הסתר סקשן זה",
+                            "name": "strip_hidden",
+                            "type": "true_false",
+                            "instructions": "אם מסומן, הסקשן לא יוצג באתר (בלי למחוק את התוכן).",
+                            "required": 0,
+                            "default_value": 0,
+                            "ui": 1,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
                             "key": "field_wawawewa_hero_logo",
                             "label": "לוגו מעל הכותרת",
                             "name": "hero_logo",
@@ -229,6 +244,21 @@
                     "label": "רצועת טקסט נע (Marquee)",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_wawawewa_marquee_hidden",
+                            "label": "הסתר סקשן זה",
+                            "name": "strip_hidden",
+                            "type": "true_false",
+                            "instructions": "אם מסומן, הסקשן לא יוצג באתר (בלי למחוק את התוכן).",
+                            "required": 0,
+                            "default_value": 0,
+                            "ui": 1,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
                         {
                             "key": "field_wawawewa_marquee_items",
                             "label": "טקסטים",
