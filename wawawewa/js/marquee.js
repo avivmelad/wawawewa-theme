@@ -20,9 +20,9 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		loop: true,
 		loopAdditionalSlides: 6,
 		slidesPerView: 'auto',
-		spaceBetween: isMobile ? 56 : 96,
+		spaceBetween: isMobile ? 96 : 160,
 		allowTouchMove: false,
-		speed: isMobile ? 14000 : 18000,
+		speed: isMobile ? 9000 : 11000,
 		// freeMode is required for the continuous-ticker trick: without it,
 		// Swiper tries to snap autoplay transitions to discrete slide
 		// positions, which don't line up cleanly with slidesPerView: 'auto'
