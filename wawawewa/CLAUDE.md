@@ -14,6 +14,30 @@ Live checkbox status for every phase of the build is tracked in [`docs/checklist
 
 Niche and visual identity are now decided: home goods/décor, "Black & Gold" luxury direction, Hebrew (RTL) first. A high-fidelity homepage design has been delivered; header and footer are implemented site-wide, homepage content sections and ACF fields are not yet built. See the "Implementation status" checkpoint under Design direction in [`docs/store-build-plan.md`](docs/store-build-plan.md) for exactly what's done and what's left. Ask to resume "the homepage design implementation" to continue.
 
+## Design references (Claude Design)
+
+Every mockup file the user has provided for this project lives in **one Claude Design project**, imported via the `DesignSync` tool (not a manual fetch/paste each time). **Before asking the user to re-paste a design prompt, try pulling the file directly first** — check the table below for the exact filename, then:
+
+1. `DesignSync` `get_project` with the project ID below to confirm access (it won't show up in `list_projects` — that call only lists *design-system* type projects, and this one is `PROJECT_TYPE_PROJECT`).
+2. `DesignSync` `list_files` to see the current file list (design files get added/renamed over time — this project ID is the durable part, not the exact filename list below).
+3. `DesignSync` `get_file` with the exact path to read one file's full markup.
+
+**Project**: `עיצוב חנות אינטרנטית` — ID `6e15106a-a49d-45e9-85cb-b7e220f17f7e`.
+
+| File | Covers |
+|---|---|
+| `Homepage Futuristic.dc.html` | **Current** homepage direction, desktop — every section top to bottom (header, hero, marquee, best sellers, categories/lookbook, testimonials, about, FAQ, newsletter/footer). This is the one to implement against unless told otherwise. |
+| `Homepage Futuristic Mobile.dc.html` | Same as above, mobile viewport (390×844 iOS frame). Always pull both files together when building a new section so desktop + mobile land in the same pass. |
+| `Homepage Wireframes.dc.html` / `Homepage Wireframes Mobile.dc.html` | Superseded — the original plain "Black & Gold" layout before the "Futuristic" direction (see `docs/store-build-plan.md`). Only relevant for historical context. |
+| `Category Page Futuristic.dc.html` / `Category Page Futuristic Mobile.dc.html` | Category/archive page, Futuristic direction — not yet implemented. |
+| `Category Page.dc.html` | Superseded plain category page. |
+| `Product Page Futuristic.dc.html` | Single product page, Futuristic direction — not yet implemented. |
+| `image-slot.js`, `support.js`, `ios-frame.jsx`, `design_handoff_homepage/*` | Design-tool runtime/handoff scaffolding only (placeholder image slots, the mobile device frame, a README). Never port these into the theme — they're read-only reference, not theme code. The real theme uses ACF image fields + plain `<img>`/WooCommerce output instead. |
+
+Concrete pixel/spacing/font specs already extracted from the homepage Futuristic files (so far: Hero, Marquee, Best sellers, Categories, Testimonials, About, FAQ, Newsletter) are recorded in `docs/current-mission.md` under "Design specs pulled from Claude Design" — check there first before re-fetching a file that's already been read once this project.
+
+**When the user gives a new design prompt/URL in the future**: add a row to the table above (file name + one-line description of what it covers) rather than only acting on it in-session, so the next session can self-serve the same way.
+
 ## Stack
 
 - **WordPress theme**, PHP. Write modern PHP consistent with the existing codebase.
