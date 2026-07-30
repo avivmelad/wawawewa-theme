@@ -28,9 +28,10 @@ Every mockup file the user has provided for this project lives in **one Claude D
 
 | File | Covers |
 |---|---|
-| `Homepage Futuristic v2.dc.html` | **Current** — same layout/interactions as `Homepage Futuristic.dc.html` below, but with the **current color palette**: light/cream main canvas + dark "chrome" accent panels (nav drawer, mini-cart, about-copy side, newsletter band), instead of the all-dark v1 palette. Implement new sections' colors against this file; layout/structure still comes from the desktop/mobile pair below. |
+| `Homepage Futuristic v2.dc.html` | **Current**, desktop — same layout/interactions as `Homepage Futuristic.dc.html` below, but with the **current color palette**: light/cream main canvas + dark "chrome" accent panels (nav drawer, mini-cart, about-copy side, newsletter band), instead of the all-dark v1 palette. Implement new sections' colors against this file; layout/structure still comes from the desktop/mobile pair below. |
+| `Homepage Futuristic Mobile v2.dc.html` | Same as above, mobile viewport (390×844 iOS frame, light `dark={false}` device frame). Verified (2026-07-28) to use **identical hex color values** to the desktop v2 file — no mobile-specific palette differences, only the usual layout/spacing ones already covered by the desktop/mobile pair below. |
 | `Homepage Futuristic.dc.html` | Desktop layout/interactions reference — every section top to bottom (header, hero, marquee, best sellers, categories/lookbook, testimonials, about, FAQ, newsletter/footer). Colors here are the superseded v1 dark palette — use v2 above for colors instead. |
-| `Homepage Futuristic Mobile.dc.html` | Same as above, mobile viewport (390×844 iOS frame). Always pull both files together when building a new section's layout, then apply v2's colors. |
+| `Homepage Futuristic Mobile.dc.html` | Same as above, mobile viewport (390×844 iOS frame). Always pull both files together when building a new section's layout, then apply the v2 files' colors. |
 | `Homepage Wireframes.dc.html` / `Homepage Wireframes Mobile.dc.html` | Superseded — the original plain "Black & Gold" layout before the "Futuristic" direction (see `docs/store-build-plan.md`). Only relevant for historical context. |
 | `Category Page Futuristic.dc.html` / `Category Page Futuristic Mobile.dc.html` | Category/archive page, Futuristic direction — not yet implemented. |
 | `Category Page.dc.html` | Superseded plain category page. |

@@ -41,6 +41,7 @@ The goal: turn this scaffold into a working WooCommerce store. Niche/product cat
 - **Button style changed, not just recolored**: the primary CTA flipped from a solid-gold pill to a dark-filled pill with a thin gold border + gold-light text (a solid gold pill read like a "sale badge" on the new white canvas); the secondary CTA dropped its gold border entirely for a plain dark outline (`sass/components/buttons/_buttons.scss`).
 - The header's default WA monogram SVG (`template-parts/brand/logo-mark.php`, used when no `header_logo` ACF image is set) picked up a matching treatment: the outer ring + first path go dark ink, the second path uses the same gold gradient as the wordmark text.
 - Ambient particle canvas (`js/particles.js`) recolored and brightened (line opacity 0.12→0.32, width 1→1.4) since particles now need more contrast over a light background instead of a dark one.
+- `Homepage Futuristic Mobile v2.dc.html` was checked against the desktop file above and uses identical color values — the recolor didn't need a separate mobile pass.
 
 ### Implementation status (as of this checkpoint)
 

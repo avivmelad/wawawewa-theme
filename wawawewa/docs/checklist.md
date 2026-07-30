@@ -43,6 +43,7 @@ Living status tracker for the store build. Detail/rationale for each item lives 
 - [ ] About/brand strip (Futuristic direction)
 - [ ] FAQ accordion strip (+ JS module, Futuristic direction)
 - [x] Mobile pass for the Futuristic Hero + header (full-width drawer, scaled corner/badge/logo/heading/image-badge sizes, universal `.button:active` tap feedback)
+- [x] Recolored everything built so far to the "v2" light/cream palette (current main design, see build plan "Design evolution — v2") — header/mini-cart/drawer, footer, buttons, Hero/Marquee/Best-sellers, default logo SVG, particle canvas; verified mobile mockup uses identical colors, no separate mobile pass needed
 - [x] `page-templates/home-page.php` rebuilt as the flexible-content dispatcher
 - [x] Fix stray `@package RAD` comment in `page-templates/home-page.php`
 
