@@ -313,6 +313,116 @@
                         }
                     ]
                 },
+                "layout_wawawewa_categories": {
+                    "key": "layout_wawawewa_categories",
+                    "name": "categories",
+                    "label": "קטגוריות (Lookbook)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_wawawewa_categories_hidden",
+                            "label": "הסתר סקשן זה",
+                            "name": "strip_hidden",
+                            "type": "true_false",
+                            "instructions": "אם מסומן, הסקשן לא יוצג באתר (בלי למחוק את התוכן).",
+                            "required": 0,
+                            "default_value": 0,
+                            "ui": 1,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_categories_eyebrow",
+                            "label": "כותרת עילית",
+                            "name": "categories_eyebrow",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": "◆ INDEX.CATEGORIES",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_categories_heading",
+                            "label": "כותרת ראשית",
+                            "name": "categories_heading",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": "קטגוריות",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_category_1",
+                            "label": "קטגוריה 1 (גדולה)",
+                            "name": "category_1",
+                            "type": "taxonomy",
+                            "instructions": "משתמש בתמונת הקטגוריה שהוגדרה ב-WooCommerce (עריכת קטגוריה ← תמונה).",
+                            "required": 0,
+                            "taxonomy": "product_cat",
+                            "field_type": "select",
+                            "add_term": 0,
+                            "save_terms": 0,
+                            "load_terms": 0,
+                            "return_format": "id",
+                            "multiple": 0,
+                            "allow_null": 1,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_category_2",
+                            "label": "קטגוריה 2",
+                            "name": "category_2",
+                            "type": "taxonomy",
+                            "required": 0,
+                            "taxonomy": "product_cat",
+                            "field_type": "select",
+                            "add_term": 0,
+                            "save_terms": 0,
+                            "load_terms": 0,
+                            "return_format": "id",
+                            "multiple": 0,
+                            "allow_null": 1,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_category_3",
+                            "label": "קטגוריה 3",
+                            "name": "category_3",
+                            "type": "taxonomy",
+                            "required": 0,
+                            "taxonomy": "product_cat",
+                            "field_type": "select",
+                            "add_term": 0,
+                            "save_terms": 0,
+                            "load_terms": 0,
+                            "return_format": "id",
+                            "multiple": 0,
+                            "allow_null": 1,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ]
+                },
                 "layout_wawawewa_marquee": {
                     "key": "layout_wawawewa_marquee",
                     "name": "marquee",
@@ -391,5 +501,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1785235285
+    "modified": 1785429106
 }

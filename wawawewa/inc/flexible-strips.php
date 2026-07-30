@@ -58,3 +58,11 @@ function wawawewa_strip_best_sellers()
 {
 	get_template_part('template-parts/strips/best-sellers');
 }
+
+/**
+ * Strip: Categories (Lookbook).
+ */
+function wawawewa_strip_categories()
+{
+	get_template_part('template-parts/strips/categories');
+}

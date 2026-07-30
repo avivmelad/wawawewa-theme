@@ -38,7 +38,7 @@ Living status tracker for the store build. Detail/rationale for each item lives 
 - [x] Reusable scroll-reveal utility (`[data-reveal]`, `js/reveal.js`, `sass/utilities/_reveal.scss`) and particle-network canvas (`js/particles.js`) — infrastructure for future sections too
 - [x] Gold marquee strip (Futuristic direction), desktop + mobile — `marquee_items` repeater field, one text per row, rendered via Swiper in continuous-loop mode (`template-parts/strips/marquee.php`, `js/marquee.js`, vendored `dist/js/swiper-bundle.min.js`) after a hand-rolled CSS keyframe version proved unreliable on RTL; mobile font/padding scaled to match the mobile mockup, spacing/speed tuned wider/faster than the mockup per request at both breakpoints
 - [x] Best sellers product grid strip (Futuristic direction) — manual ACF relationship field picks products; reuses WooCommerce's own image/price/add-to-cart (`template-parts/strips/best-sellers.php`, `js/product-tilt.js`), desktop tilt-hover + mobile tap-scale
-- [ ] Lookbook/categories grid strip (Futuristic direction)
+- [x] Lookbook/categories grid strip (Futuristic direction) — 3 ACF taxonomy fields picking real WooCommerce product categories (native category thumbnail image + `get_term_link()`), asymmetric 1.3fr/1fr/1fr grid on desktop, stacked on mobile (`template-parts/strips/categories.php`, `sass/pages/_home-page.scss`)
 - [ ] Testimonials strip (Futuristic direction)
 - [ ] About/brand strip (Futuristic direction)
 - [ ] FAQ accordion strip (+ JS module, Futuristic direction)

@@ -455,6 +455,116 @@
 			}
 		}
 	}
+
+	.strip-categories {
+		position: relative;
+		z-index: 1;
+		padding: 0 40px 64px;
+
+		@include mq(tablet) {
+			padding: 0 24px 48px;
+		}
+
+		@include mq(mobile) {
+			padding: 0 20px 28px;
+		}
+
+		&__heading {
+			margin-bottom: 28px;
+			text-align: center;
+
+			@include mq(mobile) {
+				margin-bottom: 18px;
+			}
+		}
+
+		&__eyebrow {
+			margin-bottom: 10px;
+			font-family: $font__mono;
+			font-weight: 700;
+			font-size: 11px;
+			letter-spacing: 0.1em;
+			color: $color__brand-gold;
+
+			@include mq(mobile) {
+				font-size: 10px;
+			}
+		}
+
+		&__title {
+			margin: 0;
+			font-family: $font__heebo;
+			font-weight: 800;
+			font-size: 32px;
+			line-height: 1.1;
+
+			@include mq(mobile) {
+				font-size: 24px;
+			}
+		}
+
+		&__grid {
+			display: grid;
+			// Asymmetric: one large tile + two equal-width ones, per the design.
+			grid-template-columns: 1.3fr 1fr 1fr;
+			gap: 20px;
+
+			@include mq(tablet) {
+				grid-template-columns: repeat(3, 1fr);
+				gap: 16px;
+			}
+
+			@include mq(mobile) {
+				grid-template-columns: 1fr;
+				gap: 12px;
+			}
+		}
+
+		&__item {
+			position: relative;
+			display: block;
+			overflow: hidden;
+			border: 1px solid $color__brand-border-muted;
+			border-radius: 18px;
+
+			@include mq(mobile) {
+				border-radius: 14px;
+			}
+
+			img {
+				display: block;
+				width: 100%;
+				height: 340px;
+				object-fit: cover;
+
+				@include mq(mobile) {
+					height: 220px;
+				}
+			}
+		}
+
+		&__fade {
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(0deg, rgba(20, 19, 18, 0.75), transparent 45%);
+			pointer-events: none;
+		}
+
+		&__label {
+			position: absolute;
+			bottom: 16px;
+			inset-inline-start: 16px;
+			inset-inline-end: 16px;
+			font-family: $font__heebo;
+			font-weight: 800;
+			font-size: 18px;
+			color: $color__brand-gold-light;
+
+			@include mq(mobile) {
+				font-size: 15px;
+			}
+		}
+	}
 }
 
 @keyframes hf-pulse {
