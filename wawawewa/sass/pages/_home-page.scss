@@ -408,9 +408,25 @@
 
 		&__footer {
 			display: flex;
+			flex-wrap: wrap;
 			align-items: center;
 			justify-content: space-between;
 			gap: 8px;
+
+			// WooCommerce's ajax_add_to_cart appends a "view cart" link right
+			// after the button on success (same parent, not the button itself) —
+			// force it onto its own full-width row below instead of letting it
+			// squeeze into the price/button row.
+			.added_to_cart {
+				flex-basis: 100%;
+				margin-top: 4px;
+				font-size: 11px;
+				text-align: center;
+
+				@include mq(mobile) {
+					font-size: 10px;
+				}
+			}
 		}
 
 		&__price {
