@@ -171,6 +171,30 @@ if ( ! function_exists( 'wawawewa_woocommerce_cart_link_fragment' ) ) {
 }
 add_filter( 'woocommerce_add_to_cart_fragments', 'wawawewa_woocommerce_cart_link_fragment' );
 
+if ( ! function_exists( 'wawawewa_woocommerce_header_cart_count_fragment' ) ) {
+	/**
+	 * Header cart count fragment.
+	 *
+	 * The actual header markup (`header.php`) uses its own `.header-cart__count`
+	 * badge, not the `a.cart-contents` sample above — refresh it via
+	 * WooCommerce's own AJAX add-to-cart/remove-from-cart fragments so the
+	 * number updates immediately, without a page reload.
+	 *
+	 * @param array $fragments Fragments to refresh via AJAX.
+	 * @return array Fragments to refresh via AJAX.
+	 */
+	function wawawewa_woocommerce_header_cart_count_fragment( $fragments ) {
+		ob_start();
+		?>
+		<span class="header-cart__count"><?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?></span>
+		<?php
+		$fragments['.header-cart__count'] = ob_get_clean();
+
+		return $fragments;
+	}
+}
+add_filter( 'woocommerce_add_to_cart_fragments', 'wawawewa_woocommerce_header_cart_count_fragment' );
+
 if ( ! function_exists( 'wawawewa_woocommerce_cart_link' ) ) {
 	/**
 	 * Cart Link.
