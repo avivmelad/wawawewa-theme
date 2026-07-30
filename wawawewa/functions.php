@@ -180,6 +180,7 @@ if (class_exists('WooCommerce')) {
 // Setup functions
 require get_template_directory() . '/inc/setup-functions/enqueue.php';
 require get_template_directory() . '/inc/setup-functions/options-page.php';
+require get_template_directory() . '/inc/setup-functions/svg-upload.php';
 
 /**
  * ACF Flexible Content page-section strips.

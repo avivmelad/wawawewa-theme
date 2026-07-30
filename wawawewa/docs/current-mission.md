@@ -56,6 +56,8 @@ Full desktop (`Homepage Futuristic.dc.html`) + mobile (`Homepage Futuristic Mobi
 
 Both mockups also reference `image-slot.js` / `support.js` (design-tool runtime only — not ported into the theme; theme uses ACF image fields + real `<img>` output instead) and use a custom cursor (`cursor:none` + ring/dot) on desktop only, which — per the standing decision above — is skipped sitewide, including for these later sections; treat every `cursor:none`/`data-cursor-hover` in the mockup as "hover state still applies, native cursor stays."
 
+- [x] *(unrelated to the homepage mission, logged per the mandatory rule above)* SVG uploads enabled in the media library — admins (`manage_options`) only, since raw SVG can carry a script/XSS payload and this isn't a content sanitizer, just a capability gate (`inc/setup-functions/svg-upload.php`). Also patches `wp_check_filetype_and_ext` (WP's mime sniffing doesn't recognize SVG by default) and reads the SVG's own width/height/viewBox into attachment metadata + admin CSS so the media grid thumbnail isn't a broken/oversized generic icon.
+
 ## Notes
 - Old single `page_header` ACF field on the homepage is superseded by the `page_sections` flexible content field — no longer read anywhere.
 - Particle count (46) is unchanged for mobile (still ambient background, not a "moving button/screen" effect — left alone).
