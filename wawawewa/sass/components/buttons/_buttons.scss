@@ -23,17 +23,21 @@
 	// :visited has higher specificity than a single class (see
 	// sass/base/elements/_links.scss), so it must be reset explicitly here
 	// or a visited button link silently inherits the global visited-link color.
+	//
+	// v2 palette: on the light canvas, primary is a dark-filled pill with a
+	// thin gold border (not a solid-gold pill, which read as a "sale badge"
+	// on white) — secondary drops the gold border entirely for a plain dark
+	// outline. See Homepage Futuristic v2.dc.html.
 	&--primary,
 	&--primary:visited {
-		background: $color__brand-gold;
-		color: $color__brand-bg;
+		background: $color__brand-bg-dark;
+		color: $color__brand-gold-light;
 
 		&:hover,
 		&:focus,
 		&:active {
-			background: $color__brand-gold-hover;
 			border-color: $color__brand-gold-hover;
-			color: $color__brand-bg;
+			color: $color__brand-gold-light;
 		}
 	}
 
@@ -41,6 +45,7 @@
 	&--secondary:visited {
 		background: transparent;
 		color: $color__brand-text;
+		border-color: $color__brand-text;
 
 		&:hover,
 		&:focus,

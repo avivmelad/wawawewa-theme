@@ -1,5 +1,5 @@
 .newsletter-band {
-	background: $color__brand-bg-footer;
+	background: $color__brand-bg-dark;
 	border-top: 1.5px solid $color__brand-gold;
 	padding: 56px 40px;
 	display: flex;
@@ -19,13 +19,13 @@
 			font-size: 24px;
 			line-height: 1.2;
 			margin: 0 0 6px;
-			color: $color__brand-text;
+			color: $color__brand-gold-light;
 		}
 
 		p {
 			margin: 0;
 			font-size: 14px;
-			color: $color__brand-text-muted;
+			color: $color__brand-text-muted-on-dark;
 		}
 	}
 
@@ -47,9 +47,9 @@
 			width: 240px;
 			height: 50px;
 			border-radius: 999px;
-			background: #1c1a16;
-			border: 1px solid $color__brand-border-muted;
-			color: $color__brand-text-muted-footer;
+			background: #241f18;
+			border: 1px solid $color__brand-border-input-dark;
+			color: $color__brand-text-muted-on-dark;
 			padding: 0 20px;
 			font-family: $font__main;
 			font-size: 13px;
@@ -60,7 +60,7 @@
 		display: flex;
 		align-items: center;
 		background: $color__brand-gold;
-		color: $color__brand-bg;
+		color: $color__brand-bg-dark;
 		padding: 15px 28px;
 		border-radius: 999px;
 		font-family: $font__main;
@@ -71,8 +71,8 @@
 }
 
 .site-footer {
-	background: $color__brand-bg-footer;
-	border-top: 1px solid $color__brand-border-muted;
+	background: $color__brand-bg;
+	border-top: 1px solid $color__brand-border-light;
 
 	&__inner {
 		padding: 28px 40px;

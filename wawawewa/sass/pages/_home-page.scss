@@ -9,7 +9,7 @@
 		height: 100%;
 		z-index: 0;
 		pointer-events: none;
-		opacity: 0.55;
+		opacity: 0.5;
 	}
 
 	.strip-hero {
@@ -168,6 +168,7 @@
 		&__media {
 			position: relative;
 			margin-bottom: 40px;
+			border: 1px solid $color__brand-border-muted;
 			border-radius: 20px;
 			overflow: hidden;
 
@@ -199,7 +200,7 @@
 		&__media-fade {
 			position: absolute;
 			inset: 0;
-			background: linear-gradient(0deg, rgba(10, 9, 8, 0.75), transparent 45%);
+			background: linear-gradient(0deg, rgba(20, 19, 18, 0.75), transparent 45%);
 			pointer-events: none;
 		}
 
@@ -210,12 +211,12 @@
 			padding: 8px 16px;
 			border: 1px solid $color__brand-gold;
 			border-radius: 999px;
-			background: rgba(10, 9, 8, 0.6);
+			background: rgba(20, 19, 18, 0.55);
 			font-family: $font__mono;
 			font-weight: 700;
 			font-size: 11px;
 			letter-spacing: 0.08em;
-			color: $color__brand-gold;
+			color: $color__brand-gold-light;
 
 			@include mq(mobile) {
 				bottom: 16px;
@@ -259,7 +260,7 @@
 			font-family: $font__heebo;
 			font-weight: 800;
 			font-size: 22px;
-			color: $color__brand-bg;
+			color: $color__brand-bg-dark;
 			white-space: nowrap;
 
 			@include mq(mobile) {
@@ -339,6 +340,7 @@
 			display: flex;
 			flex-direction: column;
 			overflow: hidden;
+			background: $color__brand-surface;
 			border: 1.5px solid $color__brand-gold;
 			border-radius: 18px;
 			transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
@@ -354,7 +356,7 @@
 
 			@include mq(mobile, min) {
 				&:hover {
-					box-shadow: 0 20px 40px rgba(201, 162, 75, 0.18);
+					box-shadow: 0 20px 40px rgba(184, 137, 46, 0.18);
 					border-color: $color__brand-gold-hover;
 				}
 			}

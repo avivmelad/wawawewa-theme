@@ -1,15 +1,36 @@
-// Brand palette — "Black & Gold" direction, see docs/store-build-plan.md
-$color__brand-gold: #c9a24b;
-$color__brand-gold-hover: #e0bd6e;
-$color__brand-gold-light: #f4e9c9;
-$color__brand-gold-dark: #7a5f28;
-$color__brand-bg: #121110;
-$color__brand-bg-footer: #0a0908;
-$color__brand-text: #f0e9db;
-$color__brand-text-muted: #b7ac97;
-$color__brand-text-muted-footer: #8a8272;
+// Brand palette — "Black & Gold" direction, light/cream v2, see docs/store-build-plan.md
+// (supersedes the original all-dark v1 palette — light main canvas, dark
+// "chrome" accent panels for nav/overlay/about/newsletter surfaces).
+$color__brand-gold: #b8892e;
+$color__brand-gold-hover: #8f6a20;
+$color__brand-gold-light: #f1e2bd;
+$color__brand-gold-dark: #7a5a1f;
+
+// Site-wide light background (was dark in v1).
+$color__brand-bg: #fdfdfc;
+// Dark "chrome" surface for accent panels that stay dark even on the light
+// v2 canvas: drawer nav, mini-cart panel, about-strip copy side, newsletter band.
+$color__brand-bg-dark: #141312;
+// Off-white card surface (e.g. product cards), distinct from the page bg.
+$color__brand-surface: #fff;
+
+// Main text, on the light canvas.
+$color__brand-text: #141312;
+$color__brand-text-muted: #6b6255;
+// Text inside a dark accent panel (see $color__brand-bg-dark above).
+$color__brand-text-muted-on-dark: #b7ac97;
+// Muted text in the (light) bottom footer bar specifically.
+$color__brand-text-muted-footer: #8f8573;
+
 $color__brand-border: $color__brand-gold;
-$color__brand-border-muted: #3a3327;
+// Muted border on the light canvas (badges, hero/category image outlines).
+$color__brand-border-muted: #e4dcc4;
+// Muted border inside a dark accent panel (drawer nav dividers, mini-cart panel).
+$color__brand-border-muted-dark: #332e26;
+// Border for an input sitting on a dark accent panel (newsletter email field).
+$color__brand-border-input-dark: #463c2e;
+// Divider on the light bottom footer bar.
+$color__brand-border-light: #ece6d5;
 
 $color__background-body: $color__brand-bg;
 $color__background-screen: #f1f1f1;

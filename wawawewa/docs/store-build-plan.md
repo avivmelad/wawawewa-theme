@@ -16,7 +16,7 @@ The goal: turn this scaffold into a working WooCommerce store. Niche/product cat
 
 **This supersedes the earlier "bold streetwear" and "blue/green" explorations** previously noted here. The niche is now decided (home goods/décor) and a high-fidelity homepage design was delivered via the Claude Design MCP project `עיצוב חנות אינטרנטית` (id `6e15106a-a49d-45e9-85cb-b7e220f17f7e`), file `Homepage Wireframes.dc.html`, handoff doc `design_handoff_homepage/README.md`. Site language is Hebrew (RTL) — see the RTL/Hebrew section in `CLAUDE.md`.
 
-**Design tokens**
+**Design tokens** *(superseded by the v2 light/cream palette below — kept here for historical context only)*
 - Colors: bg `#121110`, footer/newsletter bg `#0a0908`, gold `#c9a24b` (hover `#e0bd6e`), text `#f0e9db`, muted text `#b7ac97`, footer muted text `#8a8272`, structural border `1.5px solid #c9a24b`, footer divider `1px solid #3a3327`.
 - Type: **Heebo** (700/800/900) for headings, **Assistant** (400–700) for body/UI, **Unbounded** (800) for the "wawawewa" wordmark only. Loaded via Google Fonts.
 - Shape: pill buttons (`border-radius:999px`), cards `16–24px` radius, `1.5px` border weight.
@@ -34,6 +34,13 @@ The goal: turn this scaffold into a working WooCommerce store. Niche/product cat
 - Hero-specific touches: corner-bracket decoration, a pulsing-dot badge (reusing the existing eyebrow field), magnetic-hover CTA buttons, a subtle mouse-parallax on the hero section, and a gradient-fade + tag badge over the hero image.
 - **Explicitly decided against**: the mockup's custom cursor (`cursor:none` + a ring/dot follower) was deliberately skipped as a UX/accessibility tradeoff — native cursor stays.
 - **Scope so far**: the site-wide header restyle and the Hero strip have been rebuilt in this direction, desktop **and** mobile. Marquee, best sellers, categories/lookbook, testimonials, about, and FAQ are still in the original plain layout below and need their own pass (both breakpoints) in this same visual language.
+
+**Design evolution — v2 light/cream palette (CURRENT — supersedes the dark palette above)**: a palette-only redesign from the same Claude Design project, file `Homepage Futuristic v2.dc.html`. Same layout/interactions/fonts as the "Futuristic" direction above — only the color values changed, from an all-dark canvas to a **light, cream main canvas with dark "chrome" accent panels** for overlay/nav-like surfaces. This is now the theme's primary palette; treat the all-dark v1 tokens above as historical only. Applied so far to everything already built (header site-wide, Hero, Marquee, Best sellers, buttons, global body/selection) — categories/testimonials/about/FAQ/newsletter aren't built yet, so pick up this same v2 palette when building them.
+
+- **New token roles** (`sass/abstracts/variables/_colors.scss`): `$color__brand-bg` is now the light main background (`#fdfdfc`, was the dark bg in v1); a new `$color__brand-bg-dark` (`#141312`) holds the dark "chrome" role instead — drawer nav, the header mini-cart panel (kept dark to match the drawer, not flipped light), the about-strip copy side, and the newsletter band. `$color__brand-text`/`-muted` are now dark-on-light by default; new `-on-dark` variants (`$color__brand-text-muted-on-dark`, plus `$color__brand-gold-light` doing double duty as "primary text on a dark panel") cover text inside the dark chrome panels. Border-muted similarly split into a light-canvas value and `-muted-dark`/`-input-dark`/`-light` variants for dark-panel dividers, dark inputs, and the (now light) footer bar divider respectively. New `$color__brand-surface` (`#fff`) is the product-card white, distinct from the page's off-white.
+- **Button style changed, not just recolored**: the primary CTA flipped from a solid-gold pill to a dark-filled pill with a thin gold border + gold-light text (a solid gold pill read like a "sale badge" on the new white canvas); the secondary CTA dropped its gold border entirely for a plain dark outline (`sass/components/buttons/_buttons.scss`).
+- The header's default WA monogram SVG (`template-parts/brand/logo-mark.php`, used when no `header_logo` ACF image is set) picked up a matching treatment: the outer ring + first path go dark ink, the second path uses the same gold gradient as the wordmark text.
+- Ambient particle canvas (`js/particles.js`) recolored and brightened (line opacity 0.12→0.32, width 1→1.4) since particles now need more contrast over a light background instead of a dark one.
 
 ### Implementation status (as of this checkpoint)
 

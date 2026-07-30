@@ -55,8 +55,10 @@
 				const distance = Math.hypot( a.x - b.x, a.y - b.y );
 
 				if ( distance < LINK_DISTANCE ) {
-					ctx.strokeStyle = 'rgba(201,162,75,' + ( 0.12 * ( 1 - distance / LINK_DISTANCE ) ) + ')';
-					ctx.lineWidth = 1;
+					// Brighter/thicker than the v1 dark-canvas version — the lines
+					// need more contrast now that they sit over a light background.
+					ctx.strokeStyle = 'rgba(184,137,46,' + ( 0.32 * ( 1 - distance / LINK_DISTANCE ) ) + ')';
+					ctx.lineWidth = 1.4;
 					ctx.beginPath();
 					ctx.moveTo( a.x, a.y );
 					ctx.lineTo( b.x, b.y );
@@ -65,7 +67,7 @@
 			}
 		}
 
-		ctx.fillStyle = '#c9a24b';
+		ctx.fillStyle = '#b8892e';
 		particles.forEach( function( p ) {
 			ctx.beginPath();
 			ctx.arc( p.x, p.y, 1.6, 0, Math.PI * 2 );
