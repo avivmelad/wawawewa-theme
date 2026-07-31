@@ -49,6 +49,21 @@ add_action( 'after_setup_theme', 'wawawewa_woocommerce_setup' );
 remove_all_actions( 'woocommerce_sidebar' );
 
 /**
+ * Remove the default "on sale" flash badge from the single product gallery.
+ *
+ * `woocommerce_show_product_sale_flash()` is hooked to
+ * `woocommerce_before_single_product_summary` (fires right before the
+ * gallery), rendering an unstyled `<span class="onsale">Sale!</span>` with
+ * no positioning/design of its own now that the default WooCommerce
+ * stylesheet is disabled. `woocommerce/content-single-product.php` renders
+ * its own designed sale badge in the summary column instead (above the
+ * stock badge). This only removes it from the *single product* hook — the
+ * shop-loop/archive/related-products hook (`woocommerce_before_shop_loop_item_title`)
+ * is untouched, so grids keep the sale flash for when that's styled later.
+ */
+remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
+
+/**
  * WooCommerce specific scripts & stylesheets.
  *
  * WooCommerce styling itself compiles into the main stylesheet now (see

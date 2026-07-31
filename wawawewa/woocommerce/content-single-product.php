@@ -70,6 +70,10 @@ $accordion_id = 'product-accordion-' . wp_unique_id();
 		</div>
 
 		<div class="single-product__summary summary entry-summary">
+			<?php if ( $product->is_on_sale() ) : ?>
+				<div class="single-product__sale-badge"><?php esc_html_e( 'מבצע!', 'wawawewa' ); ?></div>
+			<?php endif; ?>
+
 			<div class="single-product__stock-badge <?php echo $product->is_in_stock() ? 'is-in-stock' : 'is-out-of-stock'; ?>">
 				<span class="single-product__stock-dot" aria-hidden="true"></span>
 				<span>
