@@ -20,13 +20,16 @@ $link    = get_sub_field('about_link');
 if (! $image && ! $heading && ! $body) {
 	return;
 }
+
+// Same fallback as the Categories strip: no custom image set yet shouldn't
+// leave the section empty — fall back to WooCommerce's own placeholder image.
+$image_url = $image ? $image['url'] : wc_placeholder_img_src('large');
+$image_alt = $image ? $image['alt'] : ($heading ? $heading : get_bloginfo('name'));
 ?>
 <section class="strip-about" data-reveal>
-	<?php if ($image) : ?>
-		<div class="strip-about__image">
-			<img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
-		</div>
-	<?php endif; ?>
+	<div class="strip-about__image">
+		<img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" />
+	</div>
 
 	<div class="strip-about__copy">
 		<?php if ($eyebrow) : ?>
