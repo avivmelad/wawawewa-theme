@@ -9,23 +9,29 @@
  * @package wawawewa
  */
 
+$newsletter_heading = get_field( 'footer_newsletter_heading', 'option' );
+$newsletter_subcopy = get_field( 'footer_newsletter_subcopy', 'option' );
+$newsletter_form_id = get_field( 'footer_newsletter_form_id', 'option' );
+$copyright_text     = get_field( 'footer_copyright_text', 'option' );
+$footer_links       = get_field( 'footer_links', 'option' );
 ?>
 
 		<div class="newsletter-band">
 			<div class="newsletter-band__copy">
-				<h2><?php esc_html_e( 'הצטרפו למועדון', 'wawawewa' ); ?></h2>
-				<p><?php esc_html_e( '10% הנחה על ההזמנה הראשונה, ישר למייל', 'wawawewa' ); ?></p>
+				<?php if ( $newsletter_heading ) : ?>
+					<h2><?php echo esc_html( $newsletter_heading ); ?></h2>
+				<?php endif; ?>
+				<?php if ( $newsletter_subcopy ) : ?>
+					<p><?php echo esc_html( $newsletter_subcopy ); ?></p>
+				<?php endif; ?>
 			</div>
 			<div class="newsletter-band__form">
 				<?php
-				if ( shortcode_exists( 'gravityform' ) ) {
-					/**
-					 * Replace form_id with the real newsletter Gravity Form ID once it's built in wp-admin.
-					 * Expected fields: single email input styled via .newsletter-band__form .gform_wrapper (see sass/components/footer/_footer.scss).
-					 */
-					echo do_shortcode( '[gravityform id="1" title="false" description="false" ajax="true"]' );
+				if ( $newsletter_form_id && shortcode_exists( 'gravityform' ) ) {
+					// Expected fields: single email input styled via .newsletter-band__form .gform_wrapper (see sass/components/footer/_footer.scss).
+					echo do_shortcode( '[gravityform id="' . absint( $newsletter_form_id ) . '" title="false" description="false" ajax="true"]' );
 				} else {
-					// Gravity Forms isn't active yet — render a disabled placeholder so the section isn't empty.
+					// No form ID set yet, or Gravity Forms isn't active — render a disabled placeholder so the section isn't empty.
 					?>
 					<div class="newsletter-band__placeholder">
 						<input type="email" placeholder="<?php esc_attr_e( 'האימייל שלך', 'wawawewa' ); ?>" disabled />
@@ -42,14 +48,24 @@
 				<div class="site-footer__copyright">
 					<?php
 					/* translators: %s: current year. */
-					printf( esc_html__( '© wawawewa %s', 'wawawewa' ), esc_html( gmdate( 'Y' ) ) );
+					printf( esc_html( $copyright_text ? $copyright_text : '© wawawewa %s' ), esc_html( gmdate( 'Y' ) ) );
 					?>
 				</div>
-				<nav class="site-footer__links" aria-label="<?php esc_attr_e( 'קישורי פוטר', 'wawawewa' ); ?>">
-					<a href="<?php echo esc_url( home_url( '/terms/' ) ); ?>"><?php esc_html_e( 'תקנון', 'wawawewa' ); ?></a>
-					<a href="<?php echo esc_url( home_url( '/shipping/' ) ); ?>"><?php esc_html_e( 'משלוחים', 'wawawewa' ); ?></a>
-					<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'יצירת קשר', 'wawawewa' ); ?></a>
-				</nav>
+				<?php if ( $footer_links ) : ?>
+					<nav class="site-footer__links" aria-label="<?php esc_attr_e( 'קישורי פוטר', 'wawawewa' ); ?>">
+						<?php foreach ( $footer_links as $row ) :
+							$link = $row['link'];
+
+							if ( ! $link ) {
+								continue;
+							}
+							?>
+							<a href="<?php echo esc_url( $link['url'] ); ?>" target="<?php echo esc_attr( $link['target'] ? $link['target'] : '_self' ); ?>">
+								<?php echo esc_html( $link['title'] ); ?>
+							</a>
+						<?php endforeach; ?>
+					</nav>
+				<?php endif; ?>
 			</div>
 		</footer><!-- #colophon -->
 	</div><!-- #page -->

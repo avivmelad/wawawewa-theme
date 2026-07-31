@@ -109,6 +109,109 @@
                 "class": "",
                 "id": ""
             }
+        },
+        {
+            "key": "field_wawawewa_footer_tab",
+            "label": "פוטר",
+            "name": "footer_tab",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_wawawewa_footer_newsletter_heading",
+            "label": "כותרת מועדון הלקוחות",
+            "name": "footer_newsletter_heading",
+            "type": "text",
+            "required": 0,
+            "default_value": "הצטרפו למועדון",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_wawawewa_footer_newsletter_subcopy",
+            "label": "טקסט משנה",
+            "name": "footer_newsletter_subcopy",
+            "type": "text",
+            "required": 0,
+            "default_value": "10% הנחה על ההזמנה הראשונה, ישר למייל",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_wawawewa_footer_newsletter_form_id",
+            "label": "מזהה טופס Gravity Forms",
+            "name": "footer_newsletter_form_id",
+            "type": "number",
+            "instructions": "מזהה הטופס בטבלת Forms ב-Gravity Forms. אם ריק או שהטופס לא קיים, יוצג placeholder לא פעיל במקום.",
+            "required": 0,
+            "default_value": 1,
+            "min": 1,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_wawawewa_footer_copyright_text",
+            "label": "טקסט זכויות יוצרים",
+            "name": "footer_copyright_text",
+            "type": "text",
+            "instructions": "%s יוחלף אוטומטית בשנה הנוכחית.",
+            "required": 0,
+            "default_value": "© wawawewa %s",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_wawawewa_footer_links",
+            "label": "קישורי פוטר",
+            "name": "footer_links",
+            "type": "repeater",
+            "instructions": "לדוגמה: תקנון, משלוחים, יצירת קשר.",
+            "required": 0,
+            "layout": "table",
+            "button_label": "הוספת קישור",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_wawawewa_footer_link",
+                    "label": "קישור",
+                    "name": "link",
+                    "type": "link",
+                    "required": 1,
+                    "return_format": "array",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
         }
     ],
     "location": [
@@ -129,5 +232,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1785234470
+    "modified": 1785493187
 }

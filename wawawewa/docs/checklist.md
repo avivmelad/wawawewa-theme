@@ -23,12 +23,13 @@ Living status tracker for the store build. Detail/rationale for each item lives 
 - [x] "הדר" (header) tab + `header_logo` image field added to site settings (`acf-json/group_wawawewa_site_settings.json`); `header.php` reads it via `get_field('header_logo', 'option')` with SVG fallback
 - [x] Wordmark text/image radio choice (`header_wordmark_type` + conditional `header_wordmark_text`/`header_wordmark_image`) — replaces the hardcoded site-name text next to the logo
 - [ ] Real logo image uploaded in wp-admin (currently falls back to the placeholder WA monogram SVG)
-- [ ] Remaining global site-settings fields for other areas (footer contact/social, global banners, etc.) as they come up
+- [x] "פוטר" (footer) tab added to site settings — newsletter heading/subcopy/Gravity Forms ID, copyright text, and a `footer_links` repeater (ACF Link field per row), replacing the hardcoded footer copy/links in `footer.php`
+- [ ] Remaining global site-settings fields for other areas (contact/social, global banners, etc.) as they come up
 
 ## 4. Site-wide chrome
 - [x] Header: drawer nav, ACF-editable logo, sticky positioning, cart icon + mini-cart dropdown (`header.php`, `js/navigation.js`, `js/mini-cart.js`, `sass/components/header/_header.scss`)
 - [x] Header "Futuristic" restyle: gradient wordmark, translucent background, JetBrains Mono drawer label (see build plan "Design evolution")
-- [x] Footer: newsletter band + footer bar (`footer.php`, `sass/components/footer/_footer.scss`) — still in the original plain layout, not yet redone in the Futuristic direction
+- [x] Footer: newsletter band + footer bar (`footer.php`, `sass/components/footer/_footer.scss`), fully ACF-editable and recolored to the current v2 palette (dark newsletter band, light bottom bar)
 
 ## 5. Homepage content build (ACF Flexible Content "strips" — see CLAUDE.md)
 - [x] `page_sections` flexible content field group created, exported to `acf-json/group_wawawewa_home_page_sections.json`

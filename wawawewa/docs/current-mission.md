@@ -44,6 +44,7 @@ Rework the homepage (and site-wide header) from the plain Black & Gold layout in
 Hero, Marquee, Best sellers, Categories/Lookbook, Testimonials, About, and FAQ are all code-complete (see `docs/checklist.md` section 5, all checked). What's left before this mission is fully done:
 - [ ] Fill in real content for every strip in wp-admin (Hero, Marquee text, Best-sellers product picks, Categories' 3 real WooCommerce categories, Testimonials, About copy/image, FAQ questions) and verify on staging — RTL first, then desktop, then mobile, for each.
 - [ ] Once verified, delete this file — its outcome is already reflected in `docs/checklist.md` and `docs/store-build-plan.md`, so nothing will be lost.
+- [x] Footer made fully ACF-editable — new "פוטר" (footer) tab on the site-settings options page (`acf-json/group_wawawewa_site_settings.json`): `footer_newsletter_heading`/`_subcopy` (text), `footer_newsletter_form_id` (number — replaces the hardcoded Gravity Forms `id="1"` that previously needed a code edit to swap), `footer_copyright_text` (text, `%s` auto-replaced with the current year, same as before), and a `footer_links` repeater using a single ACF Link field per row (reusing the established Link-field pattern rather than separate url/title fields) — replaces the three hardcoded תקנון/משלוחים/יצירת קשר anchors. `footer.php` now reads all of it via `get_field( ..., 'option' )`; no visual/color changes, this was already recolored to v2 in the earlier palette swap.
 
 ## Design specs pulled from Claude Design (2026-07-28 fetch)
 
