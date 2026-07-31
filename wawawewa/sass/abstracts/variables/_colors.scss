@@ -57,3 +57,10 @@ $color__border-button-hover: #ccc #bbb #aaa;
 $color__border-button-focus: #aaa #bbb #bbb;
 $color__border-input: #ccc;
 $color__border-abbr: #666;
+
+// WooCommerce status colors (stock labels, notices) — used by
+// sass/plugins/woocommerce/*, now compiled into the main stylesheet
+// (see CLAUDE.md "SCSS" — everything compiles through sass/style.scss only).
+$woocommerce__color-error: #e2401c;
+$woocommerce__color-success: #0f834d;
+$woocommerce__color-info: #3d9cd2;

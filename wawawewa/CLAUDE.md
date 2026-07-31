@@ -50,7 +50,7 @@ Concrete pixel/spacing/font specs already extracted from the homepage Futuristic
 
 - **WordPress theme**, PHP. Write modern PHP consistent with the existing codebase.
 - **WooCommerce** for all commerce logic (cart, checkout, products, orders). Never duplicate what WooCommerce already provides — hook into it via `inc/woocommerce.php`.
-- **SCSS** compiled with `node-sass` → CSS at the theme root (`style.css`, `woocommerce.css`, `style-rtl.css`). Never hand-edit the compiled `.css` files directly — edit the `sass/` source.
+- **SCSS** compiled with `node-sass` → CSS at the theme root (`style.css`, `style-rtl.css`), and via the VS Code Live Sass Compile extension → `dist/css/style.min.css` (the one actually enqueued — see `inc/setup-functions/enqueue.php`). **Single entry point**: `sass/style.scss` compiles everything, including WooCommerce styling (`sass/plugins/woocommerce/*`) — there is no separate `woocommerce.scss`/`woocommerce.css` anymore (removed 2026-07-31 so saving one file refreshes all compiled CSS, instead of needing to remember to also touch a second entry point). Never hand-edit the compiled `.css` files directly — edit the `sass/` source.
 - **ACF (Advanced Custom Fields)** for structured/editable content (see `page-templates/home-page.php` for the existing pattern).
 - **Gravity Forms** for any non-WooCommerce forms (contact, inquiry, newsletter). Don't hand-roll form handling that Gravity Forms already covers.
 - **Yoast SEO** for SEO (decided). Payment gateway is not yet decided — see `docs/store-build-plan.md` step 1.
@@ -89,17 +89,18 @@ sass/                       SCSS source, 7-1-style architecture
   components/                reusable UI pieces
   layouts/                  layout partials (sidebar/no-sidebar/content-sidebar)
   pages/                    page-specific styles (e.g. _home-page.scss)
-  utilities/                accessibility, alignment helpers
-  woocommerce.scss          WooCommerce-specific overrides
-  style.scss                entry point, imports the above
+  utilities/                accessibility, alignment helpers, scroll-reveal, particle canvas
+  plugins/woocommerce/      WooCommerce-specific overrides, imported into style.scss like any other partial
+  style.scss                single entry point, imports everything above (including WooCommerce)
 js/                         source JS (customizer.js, navigation.js)
 dist/                       compiled build output — never edit directly
 page-templates/             custom page templates (e.g. home-page.php, ACF-driven)
+woocommerce/                WooCommerce template overrides (mirrors the plugin's own templates/ structure)
 template-parts/             reusable template partials
 docs/                       project docs (build plan, design notes)
 ```
 
-Compiled `style.css` / `woocommerce.css` / `style-rtl.css` sit at the theme root because `node-sass` outputs there — this is intentional, not a mistake.
+Compiled `style.css` / `style-rtl.css` sit at the theme root because `node-sass` outputs there — this is intentional, not a mistake.
 
 **Vendored third-party libraries** (e.g. `dist/js/swiper-bundle.min.js`, `dist/css/swiper-bundle.min.css`) are the exception to "never edit `dist/` directly" — there's no local source to compile them from; they're downloaded pre-built and committed as-is. To update one, re-download the same file from its CDN (e.g. `https://cdn.jsdelivr.net/npm/<package>@<version>/...`) and overwrite it — don't hand-edit it, and don't confuse it with theme build output.
 
@@ -108,7 +109,7 @@ Compiled `style.css` / `woocommerce.css` / `style-rtl.css` sit at the theme root
 - **Function/hook prefix**: `wawawewa_` for all custom functions (matches the theme's text domain). Follow this for any new function.
 - **Text domain**: `wawawewa` — wrap all user-facing strings in `esc_html__()` / `esc_html_e()` etc. with this domain.
 - **WooCommerce hooks**: add new WooCommerce customizations to `inc/woocommerce.php`, following the existing pattern of small, single-purpose hooked functions (see `wawawewa_woocommerce_header_cart()` etc.).
-- **New SCSS**: add partials under the matching `sass/` subfolder (component vs. page vs. layout) and `@import` them from `sass/style.scss` (or `sass/woocommerce.scss` for storefront-specific styles) — don't create new top-level Sass entry points. See the RTL / Hebrew section below for directional property rules (this matters on every new rule, not just RTL-specific work).
+- **New SCSS**: add partials under the matching `sass/` subfolder (component vs. page vs. layout vs. `plugins/woocommerce/` for storefront-specific styles) and `@import` them from `sass/style.scss` — the single entry point for everything, including WooCommerce. Don't create new top-level Sass entry points. See the RTL / Hebrew section below for directional property rules (this matters on every new rule, not just RTL-specific work).
 - **Security**: always escape output (`esc_html`, `esc_attr`, `esc_url`, `wp_kses_*`) and use WordPress's built-in sanitization/nonce APIs for any form handling outside Gravity Forms.
 - Reuse existing theme support / hooks already declared in `functions.php` and `inc/woocommerce.php` (custom-logo, product gallery, related products args, cart fragments, etc.) rather than re-implementing them.
 

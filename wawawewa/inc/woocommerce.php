@@ -40,11 +40,19 @@ add_action( 'after_setup_theme', 'wawawewa_woocommerce_setup' );
 /**
  * WooCommerce specific scripts & stylesheets.
  *
+ * WooCommerce styling itself compiles into the main stylesheet now (see
+ * sass/style.scss's "WooCommerce" section) — there's no separate
+ * woocommerce.css to enqueue here anymore, one recompile updates everything.
+ *
+ * The inline @font-face is still needed even though our custom
+ * woocommerce/single-product/rating.php uses plain ★/☆ text instead of it —
+ * WooCommerce's default `.star-rating` markup (shop loop, review list,
+ * rating widgets) still relies on this icon font wherever we haven't
+ * overridden it.
+ *
  * @return void
  */
 function wawawewa_woocommerce_scripts() {
-	wp_enqueue_style( 'wawawewa-woocommerce-style', get_template_directory_uri() . '/woocommerce.css', array(), _S_VERSION );
-
 	$font_path   = WC()->plugin_url() . '/assets/fonts/';
 	$inline_font = '@font-face {
 			font-family: "star";
@@ -57,9 +65,16 @@ function wawawewa_woocommerce_scripts() {
 			font-style: normal;
 		}';
 
-	wp_add_inline_style( 'wawawewa-woocommerce-style', $inline_font );
+	wp_add_inline_style( 'wawawewa-style', $inline_font );
 }
-add_action( 'wp_enqueue_scripts', 'wawawewa_woocommerce_scripts' );
+// Priority 20 (after the default-priority `wawawewa_scripts()` in
+// inc/setup-functions/enqueue.php, which registers the 'wawawewa-style'
+// handle this attaches to) — `wp_add_inline_style()` silently no-ops if the
+// handle isn't registered yet, same gotcha documented in CLAUDE.md for the
+// header.php RTL-swap case. `inc/woocommerce.php` is `require`d before
+// `enqueue.php` in functions.php, so without this explicit priority the two
+// same-priority hooks would run in that (wrong) order.
+add_action( 'wp_enqueue_scripts', 'wawawewa_woocommerce_scripts', 20 );
 
 /**
  * Disable the default WooCommerce stylesheet.
