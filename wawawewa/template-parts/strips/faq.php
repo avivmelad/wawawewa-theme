@@ -10,7 +10,9 @@
  * Single-open accordion: opening one row closes any other open row, first
  * row open by default (see js/faq-accordion.js). Uses real <button> headers
  * (aria-expanded/aria-controls) rather than the mockup's plain onClick divs,
- * for keyboard accessibility.
+ * for keyboard accessibility. Item/question/sign/answer markup uses the
+ * shared `.accordion` component (sass/components/_accordion.scss) — also
+ * reused by the single product page's Description/Shipping/Care rows.
  *
  * @package wawawewa
  */
@@ -45,26 +47,26 @@ $strip_id = 'faq-' . wp_unique_id();
 		<h2 class="strip-faq__heading"><?php echo esc_html($heading); ?></h2>
 	<?php endif; ?>
 
-	<div class="strip-faq__list" data-faq-accordion>
+	<div class="accordion" data-faq-accordion>
 		<?php foreach ($items as $index => $item) :
 			$row_id     = $strip_id . '-' . $index;
 			$is_open    = 0 === $index;
 			?>
-			<div class="strip-faq__item<?php echo $is_open ? ' is-open' : ''; ?>">
+			<div class="accordion__item<?php echo $is_open ? ' is-open' : ''; ?>">
 				<button
 					type="button"
-					class="strip-faq__question"
+					class="accordion__question"
 					id="<?php echo esc_attr($row_id . '-question'); ?>"
 					aria-expanded="<?php echo $is_open ? 'true' : 'false'; ?>"
 					aria-controls="<?php echo esc_attr($row_id . '-answer'); ?>"
 					data-faq-toggle
 				>
 					<span><?php echo esc_html($item['question']); ?></span>
-					<span class="strip-faq__sign" aria-hidden="true"></span>
+					<span class="accordion__sign" aria-hidden="true"></span>
 				</button>
 
 				<div
-					class="strip-faq__answer"
+					class="accordion__answer"
 					id="<?php echo esc_attr($row_id . '-answer'); ?>"
 					role="region"
 					aria-labelledby="<?php echo esc_attr($row_id . '-question'); ?>"

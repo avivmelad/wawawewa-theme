@@ -1,77 +1,481 @@
+// Single product page — "Futuristic v2" direction. Restyles WooCommerce's
+// own default markup (gallery, title, rating, price, excerpt, variations
+// form, add-to-cart, related products) rather than replacing any of its
+// functionality — see woocommerce/content-single-product.php and
+// docs/current-mission.md for the full rationale.
+
+.woocommerce-breadcrumb {
+	position: relative;
+	z-index: 1;
+	padding: 24px 48px 0;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-family: $font__mono;
+	font-weight: 700;
+	font-size: 11px;
+	letter-spacing: 0.06em;
+	color: $color__brand-gold; // Unlinked current crumb (product name) inherits this.
+
+	@include mq(tablet) {
+		padding: 20px 24px 0;
+	}
+
+	@include mq(mobile) {
+		padding: 16px 20px 0;
+		font-size: 10px;
+	}
+
+	a {
+		color: $color__brand-text-muted-footer;
+		text-decoration: none;
+
+		&:hover {
+			color: $color__brand-gold;
+		}
+	}
+}
+
+// `wc_product_class( 'single-product', $product )` (content-single-product.php)
+// adds this class straight onto the same outer <div> as WC's own product/
+// post-type/stock classes — not a nested div.product child.
 .single-product {
+	position: relative;
+	z-index: 1;
+}
 
-	div.product {
+.single-product__layout {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 56px;
+	padding: 28px 48px 64px;
+	align-items: start;
+
+	@include mq(tablet) {
+		gap: 32px;
+		padding: 24px 24px 48px;
+	}
+
+	@include mq(mobile) {
+		grid-template-columns: 1fr;
+		gap: 24px;
+		padding: 20px 20px 32px;
+	}
+}
+
+// Gallery: restyles WooCommerce's own gallery markup — no template
+// override, since the theme already declares wc-product-gallery-zoom/
+// -lightbox/-slider support (inc/woocommerce.php), so WC's own JS handles
+// image swapping/zoom/lightbox. Only the layout/visuals are custom here.
+.single-product__gallery {
+	position: sticky;
+	top: 24px;
+	min-width: 0;
+
+	@include mq(mobile) {
+		position: static;
+	}
+
+	.woocommerce-product-gallery {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.woocommerce-product-gallery__wrapper,
+	.flex-viewport {
 		position: relative;
+		border-radius: 20px;
+		overflow: hidden;
+		border: 1.5px solid $color__brand-border-muted;
+	}
 
-		.woocommerce-product-gallery {
-			position: relative;
-			float: left;
+	.woocommerce-product-gallery__image img,
+	img.wp-post-image {
+		display: block;
+		width: 100%;
+		height: 520px;
+		object-fit: cover;
 
-			.woocommerce-product-gallery__trigger {
-				position: absolute;
-				top: 2em;
-				right: 1em;
+		@include mq(mobile) {
+			height: 320px;
+		}
+	}
+
+	.woocommerce-product-gallery__trigger {
+		position: absolute;
+		top: 16px;
+		inset-inline-end: 16px;
+		z-index: 2;
+		font-family: $font__mono;
+		font-weight: 700;
+		font-size: 10px;
+		letter-spacing: 0.05em;
+		color: $color__brand-gold;
+		border: 1px solid $color__brand-gold;
+		border-radius: 999px;
+		padding: 6px 14px;
+		background: rgba(253, 253, 252, 0.85);
+	}
+
+	.flex-control-thumbs {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 12px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			border-radius: 12px;
+			overflow: hidden;
+			cursor: pointer;
+
+			img {
 				display: block;
-				z-index: 99;
-			}
+				width: 100%;
+				height: 90px;
+				object-fit: cover;
+				border: 1.5px solid $color__brand-border-muted;
+				border-radius: 12px;
+				opacity: 0.6;
+				transition: border-color 0.2s ease, opacity 0.2s ease;
 
-			.flex-viewport {
-				margin-bottom: 1em;
-			}
-
-			.flex-control-thumbs {
-				margin: 0;
-				padding: 0;
-
-				li {
-					list-style: none;
-					cursor: pointer;
-					float: left;
-
-					img {
-						opacity: 0.5;
-
-						&.flex-active {
-							opacity: 1;
-						}
-					}
-
-					&:hover {
-
-						img {
-							opacity: 1;
-						}
-					}
+				&.flex-active {
+					border-color: $color__brand-gold;
+					opacity: 1;
 				}
 			}
 
-			@for $i from 2 through 5 {
-
-				&.woocommerce-product-gallery--columns-#{$i} {
-
-					.flex-control-thumbs {
-
-						li {
-
-							@include column-width($i);
-
-							&:nth-child(#{$i}n) {
-								margin-right: 0;
-							}
-
-							&:nth-child(#{$i}n+1) {
-								clear: both;
-							}
-						}
-					}
-				}
+			&:hover img {
+				opacity: 1;
 			}
 		}
 	}
 }
 
-.stock {
+.single-product__summary {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	min-width: 0;
 
+	.product_title {
+		margin: 0 0 12px;
+		font-family: $font__heebo;
+		font-weight: 800;
+		font-size: 34px;
+		line-height: 1.15;
+
+		@include mq(mobile) {
+			font-size: 26px;
+		}
+	}
+
+	.price {
+		font-family: $font__heebo;
+		font-weight: 800;
+		font-size: 28px;
+		color: $color__brand-gold;
+
+		del {
+			margin-inline-end: 8px;
+			font-size: 0.6em;
+			color: $color__brand-text-muted;
+			opacity: 0.7;
+		}
+	}
+
+	.woocommerce-product-details__short-description {
+		font-size: 15px;
+		line-height: 1.7;
+		color: $color__brand-text-muted;
+
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.single-product__stock-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	width: fit-content;
+	padding: 6px 14px;
+	border: 1px solid $color__brand-border-muted;
+	border-radius: 999px;
+	font-family: $font__mono;
+	font-weight: 700;
+	font-size: 10px;
+	letter-spacing: 0.08em;
+	color: $color__brand-gold;
+
+	&.is-out-of-stock {
+		color: $color__brand-text-muted;
+	}
+}
+
+.single-product__stock-dot {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: currentColor;
+	animation: hf-pulse 1.6s ease-in-out infinite;
+}
+
+.single-product__category {
+	display: block;
+	width: fit-content;
+	font-family: $font__main;
+	font-weight: 700;
+	font-size: 12px;
+	letter-spacing: 0.06em;
+	color: $color__brand-gold;
+	text-decoration: none;
+
+	&:hover {
+		color: $color__brand-gold-hover;
+	}
+}
+
+// Real review data (woocommerce/single-product/rating.php) — unlike the
+// homepage Testimonials strip's hardcoded 5 stars, this is rounded from an
+// actual average rating.
+.single-product__rating {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.single-product__rating-stars {
+	font-family: $font__heebo;
+	font-weight: 700;
+	font-size: 14px;
+	color: $color__brand-gold;
+}
+
+.single-product__rating-count {
+	font-size: 13px;
+	color: $color__brand-text-muted-footer;
+}
+
+// Quantity stepper + add-to-cart. `.quantity`/`.qty`/`.single_add_to_cart_button`
+// are WooCommerce's own classes — js/product-quantity-stepper.js adds the
+// +/- buttons as progressive enhancement, the underlying input is untouched.
+.cart.woocommerce-variation-add-to-cart-disabled,
+form.cart:not(.variations_form),
+.woocommerce-variation-add-to-cart {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.quantity {
+	display: flex;
+	align-items: center;
+	border: 1.5px solid $color__brand-border-muted;
+	border-radius: 999px;
+	overflow: hidden;
+
+	.qty {
+		width: 42px;
+		height: 46px;
+		border: 0;
+		background: none;
+		text-align: center;
+		font-family: $font__heebo;
+		font-weight: 700;
+		font-size: 15px;
+		color: $color__brand-text;
+
+		// Hide native number spinners — replaced by the stepper buttons.
+		-moz-appearance: textfield;
+
+		&::-webkit-inner-spin-button,
+		&::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+	}
+}
+
+.quantity__step {
+	width: 42px;
+	height: 46px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: none;
+	border: 0;
+	cursor: pointer;
+	font-family: $font__heebo;
+	font-weight: 700;
+	font-size: 18px;
+	color: $color__brand-text;
+
+	&:hover {
+		color: $color__brand-gold;
+	}
+}
+
+.single_add_to_cart_button {
+	flex: 1;
+	min-width: 160px;
+	height: 46px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: $color__brand-gold;
+	color: $color__brand-bg;
+	border-color: $color__brand-gold;
+
+	&:hover,
+	&:focus {
+		background: $color__brand-gold-hover;
+		border-color: $color__brand-gold-hover;
+		color: $color__brand-bg;
+	}
+}
+
+// Variable products: WooCommerce's own native <select> attribute form,
+// restyled (not replaced with custom swatches — see docs/current-mission.md).
+.variations {
+	width: 100%;
+	margin-bottom: 4px;
+
+	td,
+	th {
+		padding: 6px 0;
+		text-align: start;
+		vertical-align: middle;
+	}
+
+	label {
+		font-family: $font__main;
+		font-weight: 800;
+		font-size: 13px;
+	}
+
+	select {
+		width: 100%;
+		max-width: 260px;
+		height: 44px;
+		padding: 0 14px;
+		border: 1.5px solid $color__brand-border-muted;
+		border-radius: 10px;
+		background: $color__brand-surface;
+		font-family: $font__main;
+		font-size: 14px;
+		color: $color__brand-text;
+	}
+
+	.reset_variations {
+		font-size: 12px;
+		color: $color__brand-text-muted;
+	}
+}
+
+.woocommerce-variation-price .price {
+	font-size: 24px;
+}
+
+.single-product__trust-badges {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 12px;
+	padding-top: 8px;
+
+	@include mq(mobile) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.single-product__trust-badge {
+	text-align: center;
+	padding: 14px 8px;
+	border: 1px solid $color__brand-border-light;
+	border-radius: 12px;
+	font-size: 12px;
+	color: $color__brand-text-muted;
+}
+
+.single-product__trust-badge-icon {
+	margin-bottom: 6px;
+	font-family: $font__mono;
+	font-weight: 700;
+	font-size: 11px;
+	color: $color__brand-gold;
+}
+
+.single-product__accordion {
+	margin-top: 8px;
+}
+
+.single-product__related-section {
+	position: relative;
+	z-index: 1;
+	padding: 0 48px 64px;
+
+	@include mq(tablet) {
+		padding: 0 24px 48px;
+	}
+
+	@include mq(mobile) {
+		padding: 0 20px 32px;
+	}
+}
+
+.single-product__related-heading {
+	text-align: center;
+	margin-bottom: 28px;
+
+	@include mq(mobile) {
+		margin-bottom: 20px;
+	}
+}
+
+.single-product__related-eyebrow {
+	margin-bottom: 10px;
+	font-family: $font__mono;
+	font-weight: 700;
+	font-size: 11px;
+	letter-spacing: 0.1em;
+	color: $color__brand-gold;
+}
+
+.single-product__related-title {
+	margin: 0;
+	font-family: $font__heebo;
+	font-weight: 800;
+	font-size: 30px;
+	line-height: 1.1;
+
+	@include mq(mobile) {
+		font-size: 24px;
+	}
+}
+
+.single-product__related-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 22px;
+
+	@include mq(tablet) {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 18px;
+	}
+
+	@include mq(mobile) {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 14px;
+	}
+}
+
+.stock {
 	&:empty::before {
 		display: none;
 	}

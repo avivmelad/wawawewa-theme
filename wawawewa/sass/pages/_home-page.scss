@@ -1,17 +1,5 @@
 .page-template-home-page {
 
-	// Particle-network canvas background (js/particles.js). Fixed behind
-	// everything; sections below opt into stacking above it via z-index.
-	.homepage-particles {
-		position: fixed;
-		inset: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 0;
-		pointer-events: none;
-		opacity: 0.5;
-	}
-
 	.strip-hero {
 		position: relative;
 		z-index: 1;
@@ -336,124 +324,9 @@
 			}
 		}
 
-		&__card {
-			display: flex;
-			flex-direction: column;
-			overflow: hidden;
-			background: $color__brand-surface;
-			border: 1.5px solid $color__brand-gold;
-			border-radius: 18px;
-			transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-
-			@include mq(mobile) {
-				border-radius: 14px;
-
-				&:active {
-					transform: scale(0.97);
-					border-color: $color__brand-gold-hover;
-				}
-			}
-
-			@include mq(mobile, min) {
-				&:hover {
-					box-shadow: 0 20px 40px rgba(184, 137, 46, 0.18);
-					border-color: $color__brand-gold-hover;
-				}
-			}
-		}
-
-		&__image {
-			display: block;
-			overflow: hidden;
-
-			img {
-				display: block;
-				width: 100%;
-				height: 190px;
-				object-fit: cover;
-				transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-
-				@include mq(mobile) {
-					height: 130px;
-				}
-			}
-		}
-
-		&__body {
-			display: flex;
-			flex-direction: column;
-			gap: 6px;
-			padding: 14px 16px 16px;
-
-			@include mq(mobile) {
-				gap: 5px;
-				padding: 10px 12px 12px;
-			}
-		}
-
-		&__name {
-			font-family: $font__main;
-			font-weight: 700;
-			font-size: 14px;
-			color: $color__brand-text;
-			text-decoration: none;
-
-			@include mq(mobile) {
-				font-size: 12px;
-			}
-
-			&:hover,
-			&:visited {
-				color: $color__brand-text;
-			}
-		}
-
-		&__footer {
-			display: flex;
-			flex-wrap: wrap;
-			align-items: center;
-			justify-content: space-between;
-			gap: 8px;
-
-			// WooCommerce's ajax_add_to_cart appends a "view cart" link right
-			// after the button on success (same parent, not the button itself) —
-			// force it onto its own full-width row below instead of letting it
-			// squeeze into the price/button row.
-			.added_to_cart {
-				flex-basis: 100%;
-				margin-top: 4px;
-				font-size: 11px;
-				text-align: center;
-
-				@include mq(mobile) {
-					font-size: 10px;
-				}
-			}
-		}
-
-		&__price {
-			font-family: $font__heebo;
-			font-weight: 800;
-			font-size: 14px;
-			color: $color__brand-gold;
-
-			@include mq(mobile) {
-				font-size: 12px;
-			}
-		}
-
-		// The WooCommerce add-to-cart button already renders with the theme's
-		// shared `.button` class (see sass/components/buttons/_buttons.scss) —
-		// just shrink it to fit the product card, don't restyle it from scratch.
-		.button {
-			padding: 6px 14px;
-			font-size: 12px;
-
-			@include mq(mobile) {
-				padding: 4px 10px;
-				font-size: 10px;
-			}
-		}
+		// Individual card styling lives in the shared
+		// sass/components/_product-card.scss (.product-card) — reused by the
+		// single product page's related-products section too.
 	}
 
 	.strip-categories {
@@ -799,84 +672,9 @@
 			}
 		}
 
-		&__list {
-			display: flex;
-			flex-direction: column;
-			gap: 12px;
-
-			@include mq(mobile) {
-				gap: 10px;
-			}
-		}
-
-		&__item {
-			overflow: hidden;
-			border: 1.5px solid $color__brand-gold;
-			border-radius: 16px;
-
-			@include mq(mobile) {
-				border-radius: 14px;
-			}
-		}
-
-		&__question {
-			display: flex;
-			width: 100%;
-			align-items: center;
-			justify-content: space-between;
-			gap: 12px;
-			padding: 18px 22px;
-			background: none;
-			border: 0;
-			cursor: pointer;
-			font-family: $font__main;
-			font-weight: 700;
-			font-size: 15px;
-			color: $color__brand-text;
-			text-align: start;
-
-			@include mq(mobile) {
-				padding: 14px 16px;
-				font-size: 13px;
-			}
-		}
-
-		&__sign {
-			flex-shrink: 0;
-			font-family: $font__heebo;
-			font-weight: 800;
-			font-size: 18px;
-			line-height: 1;
-			color: $color__brand-gold;
-
-			@include mq(mobile) {
-				font-size: 16px;
-			}
-
-			&::before {
-				content: "+";
-			}
-
-			.is-open &::before {
-				content: "\2013"; // –
-			}
-		}
-
-		&__answer {
-			padding: 0 22px 20px;
-			font-size: 14px;
-			line-height: 1.6;
-			color: $color__brand-text-muted;
-
-			@include mq(mobile) {
-				padding: 0 16px 16px;
-				font-size: 13px;
-			}
-
-			p {
-				margin: 0;
-			}
-		}
+		// Item/question/sign/answer styling lives in the shared
+		// sass/components/_accordion.scss (.accordion) — reused by the
+		// single product page's Description/Shipping/Care rows too.
 	}
 }
 

@@ -47,12 +47,14 @@ Living status tracker for the store build. Detail/rationale for each item lives 
 - [x] Recolored everything built so far to the "v2" light/cream palette (current main design, see build plan "Design evolution — v2") — header/mini-cart/drawer, footer, buttons, Hero/Marquee/Best-sellers, default logo SVG, particle canvas; verified mobile mockup uses identical colors, no separate mobile pass needed
 - [x] `page-templates/home-page.php` rebuilt as the flexible-content dispatcher
 - [x] Fix stray `@package RAD` comment in `page-templates/home-page.php`
+- [ ] Fill in real content for every strip in wp-admin (Hero, Marquee text, Best-sellers product picks, Categories' 3 real WooCommerce categories, Testimonials, About copy/image, FAQ questions, footer content) and verify on staging — RTL first, then desktop, then mobile, for each
 
 ## 6. WooCommerce store pages
-- [ ] `woocommerce/` template overrides added where needed
-- [ ] Mini-cart wired into `header.php` via `wawawewa_woocommerce_header_cart()`
+- [x] Single product page rebuilt in the Futuristic v2 direction (`woocommerce/content-single-product.php`, `woocommerce/single-product/related.php`, `woocommerce/single-product/rating.php`, `sass/plugins/woocommerce/_single-product.scss`) — see `docs/current-mission.md` for the full breakdown
+- [ ] `woocommerce/` template overrides for other pages (cart, checkout, my-account) added where needed
+- [x] Mini-cart wired into `header.php` via custom `.header-cart` markup (not the sample `wawawewa_woocommerce_header_cart()` helper, which is unused leftover scaffolding)
 - [ ] Cart/checkout/my-account styling (`sass/plugins/woocommerce/`)
-- [ ] AJAX add-to-cart + cart fragment updates verified
+- [x] AJAX add-to-cart + cart fragment updates verified (header cart count + mini-cart, see checklist section 4 history)
 - [ ] Product grid responsiveness verified (1–6 columns)
 
 ## 7. Branding & content pass

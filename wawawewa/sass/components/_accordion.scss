@@ -1,0 +1,82 @@
+// Shared single-open accordion component — used by the homepage FAQ strip
+// (template-parts/strips/faq.php) and the single product page's Description/
+// Shipping/Care rows (woocommerce/content-single-product.php). Pair with
+// `[data-faq-accordion]` + `[data-faq-toggle]` and js/faq-accordion.js.
+.accordion {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+
+	@include mq(mobile) {
+		gap: 10px;
+	}
+
+	&__item {
+		overflow: hidden;
+		border: 1.5px solid $color__brand-gold;
+		border-radius: 16px;
+
+		@include mq(mobile) {
+			border-radius: 14px;
+		}
+	}
+
+	&__question {
+		display: flex;
+		width: 100%;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		padding: 18px 22px;
+		background: none;
+		border: 0;
+		cursor: pointer;
+		font-family: $font__main;
+		font-weight: 700;
+		font-size: 15px;
+		color: $color__brand-text;
+		text-align: start;
+
+		@include mq(mobile) {
+			padding: 14px 16px;
+			font-size: 13px;
+		}
+	}
+
+	&__sign {
+		flex-shrink: 0;
+		font-family: $font__heebo;
+		font-weight: 800;
+		font-size: 18px;
+		line-height: 1;
+		color: $color__brand-gold;
+
+		@include mq(mobile) {
+			font-size: 16px;
+		}
+
+		&::before {
+			content: "+";
+		}
+
+		.is-open &::before {
+			content: "\2013"; // –
+		}
+	}
+
+	&__answer {
+		padding: 0 22px 20px;
+		font-size: 14px;
+		line-height: 1.6;
+		color: $color__brand-text-muted;
+
+		@include mq(mobile) {
+			padding: 0 16px 16px;
+			font-size: 13px;
+		}
+
+		p {
+			margin: 0;
+		}
+	}
+}

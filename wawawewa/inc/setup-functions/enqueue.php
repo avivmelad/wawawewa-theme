@@ -22,14 +22,25 @@ function wawawewa_scripts()
 	wp_enqueue_script('wawawewa-mini-cart', get_template_directory_uri() . '/js/mini-cart.js', array(), THEME_VERSION, true);
 	wp_enqueue_script('wawawewa-reveal', get_template_directory_uri() . '/js/reveal.js', array(), THEME_VERSION, true);
 
-	if (is_page_template('page-templates/home-page.php')) {
+	$is_home_page = is_page_template('page-templates/home-page.php');
+	$is_product   = function_exists('is_product') && is_product();
+
+	if ($is_home_page || $is_product) {
+		// Shared between the homepage and the single product page.
 		wp_enqueue_script('wawawewa-particles', get_template_directory_uri() . '/js/particles.js', array(), THEME_VERSION, true);
+		wp_enqueue_script('wawawewa-product-tilt', get_template_directory_uri() . '/js/product-tilt.js', array(), THEME_VERSION, true);
+		wp_enqueue_script('wawawewa-faq-accordion', get_template_directory_uri() . '/js/faq-accordion.js', array(), THEME_VERSION, true);
+	}
+
+	if ($is_home_page) {
 		wp_enqueue_script('wawawewa-hero-interactions', get_template_directory_uri() . '/js/hero-interactions.js', array(), THEME_VERSION, true);
 		wp_enqueue_style('swiper-css', get_template_directory_uri() . '/dist/css/swiper-bundle.min.css', array(), THEME_VERSION);
 		wp_enqueue_script('swiper-js', get_template_directory_uri() . '/dist/js/swiper-bundle.min.js', array(), THEME_VERSION, true);
 		wp_enqueue_script('wawawewa-marquee', get_template_directory_uri() . '/js/marquee.js', array('swiper-js'), THEME_VERSION, true);
-		wp_enqueue_script('wawawewa-product-tilt', get_template_directory_uri() . '/js/product-tilt.js', array(), THEME_VERSION, true);
-		wp_enqueue_script('wawawewa-faq-accordion', get_template_directory_uri() . '/js/faq-accordion.js', array(), THEME_VERSION, true);
+	}
+
+	if ($is_product) {
+		wp_enqueue_script('wawawewa-product-quantity-stepper', get_template_directory_uri() . '/js/product-quantity-stepper.js', array(), THEME_VERSION, true);
 	}
 	wp_localize_script('wawawewa-ajax-scripts', 'ajax_obj', array('ajaxurl' => admin_url('admin-ajax.php')));
 	// wp_enqueue_script('select2', get_template_directory_uri() . '/dist/js/select2.min.js', array('jquery'), THEME_VERSION);

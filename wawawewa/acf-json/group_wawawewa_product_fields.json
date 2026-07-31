@@ -1,0 +1,40 @@
+{
+    "key": "group_wawawewa_product_fields",
+    "title": "פרטי מוצר נוספים",
+    "fields": [
+        {
+            "key": "field_wawawewa_product_care_instructions",
+            "label": "הוראות טיפוח",
+            "name": "product_care_instructions",
+            "type": "textarea",
+            "instructions": "מוצג בעמוד המוצר תחת \"מידות וטיפוח\". אם ריק, הסקשן לא יוצג. עבור מדיניות משלוח/החזרות (זהה לכל המוצרים), ראו הגדרות האתר ← מוצר.",
+            "required": 0,
+            "conditional_logic": 0,
+            "rows": 3,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "product"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1785495563
+}

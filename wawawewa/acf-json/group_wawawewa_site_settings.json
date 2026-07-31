@@ -338,6 +338,77 @@
                 "class": "",
                 "id": ""
             }
+        },
+        {
+            "key": "field_wawawewa_product_tab",
+            "label": "מוצר",
+            "name": "product_tab",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_wawawewa_product_trust_badge_1",
+            "label": "תגית אמון 1",
+            "name": "product_trust_badge_1",
+            "type": "text",
+            "instructions": "מוצג מתחת לכפתור הוספה לסל בעמוד המוצר, זהה בכל המוצרים.",
+            "required": 0,
+            "default_value": "משלוח חינם מעל 250 ₪",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_wawawewa_product_trust_badge_2",
+            "label": "תגית אמון 2",
+            "name": "product_trust_badge_2",
+            "type": "text",
+            "required": 0,
+            "default_value": "30 יום להחזרה",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_wawawewa_product_trust_badge_3",
+            "label": "תגית אמון 3",
+            "name": "product_trust_badge_3",
+            "type": "text",
+            "required": 0,
+            "default_value": "תשלום מאובטח",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_wawawewa_product_shipping_returns_text",
+            "label": "טקסט משלוח והחזרות",
+            "name": "product_shipping_returns_text",
+            "type": "textarea",
+            "instructions": "מוצג בעמוד המוצר, זהה בכל המוצרים. עבור הוראות טיפוח ספציפיות למוצר, ראו את השדה \"הוראות טיפוח\" בעריכת המוצר עצמו.",
+            "required": 0,
+            "rows": 3,
+            "default_value": "משלוח תוך 3-5 ימי עסקים, חינם מעל 250 ₪. ניתן להחזיר עד 30 יום מהרכישה.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
         }
     ],
     "location": [
@@ -358,5 +429,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1785493785
+    "modified": 1785495551
 }

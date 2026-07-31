@@ -1,0 +1,13 @@
+// Ambient particle-network canvas background (js/particles.js). Fixed
+// full-viewport, decorative; sections stack above it via z-index. Shared
+// between the homepage and the single product page — see page-templates/
+// home-page.php and woocommerce/content-single-product.php.
+.particles-canvas {
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	pointer-events: none;
+	opacity: 0.5;
+}

@@ -92,8 +92,8 @@ add_filter( 'body_class', 'wawawewa_woocommerce_active_body_class' );
  */
 function wawawewa_woocommerce_related_products_args( $args ) {
 	$defaults = array(
-		'posts_per_page' => 3,
-		'columns'        => 3,
+		'posts_per_page' => 4,
+		'columns'        => 4,
 	);
 
 	$args = wp_parse_args( $defaults, $args );

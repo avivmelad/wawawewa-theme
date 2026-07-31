@@ -47,16 +47,16 @@ if (! $product_ids) {
 				continue;
 			}
 			?>
-			<div class="strip-best-sellers__card" data-reveal data-tilt>
-				<a class="strip-best-sellers__image" href="<?php echo esc_url(get_permalink($product_id)); ?>">
+			<div class="product-card" data-reveal data-tilt>
+				<a class="product-card__image" href="<?php echo esc_url(get_permalink($product_id)); ?>">
 					<?php echo $product->get_image('woocommerce_thumbnail'); ?>
 				</a>
-				<div class="strip-best-sellers__body">
-					<a class="strip-best-sellers__name" href="<?php echo esc_url(get_permalink($product_id)); ?>">
+				<div class="product-card__body">
+					<a class="product-card__name" href="<?php echo esc_url(get_permalink($product_id)); ?>">
 						<?php echo esc_html($product->get_name()); ?>
 					</a>
-					<div class="strip-best-sellers__footer">
-						<div class="strip-best-sellers__price"><?php echo wp_kses_post($product->get_price_html()); ?></div>
+					<div class="product-card__footer">
+						<div class="product-card__price"><?php echo wp_kses_post($product->get_price_html()); ?></div>
 						<?php woocommerce_template_loop_add_to_cart(); ?>
 					</div>
 				</div>
