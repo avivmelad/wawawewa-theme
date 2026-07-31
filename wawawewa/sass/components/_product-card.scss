@@ -29,6 +29,7 @@
 
 	&__image {
 		display: block;
+		position: relative;
 		overflow: hidden;
 
 		img {
@@ -53,6 +54,27 @@
 		@include mq(mobile) {
 			gap: 5px;
 			padding: 10px 12px 12px;
+		}
+	}
+
+	// "חדש" / "מבצע" corner badge — opt-in, only rendered by the category-page
+	// grid so far (Best-sellers/related products don't compute one).
+	&__badge {
+		position: absolute;
+		top: 12px;
+		inset-inline-end: 12px;
+		padding: 5px 12px;
+		background: $color__brand-gold;
+		color: $color__brand-text;
+		border-radius: 999px;
+		font-family: $font__main;
+		font-weight: 800;
+		font-size: 11px;
+
+		@include mq(mobile) {
+			top: 8px;
+			padding: 4px 10px;
+			font-size: 10px;
 		}
 	}
 

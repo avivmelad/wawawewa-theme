@@ -126,6 +126,45 @@ function wawawewa_woocommerce_active_body_class( $classes ) {
 add_filter( 'body_class', 'wawawewa_woocommerce_active_body_class' );
 
 /**
+ * Category page sub-category filter (`woocommerce/archive-product.php`).
+ *
+ * Sort (`orderby`) and price (`min_price`/`max_price`) GET params are already
+ * read directly by WooCommerce's own `WC_Query` on the main query for any
+ * shop/product-taxonomy archive — no custom code needed for those. Sub-category
+ * has no WooCommerce-native equivalent: a category archive's default tax_query
+ * already includes descendant terms (`include_children` defaults true for
+ * hierarchical taxonomies), so the parent category page already shows every
+ * subcategory's products — this filter narrows that down to just the selected
+ * subcat slugs (`$_GET['subcat'][]`) when the shopper checks any.
+ *
+ * @param WP_Query $query Main query.
+ * @return void
+ */
+function wawawewa_category_page_subcat_filter( $query ) {
+	if ( is_admin() || ! $query->is_main_query() || ! $query->is_tax( 'product_cat' ) ) {
+		return;
+	}
+
+	if ( empty( $_GET['subcat'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		return;
+	}
+
+	$selected_subcats = array_map( 'sanitize_title', (array) wp_unslash( $_GET['subcat'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+	$query->set(
+		'tax_query', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+		array(
+			array(
+				'taxonomy' => 'product_cat',
+				'field'    => 'slug',
+				'terms'    => $selected_subcats,
+			),
+		)
+	);
+}
+add_action( 'pre_get_posts', 'wawawewa_category_page_subcat_filter', 20 );
+
+/**
  * Related Products Args.
  *
  * @param array $args related products args.

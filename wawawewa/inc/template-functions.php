@@ -58,3 +58,60 @@ function wawawewa_footer_social_icon( $platform ) {
 
 	return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">' . $icons[ $platform ] . '</svg>';
 }
+
+/**
+ * Category/archive page context — current term (if any), header copy, and
+ * the sub-category list for the sidebar filter.
+ *
+ * On the plain shop page (no term) the "sub-category" filter shows top-level
+ * categories instead of children, since there's no parent to descend from.
+ *
+ * @return array{term: WP_Term|null, badge_label: string, title: string, subcats: WP_Term[]}
+ */
+function wawawewa_get_category_page_context() {
+	$term = is_product_category() ? get_queried_object() : null;
+
+	$subcats = get_terms(
+		array(
+			'taxonomy'   => 'product_cat',
+			'parent'     => $term ? $term->term_id : 0,
+			'hide_empty' => true,
+		)
+	);
+
+	if ( is_wp_error( $subcats ) ) {
+		$subcats = array();
+	}
+
+	return array(
+		'term'        => $term,
+		'badge_label' => $term ? __( '◆ INDEX.CATEGORY', 'wawawewa' ) : __( '◆ INDEX.SHOP', 'wawawewa' ),
+		'title'       => $term ? $term->name : __( 'כל המוצרים', 'wawawewa' ),
+		'subcats'     => $subcats,
+	);
+}
+
+/**
+ * "New" / "on sale" badge label for a product-grid card.
+ *
+ * WooCommerce has no native "new product" concept, so "new" is an arbitrary
+ * published-within-30-days threshold. On-sale (real WooCommerce data) takes
+ * priority over new when a product happens to be both — only one badge is
+ * shown per card, matching the mockup.
+ *
+ * @param WC_Product $product Product to check.
+ * @return string Badge label, or an empty string for no badge.
+ */
+function wawawewa_get_product_grid_badge( $product ) {
+	if ( $product->is_on_sale() ) {
+		return __( 'מבצע', 'wawawewa' );
+	}
+
+	$published = get_the_time( 'U', $product->get_id() );
+
+	if ( $published && ( current_time( 'timestamp' ) - $published ) <= 30 * DAY_IN_SECONDS ) {
+		return __( 'חדש', 'wawawewa' );
+	}
+
+	return '';
+}

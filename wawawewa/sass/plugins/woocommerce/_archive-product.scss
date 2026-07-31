@@ -1,0 +1,277 @@
+// Category/archive page — "Futuristic v2" direction. Restyles a fully custom
+// `woocommerce/archive-product.php` (category header, filter sidebar,
+// product grid, pagination) — see docs/current-mission.md for the filtering
+// architecture (plain GET params, no AJAX). Breadcrumb styling is shared
+// with the single-product page (`.woocommerce-breadcrumb` in
+// _single-product.scss is unscoped, applies here too).
+
+.category-page {
+	position: relative;
+	z-index: 1;
+}
+
+.category-page__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: 24px;
+	padding: 16px 48px 32px;
+	border-bottom: 1.5px solid $color__brand-gold;
+
+	@include mq(tablet) {
+		padding: 16px 24px 24px;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	@include mq(mobile) {
+		padding: 14px 20px 20px;
+	}
+}
+
+.category-page__badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 14px;
+	padding: 6px 14px;
+	border: 1px solid $color__brand-border-muted;
+	border-radius: 999px;
+	font-family: $font__mono;
+	font-weight: 700;
+	font-size: 10px;
+	letter-spacing: 0.08em;
+	color: $color__brand-gold;
+}
+
+.category-page__badge-dot {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: $color__brand-gold;
+	animation: hf-pulse 1.6s ease-in-out infinite;
+}
+
+.category-page__title {
+	margin: 0;
+	font-family: $font__heebo;
+	font-weight: 800;
+	font-size: 42px;
+	line-height: 1.1;
+
+	@include mq(tablet) {
+		font-size: 32px;
+	}
+
+	@include mq(mobile) {
+		font-size: 26px;
+	}
+}
+
+.category-page__count {
+	max-width: 360px;
+	font-family: $font__mono;
+	font-weight: 700;
+	font-size: 12px;
+	letter-spacing: 0.04em;
+	color: $color__brand-text-muted-footer;
+	text-align: end;
+
+	@include mq(tablet) {
+		text-align: start;
+	}
+}
+
+.category-page__layout {
+	display: grid;
+	grid-template-columns: 250px 1fr;
+	gap: 40px;
+	padding: 40px 48px 64px;
+	align-items: start;
+
+	@include mq(tablet) {
+		grid-template-columns: 1fr;
+		padding: 24px 24px 48px;
+		gap: 28px;
+	}
+
+	@include mq(mobile) {
+		padding: 20px 20px 32px;
+	}
+}
+
+.category-page__sidebar {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	position: sticky;
+	top: 24px;
+
+	@include mq(tablet) {
+		position: static;
+	}
+}
+
+.category-page__filter-title {
+	margin-bottom: 16px;
+	font-family: $font__heebo;
+	font-weight: 800;
+	font-size: 15px;
+}
+
+.category-page__filter-list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.category-page__filter-option {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
+}
+
+// The real input stays in the a11y tree (focusable, announced by screen
+// readers) but is visually replaced by the custom radio/checkbox span next
+// to it — same visually-hidden-but-accessible pattern as .screen-reader-text.
+.category-page__filter-input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.category-page__filter-radio,
+.category-page__filter-checkbox {
+	flex: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 16px;
+	height: 16px;
+	border: 1.5px solid $color__brand-gold;
+	transition: box-shadow 0.2s ease;
+}
+
+.category-page__filter-radio {
+	border-radius: 50%;
+
+	&::after {
+		content: "";
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: $color__brand-gold;
+		opacity: 0;
+		transition: opacity 0.15s ease;
+	}
+}
+
+.category-page__filter-checkbox {
+	border-radius: 4px;
+
+	&::after {
+		content: "";
+		width: 8px;
+		height: 8px;
+		background: $color__brand-gold;
+		opacity: 0;
+		transition: opacity 0.15s ease;
+	}
+}
+
+.category-page__filter-input:checked + .category-page__filter-radio::after,
+.category-page__filter-input:checked + .category-page__filter-checkbox::after {
+	opacity: 1;
+}
+
+.category-page__filter-input:focus-visible + .category-page__filter-radio,
+.category-page__filter-input:focus-visible + .category-page__filter-checkbox {
+	box-shadow: 0 0 0 2px $color__brand-gold-light;
+}
+
+.category-page__filter-label {
+	font-family: $font__main;
+	font-size: 14px;
+	color: $color__brand-text;
+}
+
+.category-page__clear {
+	width: fit-content;
+	font-family: $font__main;
+	font-weight: 700;
+	font-size: 13px;
+	color: $color__brand-gold;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+
+	&:hover {
+		color: $color__brand-gold-hover;
+	}
+}
+
+.category-page__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 22px;
+
+	@include mq(tablet) {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 18px;
+	}
+
+	@include mq(mobile) {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 12px;
+	}
+}
+
+.category-page__empty {
+	font-family: $font__main;
+	font-size: 15px;
+	color: $color__brand-text-muted;
+}
+
+.category-page__pagination {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 48px;
+
+	.page-numbers {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 38px;
+		height: 38px;
+		border-radius: 50%;
+		border: 1.5px solid $color__brand-border-muted;
+		font-family: $font__heebo;
+		font-weight: 700;
+		font-size: 14px;
+		color: $color__brand-text;
+		text-decoration: none;
+		transition: background-color 0.2s ease, border-color 0.2s ease;
+
+		&:hover {
+			border-color: $color__brand-gold;
+		}
+
+		&.current {
+			background: $color__brand-gold;
+			border-color: $color__brand-gold;
+			color: $color__brand-text;
+		}
+
+		&.dots {
+			border-color: transparent;
+		}
+	}
+}

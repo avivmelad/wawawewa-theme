@@ -51,6 +51,7 @@ Living status tracker for the store build. Detail/rationale for each item lives 
 
 ## 6. WooCommerce store pages
 - [x] Single product page rebuilt in the Futuristic v2 direction (`woocommerce/content-single-product.php`, `woocommerce/single-product/related.php`, `woocommerce/single-product/rating.php`, `sass/plugins/woocommerce/_single-product.scss`) — see `docs/current-mission.md` for the full breakdown
+- [x] Category/archive page rebuilt in the Futuristic v2 direction (`woocommerce/archive-product.php`, `sass/plugins/woocommerce/_archive-product.scss`) — category header, sort/price/sub-category filter sidebar (real GET-param filtering, no AJAX — see `docs/current-mission.md`), product grid + pagination
 - [ ] `woocommerce/` template overrides for other pages (cart, checkout, my-account) added where needed
 - [x] Mini-cart wired into `header.php` via custom `.header-cart` markup (not the sample `wawawewa_woocommerce_header_cart()` helper, which is unused leftover scaffolding)
 - [ ] Cart/checkout/my-account styling (`sass/plugins/woocommerce/`)
