@@ -565,6 +565,81 @@
 			}
 		}
 	}
+
+	.strip-testimonials {
+		position: relative;
+		z-index: 1;
+		padding: 0 40px 64px;
+
+		@include mq(tablet) {
+			padding: 0 24px 48px;
+		}
+
+		@include mq(mobile) {
+			padding: 0 20px 28px;
+		}
+
+		&__grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 20px;
+
+			@include mq(tablet) {
+				grid-template-columns: repeat(2, 1fr);
+				gap: 16px;
+			}
+
+			@include mq(mobile) {
+				grid-template-columns: 1fr;
+				gap: 14px;
+			}
+		}
+
+		&__card {
+			border: 1.5px solid $color__brand-gold;
+			border-radius: 18px;
+			padding: 24px;
+
+			@include mq(mobile) {
+				border-radius: 14px;
+				padding: 18px;
+			}
+		}
+
+		&__stars {
+			margin-bottom: 12px;
+			font-family: $font__heebo;
+			font-weight: 700;
+			font-size: 14px;
+			color: $color__brand-gold;
+
+			@include mq(mobile) {
+				font-size: 12px;
+			}
+		}
+
+		&__quote {
+			margin: 0 0 14px;
+			font-size: 15px;
+			line-height: 1.6;
+			color: $color__brand-text;
+
+			@include mq(mobile) {
+				font-size: 14px;
+			}
+		}
+
+		&__author {
+			font-family: $font__main;
+			font-weight: 700;
+			font-size: 13px;
+			color: $color__brand-text-muted;
+
+			@include mq(mobile) {
+				font-size: 12px;
+			}
+		}
+	}
 }
 
 @keyframes hf-pulse {

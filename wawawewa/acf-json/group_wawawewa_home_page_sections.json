@@ -423,6 +423,73 @@
                         }
                     ]
                 },
+                "layout_wawawewa_testimonials": {
+                    "key": "layout_wawawewa_testimonials",
+                    "name": "testimonials",
+                    "label": "המלצות (Testimonials)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_wawawewa_testimonials_hidden",
+                            "label": "הסתר סקשן זה",
+                            "name": "strip_hidden",
+                            "type": "true_false",
+                            "instructions": "אם מסומן, הסקשן לא יוצג באתר (בלי למחוק את התוכן).",
+                            "required": 0,
+                            "default_value": 0,
+                            "ui": 1,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_testimonials_items",
+                            "label": "המלצות",
+                            "name": "testimonials_items",
+                            "type": "repeater",
+                            "instructions": "כל שורה היא המלצת לקוח אחת. הדירוג מוצג תמיד כ-5 כוכבים, לפי העיצוב.",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "הוספת המלצה",
+                            "min": 0,
+                            "max": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_wawawewa_testimonial_quote",
+                                    "label": "ציטוט",
+                                    "name": "quote",
+                                    "type": "textarea",
+                                    "required": 1,
+                                    "rows": 3,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                },
+                                {
+                                    "key": "field_wawawewa_testimonial_author",
+                                    "label": "שם הלקוח",
+                                    "name": "author",
+                                    "type": "text",
+                                    "required": 1,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                }
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ]
+                },
                 "layout_wawawewa_marquee": {
                     "key": "layout_wawawewa_marquee",
                     "name": "marquee",
@@ -501,5 +568,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1785429106
+    "modified": 1785490158
 }

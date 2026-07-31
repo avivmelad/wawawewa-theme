@@ -66,3 +66,11 @@ function wawawewa_strip_categories()
 {
 	get_template_part('template-parts/strips/categories');
 }
+
+/**
+ * Strip: Testimonials.
+ */
+function wawawewa_strip_testimonials()
+{
+	get_template_part('template-parts/strips/testimonials');
+}
