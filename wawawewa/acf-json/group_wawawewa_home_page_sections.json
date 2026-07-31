@@ -490,6 +490,97 @@
                         }
                     ]
                 },
+                "layout_wawawewa_about": {
+                    "key": "layout_wawawewa_about",
+                    "name": "about",
+                    "label": "אודות (About)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_wawawewa_about_hidden",
+                            "label": "הסתר סקשן זה",
+                            "name": "strip_hidden",
+                            "type": "true_false",
+                            "instructions": "אם מסומן, הסקשן לא יוצג באתר (בלי למחוק את התוכן).",
+                            "required": 0,
+                            "default_value": 0,
+                            "ui": 1,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_about_image",
+                            "label": "תמונה",
+                            "name": "about_image",
+                            "type": "image",
+                            "required": 0,
+                            "return_format": "array",
+                            "library": "all",
+                            "preview_size": "large",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_about_eyebrow",
+                            "label": "כותרת עילית",
+                            "name": "about_eyebrow",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": "◆ ABOUT_US",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_about_heading",
+                            "label": "כותרת ראשית",
+                            "name": "about_heading",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": "מוצרים שנבחרים בקפידה",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_about_body",
+                            "label": "טקסט",
+                            "name": "about_body",
+                            "type": "textarea",
+                            "required": 0,
+                            "rows": 3,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_about_link",
+                            "label": "קישור",
+                            "name": "about_link",
+                            "type": "link",
+                            "instructions": "לדוגמה \"קראו את הסיפור המלא\".",
+                            "required": 0,
+                            "return_format": "array",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ]
+                },
                 "layout_wawawewa_marquee": {
                     "key": "layout_wawawewa_marquee",
                     "name": "marquee",
@@ -568,5 +659,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1785490158
+    "modified": 1785490815
 }

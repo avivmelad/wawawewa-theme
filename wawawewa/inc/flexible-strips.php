@@ -74,3 +74,11 @@ function wawawewa_strip_testimonials()
 {
 	get_template_part('template-parts/strips/testimonials');
 }
+
+/**
+ * Strip: About / brand.
+ */
+function wawawewa_strip_about()
+{
+	get_template_part('template-parts/strips/about');
+}
