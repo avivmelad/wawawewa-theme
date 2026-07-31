@@ -527,6 +527,26 @@
                             }
                         },
                         {
+                            "key": "field_wawawewa_about_image_side",
+                            "label": "צד התמונה",
+                            "name": "about_image_side",
+                            "type": "radio",
+                            "instructions": "באיזה צד תוצג התמונה (בדסקטופ בלבד — בנייד התמונה תמיד למעלה).",
+                            "required": 0,
+                            "choices": {
+                                "start": "התחלה (ימין ב-RTL)",
+                                "end": "סוף (שמאל ב-RTL)"
+                            },
+                            "default_value": "start",
+                            "layout": "horizontal",
+                            "return_format": "value",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
                             "key": "field_wawawewa_about_eyebrow",
                             "label": "כותרת עילית",
                             "name": "about_eyebrow",
@@ -659,5 +679,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1785490815
+    "modified": 1785491400
 }

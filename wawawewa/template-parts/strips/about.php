@@ -11,11 +11,12 @@
  * @package wawawewa
  */
 
-$image   = get_sub_field('about_image');
-$eyebrow = get_sub_field('about_eyebrow');
-$heading = get_sub_field('about_heading');
-$body    = get_sub_field('about_body');
-$link    = get_sub_field('about_link');
+$image      = get_sub_field('about_image');
+$image_side = get_sub_field('about_image_side');
+$eyebrow    = get_sub_field('about_eyebrow');
+$heading    = get_sub_field('about_heading');
+$body       = get_sub_field('about_body');
+$link       = get_sub_field('about_link');
 
 if (! $image && ! $heading && ! $body) {
 	return;
@@ -25,8 +26,14 @@ if (! $image && ! $heading && ! $body) {
 // leave the section empty — fall back to WooCommerce's own placeholder image.
 $image_url = $image ? $image['url'] : wc_placeholder_img_src('large');
 $image_alt = $image ? $image['alt'] : ($heading ? $heading : get_bloginfo('name'));
+
+$strip_class = 'strip-about';
+
+if ('end' === $image_side) {
+	$strip_class .= ' strip-about--image-end';
+}
 ?>
-<section class="strip-about" data-reveal>
+<section class="<?php echo esc_attr($strip_class); ?>" data-reveal>
 	<div class="strip-about__image">
 		<img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" />
 	</div>

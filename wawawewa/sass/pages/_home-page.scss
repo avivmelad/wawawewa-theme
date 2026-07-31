@@ -662,6 +662,10 @@
 		}
 
 		&__image {
+			// Default order matches DOM order (image first) — only the
+			// `--image-end` modifier below overrides it.
+			order: 1;
+
 			img {
 				display: block;
 				width: 100%;
@@ -674,9 +678,36 @@
 			}
 		}
 
+		// "About image side" ACF toggle: swap which side the image sits on,
+		// desktop/tablet only — reset back to image-first on mobile below,
+		// since the design always stacks image-on-top there regardless of
+		// the desktop side chosen.
+		&--image-end {
+			.strip-about__image {
+				order: 2;
+			}
+
+			.strip-about__copy {
+				order: 1;
+			}
+
+			@include mq(mobile) {
+				.strip-about__image {
+					order: 1;
+				}
+
+				.strip-about__copy {
+					order: 2;
+				}
+			}
+		}
+
 		// Dark "chrome" panel, matching the drawer nav / mini-cart / newsletter
-		// band treatment — not the light main canvas.
+		// band treatment — not the light main canvas. `order: 2` (paired with
+		// `order: 1` on __image above) keeps default DOM order explicit, so the
+		// `--image-end` modifier has a stable order to actually swap.
 		&__copy {
+			order: 2;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
