@@ -287,7 +287,10 @@ p.no-comments {
 	align-items: center;
 	text-align: center;
 	position: fixed;
-	top: 20px;
+	// Below the sticky site-header (~76px tall on desktop, ~60px from
+	// `tablet-small` down — see .header-wrapper padding in
+	// sass/components/header/_header.scss), not right at the viewport edge.
+	top: 96px;
 	/*rtl:ignore*/
 	left: 50%; // Dead-center of the viewport is direction-independent — the
 	// `left: 50%` + `translateX(-50%)` centering trick only cancels out
@@ -295,6 +298,10 @@ p.no-comments {
 	// `inset-inline-start` here would anchor the opposite edge in RTL and
 	// push the toast off-center instead of centering it.
 	z-index: 100;
+
+	@include mq(tablet-small) {
+		top: 76px;
+	}
 	width: max-content;
 	max-width: min(90vw, 360px);
 	margin: 0;
