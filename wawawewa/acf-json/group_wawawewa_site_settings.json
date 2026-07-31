@@ -168,13 +168,13 @@
             }
         },
         {
-            "key": "field_wawawewa_footer_copyright_text",
-            "label": "טקסט זכויות יוצרים",
-            "name": "footer_copyright_text",
-            "type": "text",
-            "instructions": "%s יוחלף אוטומטית בשנה הנוכחית.",
+            "key": "field_wawawewa_footer_brand_blurb",
+            "label": "תיאור קצר על המותג",
+            "name": "footer_brand_blurb",
+            "type": "textarea",
+            "instructions": "מוצג לצד הלוגו בפוטר המורחב.",
             "required": 0,
-            "default_value": "© wawawewa %s",
+            "rows": 3,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -182,24 +182,150 @@
             }
         },
         {
-            "key": "field_wawawewa_footer_links",
-            "label": "קישורי פוטר",
-            "name": "footer_links",
+            "key": "field_wawawewa_footer_social_links",
+            "label": "רשתות חברתיות",
+            "name": "footer_social_links",
             "type": "repeater",
-            "instructions": "לדוגמה: תקנון, משלוחים, יצירת קשר.",
+            "instructions": "האייקונים הזמינים תואמים בדיוק לעיצוב (Pinterest, Instagram, Twitter/X) — אין תמיכה ברשתות נוספות.",
             "required": 0,
             "layout": "table",
-            "button_label": "הוספת קישור",
+            "button_label": "הוספת רשת",
             "min": 0,
             "max": 0,
             "sub_fields": [
                 {
-                    "key": "field_wawawewa_footer_link",
-                    "label": "קישור",
-                    "name": "link",
-                    "type": "link",
+                    "key": "field_wawawewa_footer_social_platform",
+                    "label": "רשת",
+                    "name": "platform",
+                    "type": "select",
                     "required": 1,
-                    "return_format": "array",
+                    "choices": {
+                        "pinterest": "Pinterest",
+                        "instagram": "Instagram",
+                        "twitter": "Twitter / X"
+                    },
+                    "default_value": "instagram",
+                    "return_format": "value",
+                    "ui": 1,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_wawawewa_footer_social_url",
+                    "label": "קישור",
+                    "name": "url",
+                    "type": "url",
+                    "required": 1,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_wawawewa_footer_link_columns",
+            "label": "עמודות קישורים",
+            "name": "footer_link_columns",
+            "type": "repeater",
+            "instructions": "לדוגמה: \"קטלוג\", \"שירות לקוחות\", \"החברה\".",
+            "required": 0,
+            "layout": "block",
+            "button_label": "הוספת עמודה",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_wawawewa_footer_column_title",
+                    "label": "כותרת העמודה",
+                    "name": "column_title",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_wawawewa_footer_column_links",
+                    "label": "קישורים",
+                    "name": "column_links",
+                    "type": "repeater",
+                    "required": 0,
+                    "layout": "table",
+                    "button_label": "הוספת קישור",
+                    "min": 0,
+                    "max": 0,
+                    "sub_fields": [
+                        {
+                            "key": "field_wawawewa_footer_column_link",
+                            "label": "קישור",
+                            "name": "link",
+                            "type": "link",
+                            "required": 1,
+                            "return_format": "array",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_wawawewa_footer_copyright_text",
+            "label": "טקסט זכויות יוצרים",
+            "name": "footer_copyright_text",
+            "type": "text",
+            "instructions": "%s יוחלף אוטומטית בשנה הנוכחית.",
+            "required": 0,
+            "default_value": "© wawawewa %s. כל הזכויות שמורות.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_wawawewa_footer_payment_badges",
+            "label": "תגיות אמצעי תשלום",
+            "name": "footer_payment_badges",
+            "type": "repeater",
+            "instructions": "לדוגמה: VISA, MC, PAYPAL. מוצג כתגיות טקסט פשוטות, לא לוגואים אמיתיים.",
+            "required": 0,
+            "layout": "table",
+            "button_label": "הוספת תגית",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_wawawewa_footer_payment_label",
+                    "label": "טקסט",
+                    "name": "label",
+                    "type": "text",
+                    "required": 1,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -232,5 +358,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1785493187
+    "modified": 1785493785
 }

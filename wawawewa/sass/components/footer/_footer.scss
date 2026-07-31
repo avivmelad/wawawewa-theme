@@ -68,7 +68,7 @@
 			border-radius: 999px;
 			background: #241f18;
 			border: 1px solid $color__brand-border-input-dark;
-			color: $color__brand-text-muted-on-dark;
+			color: $color__brand-text-faint-on-dark;
 			padding: 0 20px;
 			font-family: $font__main;
 			font-size: 13px;
@@ -102,44 +102,162 @@
 	}
 }
 
+// The expanded footer (brand + link columns + bottom bar) — all one dark
+// "chrome" panel per the v2 design, not the light main canvas.
 .site-footer {
-	background: $color__brand-bg;
-	border-top: 1px solid $color__brand-border-light;
+	position: relative;
+	z-index: 1;
+	background: $color__brand-bg-dark;
+	color: $color__brand-gold-light;
+	border-top: 1.5px solid $color__brand-gold;
+	padding: 64px 40px 0;
 
-	&__inner {
-		padding: 28px 40px;
+	@include mq(tablet) {
+		padding: 48px 24px 0;
+	}
+
+	@include mq(mobile) {
+		padding: 36px 20px 0;
+	}
+
+	&__columns {
+		display: grid;
+		grid-template-columns: 1.4fr 1fr 1fr 1fr;
+		gap: 40px;
+		padding-bottom: 48px;
+		border-bottom: 1px solid $color__brand-border-muted-dark;
+
+		@include mq(tablet) {
+			grid-template-columns: 1fr 1fr;
+			gap: 28px;
+		}
+
+		@include mq(mobile) {
+			grid-template-columns: 1fr;
+			gap: 28px;
+			padding-bottom: 32px;
+		}
+	}
+
+	&__logo {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin-bottom: 16px;
+		text-decoration: none;
+		color: $color__brand-gold-light;
+
+		img {
+			flex-shrink: 0;
+			object-fit: contain;
+		}
+	}
+
+	&__word {
+		font-family: $font__unbounded;
+		font-weight: 800;
+		font-size: 20px;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	&__wordmark-image {
+		display: block;
+		height: 20px;
+		width: auto;
+		object-fit: contain;
+	}
+
+	&__blurb {
+		margin: 0 0 22px;
+		max-width: 280px;
+		font-size: 14px;
+		line-height: 1.7;
+		color: $color__brand-text-faint-on-dark;
+	}
+
+	&__social {
+		display: flex;
+		gap: 10px;
+	}
+
+	&__social-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 38px;
+		height: 38px;
+		border: 1px solid $color__brand-border-input-dark;
+		border-radius: 50%;
+		color: $color__brand-gold;
+
+		&:hover {
+			border-color: $color__brand-gold;
+		}
+	}
+
+	&__column-title {
+		margin-bottom: 18px;
+		font-family: $font__heebo;
+		font-weight: 700;
+		font-size: 13px;
+		letter-spacing: 0.06em;
+		color: $color__brand-gold-light;
+	}
+
+	&__column-links {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		font-size: 14px;
+
+		a {
+			color: $color__brand-text-faint-on-dark;
+			text-decoration: none;
+
+			&:hover {
+				color: $color__brand-gold-hover;
+			}
+		}
+	}
+
+	&__bottom {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		flex-wrap: wrap;
-		gap: 12px;
+		gap: 16px;
+		padding: 24px 0;
 		font-size: 13px;
 		color: $color__brand-text-muted-footer;
 
 		@include mq(mobile) {
 			flex-direction: column;
 			align-items: flex-start;
-			gap: 10px;
-			padding: 22px 20px;
+			gap: 14px;
 			font-size: 12px;
 		}
 	}
 
-	&__links {
+	&__payments {
 		display: flex;
-		gap: 18px;
+		align-items: center;
+		gap: 10px;
+	}
 
-		@include mq(mobile) {
-			gap: 16px;
-		}
-
-		a {
-			color: $color__brand-text-muted-footer;
-			text-decoration: none;
-
-			&:hover {
-				color: $color__brand-gold;
-			}
-		}
+	&__payment-badge {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 34px;
+		height: 22px;
+		padding: 0 6px;
+		border-radius: 4px;
+		background: #241f18;
+		border: 1px solid $color__brand-border-input-dark;
+		font-family: $font__mono;
+		font-weight: 700;
+		font-size: 8px;
+		white-space: nowrap;
+		color: $color__brand-text-faint-on-dark;
 	}
 }

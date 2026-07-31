@@ -21,6 +21,11 @@ $color__brand-text-muted: #6b6255;
 $color__brand-text-muted-on-dark: #b7ac97;
 // Muted text in the (light) bottom footer bar specifically.
 $color__brand-text-muted-footer: #8f8573;
+// A second, slightly different muted-on-dark shade used specifically by the
+// expanded footer block (brand blurb, link columns, payment badges) and the
+// newsletter email input's placeholder text — distinct from
+// $color__brand-text-muted-on-dark, confirmed from the v2 mockup.
+$color__brand-text-faint-on-dark: #a89a7c;
 
 $color__brand-border: $color__brand-gold;
 // Muted border on the light canvas (badges, hero/category image outlines).
