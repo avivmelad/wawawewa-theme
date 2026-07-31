@@ -601,6 +601,86 @@
                         }
                     ]
                 },
+                "layout_wawawewa_faq": {
+                    "key": "layout_wawawewa_faq",
+                    "name": "faq",
+                    "label": "שאלות נפוצות (FAQ)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_wawawewa_faq_hidden",
+                            "label": "הסתר סקשן זה",
+                            "name": "strip_hidden",
+                            "type": "true_false",
+                            "instructions": "אם מסומן, הסקשן לא יוצג באתר (בלי למחוק את התוכן).",
+                            "required": 0,
+                            "default_value": 0,
+                            "ui": 1,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_faq_heading",
+                            "label": "כותרת ראשית",
+                            "name": "faq_heading",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": "שאלות נפוצות",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_wawawewa_faq_items",
+                            "label": "שאלות",
+                            "name": "faq_items",
+                            "type": "repeater",
+                            "instructions": "השורה הראשונה מוצגת פתוחה כברירת מחדל.",
+                            "required": 0,
+                            "layout": "block",
+                            "button_label": "הוספת שאלה",
+                            "min": 0,
+                            "max": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_wawawewa_faq_question",
+                                    "label": "שאלה",
+                                    "name": "question",
+                                    "type": "text",
+                                    "required": 1,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                },
+                                {
+                                    "key": "field_wawawewa_faq_answer",
+                                    "label": "תשובה",
+                                    "name": "answer",
+                                    "type": "textarea",
+                                    "required": 1,
+                                    "rows": 3,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                }
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ]
+                },
                 "layout_wawawewa_marquee": {
                     "key": "layout_wawawewa_marquee",
                     "name": "marquee",
@@ -679,5 +759,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1785491400
+    "modified": 1785491943
 }

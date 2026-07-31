@@ -14,7 +14,7 @@ Live checkbox status for every phase of the build is tracked in [`docs/checklist
 
 ## Current status
 
-Niche and visual identity are now decided: home goods/décor, "Black & Gold" luxury direction, Hebrew (RTL) first. A high-fidelity homepage design has been delivered; header and footer are implemented site-wide, homepage content sections and ACF fields are not yet built. See the "Implementation status" checkpoint under Design direction in [`docs/store-build-plan.md`](docs/store-build-plan.md) for exactly what's done and what's left. Ask to resume "the homepage design implementation" to continue.
+Niche and visual identity are now decided: home goods/décor, "Black & Gold" luxury direction (currently the "v2" light/cream palette — see the Design references table below), Hebrew (RTL) first. A high-fidelity homepage design has been delivered; header and footer are implemented site-wide, and every planned homepage flexible-content strip is now built (Hero, Marquee, Best sellers, Categories/Lookbook, Testimonials, About, FAQ) — see `docs/checklist.md` section 5. Still open: filling in real content for each strip in wp-admin and verifying on staging (see `docs/current-mission.md` if it still exists). See the "Implementation status" checkpoint under Design direction in [`docs/store-build-plan.md`](docs/store-build-plan.md) for exactly what's done and what's left.
 
 ## Design references (Claude Design)
 

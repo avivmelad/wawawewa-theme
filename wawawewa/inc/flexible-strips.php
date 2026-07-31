@@ -82,3 +82,11 @@ function wawawewa_strip_about()
 {
 	get_template_part('template-parts/strips/about');
 }
+
+/**
+ * Strip: FAQ accordion.
+ */
+function wawawewa_strip_faq()
+{
+	get_template_part('template-parts/strips/faq');
+}

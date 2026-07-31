@@ -37,7 +37,13 @@ Rework the homepage (and site-wide header) from the plain Black & Gold layout in
 - [x] About/brand strip built — every piece of content is its own ACF field per explicit request: `about_image` (image), `about_eyebrow`/`about_heading` (text), `about_body` (textarea), `about_link` (ACF Link field, reusing the established Link-field pattern from Hero's CTAs rather than separate url/title fields). Split 2-col grid, desktop `1fr 1fr` in a gold-bordered 24px-radius container, mobile stacked (image 200px on top, then copy), 18px radius. Copy side is a **dark chrome panel** (`background:#141312`, confirmed from the v2 mockup at both breakpoints) — eyebrow/link use plain gold, heading uses gold-light (`#f1e2bd`, "text-on-dark"), body uses the dark-panel muted color (`#b7ac97`, "-on-dark").
 - [x] About strip fix: `about_image` now falls back to `wc_placeholder_img_src()` when unset, same as the Categories strip, instead of leaving the image side blank (`template-parts/strips/about.php`).
 - [x] About strip: added `about_image_side` ACF radio toggle (`start`/`end`, default `start` = current behavior unchanged) so the image can sit on either side, desktop/tablet only — implemented via CSS `order` on the grid children (`.strip-about--image-end` modifier class), reset back to image-on-top on mobile regardless of the desktop choice, since the design always stacks that way there.
-- [ ] Next: FAQ → Newsletter/footer
+- [x] FAQ accordion strip built — last homepage flexible-content strip (Newsletter/footer is already covered site-wide by `footer.php`, not a homepage-only ACF strip). Heading only, no eyebrow, per the mockup. ACF `faq_items` repeater (`question`, `answer`), single-open accordion (opening one closes any other open row, `js/faq-accordion.js`), first row open by default per the mockup's initial state. Built with real `<button>` headers (`aria-expanded`/`aria-controls`) rather than the mockup's plain `onClick` divs, for keyboard accessibility — consistent with the rest of the site's interactive components (mini-cart toggle, drawer nav close button). Closed answers use the native `hidden` attribute (not a CSS transition) — simple, and keeps them out of the accessibility tree for free.
+
+## All planned homepage strips are now built
+
+Hero, Marquee, Best sellers, Categories/Lookbook, Testimonials, About, and FAQ are all code-complete (see `docs/checklist.md` section 5, all checked). What's left before this mission is fully done:
+- [ ] Fill in real content for every strip in wp-admin (Hero, Marquee text, Best-sellers product picks, Categories' 3 real WooCommerce categories, Testimonials, About copy/image, FAQ questions) and verify on staging — RTL first, then desktop, then mobile, for each.
+- [ ] Once verified, delete this file — its outcome is already reflected in `docs/checklist.md` and `docs/store-build-plan.md`, so nothing will be lost.
 
 ## Design specs pulled from Claude Design (2026-07-28 fetch)
 
