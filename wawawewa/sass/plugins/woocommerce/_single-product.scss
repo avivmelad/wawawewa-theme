@@ -104,20 +104,34 @@
 		}
 	}
 
+	// WooCommerce's own zoom-trigger icon is a plain magnifying-glass ("search")
+	// glyph — replaced with a corner-bracket "expand" icon (matching the
+	// corner-bracket motif already used on the Hero strip) since this button
+	// opens a full-screen image view, not a search.
 	.woocommerce-product-gallery__trigger {
 		position: absolute;
 		top: 16px;
 		inset-inline-end: 16px;
 		z-index: 2;
-		font-family: $font__mono;
-		font-weight: 700;
-		font-size: 10px;
-		letter-spacing: 0.05em;
-		color: $color__brand-gold;
+		width: 36px;
+		height: 36px;
 		border: 1px solid $color__brand-gold;
-		border-radius: 999px;
-		padding: 6px 14px;
-		background: rgba(253, 253, 252, 0.85);
+		border-radius: 50%;
+		background-color: rgba(253, 253, 252, 0.85);
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M4 9V4H9M15 4H20V9M20 15V20H15M9 20H4V15' stroke='%23b8892e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 16px 16px;
+
+		// Hide whatever icon WooCommerce's own JS/markup inserts inside
+		// (a magnifying-glass glyph/image) — the background-image above is
+		// the only icon that should show.
+		font-size: 0;
+
+		img,
+		svg {
+			display: none;
+		}
 	}
 
 	.flex-control-thumbs {
