@@ -230,9 +230,14 @@ p.stars {
 }
 
 /**
- * Notices — restyled to match the site (soft tint + border + pill "view
- * cart"/"view order" link, instead of WooCommerce's flat default banner
- * colors) rather than left as unstyled `_s` boilerplate.
+ * Notices — restyled to match the site (soft tint + border, instead of
+ * WooCommerce's flat default banner colors) rather than left as unstyled
+ * `_s` boilerplate. `.woocommerce-message` (the "added to cart" success
+ * notice) is additionally a small fixed top-center toast that fades in,
+ * holds briefly, then fades itself out — see js/wc-notice-toast.js. Error/
+ * info notices stay as regular static inline banners: those need to stay
+ * on screen until the shopper actually reads/acts on them (a checkout
+ * validation error shouldn't vanish after a second).
  */
 .woocommerce-message,
 .woocommerce-info,
@@ -269,6 +274,40 @@ p.no-comments {
 
 	li {
 		list-style: none;
+	}
+}
+
+// Fixed top-center toast — overrides the shared layout above for the
+// success ("added to cart") notice specifically. `.is-visible` is toggled
+// by js/wc-notice-toast.js; plain opacity/transform transition, no keyframe
+// animation needed since JS already controls the timing (fade in, hold,
+// fade out).
+.woocommerce-message {
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	position: fixed;
+	top: 20px;
+	/*rtl:ignore*/
+	left: 50%; // Dead-center of the viewport is direction-independent — the
+	// `left: 50%` + `translateX(-50%)` centering trick only cancels out
+	// correctly when both sides use the same physical axis. Using logical
+	// `inset-inline-start` here would anchor the opposite edge in RTL and
+	// push the toast off-center instead of centering it.
+	z-index: 100;
+	width: max-content;
+	max-width: min(90vw, 360px);
+	margin: 0;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+	opacity: 0;
+	pointer-events: none;
+	transform: translateX(-50%) translateY(-12px);
+	transition: opacity 0.3s ease, transform 0.3s ease;
+
+	&.is-visible {
+		opacity: 1;
+		pointer-events: auto;
+		transform: translateX(-50%) translateY(0);
 	}
 }
 
