@@ -216,25 +216,60 @@ p.stars {
 }
 
 /**
- * Notices
+ * Price — WooCommerce reuses <ins>/<del> semantically for the sale/original
+ * price, but the theme's base typography (sass/base/typography/_copy.scss)
+ * applies a yellow highlight background to every <ins> site-wide (for
+ * blog-post "inserted text" use) — reset it here so a sale price doesn't
+ * get an unintended highlight box. Covers both WooCommerce's own `.price`
+ * wrapper and the theme's custom `.product-card__price`.
+ */
+.price ins,
+.product-card__price ins {
+	background: none;
+	text-decoration: none;
+}
+
+/**
+ * Notices — restyled to match the site (soft tint + border + pill "view
+ * cart"/"view order" link, instead of WooCommerce's flat default banner
+ * colors) rather than left as unstyled `_s` boilerplate.
  */
 .woocommerce-message,
 .woocommerce-info,
 .woocommerce-error,
 .woocommerce-noreviews,
 p.no-comments {
-	background-color: $woocommerce__color-success;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
 	clear: both;
+	margin: 0 0 24px;
+	padding: 16px 24px;
+	border-radius: 12px;
+	list-style: none;
+	font-family: $font__main;
+	font-size: 14px;
+	color: $color__brand-text;
+	background: rgba($woocommerce__color-success, 0.08);
+	border: 1px solid $woocommerce__color-success;
 }
 
 .woocommerce-info,
 .woocommerce-noreviews,
 p.no-comments {
-	background-color: $woocommerce__color-info;
+	background: rgba($woocommerce__color-info, 0.08);
+	border-color: $woocommerce__color-info;
 }
 
 .woocommerce-error {
-	background-color: $woocommerce__color-error;
+	background: rgba($woocommerce__color-error, 0.08);
+	border-color: $woocommerce__color-error;
+
+	li {
+		list-style: none;
+	}
 }
 
 .demo_store {
