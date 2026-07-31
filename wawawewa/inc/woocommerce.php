@@ -38,6 +38,17 @@ function wawawewa_woocommerce_setup() {
 add_action( 'after_setup_theme', 'wawawewa_woocommerce_setup' );
 
 /**
+ * Remove the sidebar WooCommerce's own templates (single-product.php,
+ * archive-product.php) fire via `do_action( 'woocommerce_sidebar' )` right
+ * after the main content, before the footer. This design has no sidebar
+ * concept anywhere — every homepage strip and the single product page are
+ * full-width — so whatever's hooked there by default (a stock WordPress
+ * sidebar with its default widgets: Recent Posts, Recent Comments, Archives,
+ * Categories) should never render on WooCommerce pages.
+ */
+remove_all_actions( 'woocommerce_sidebar' );
+
+/**
  * WooCommerce specific scripts & stylesheets.
  *
  * WooCommerce styling itself compiles into the main stylesheet now (see
